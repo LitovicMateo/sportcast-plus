@@ -27,7 +27,6 @@ export type PostAPI = {
       slug: string
     }[];
   };
-
 };
 
 export interface SinglePostAPI {
@@ -41,6 +40,9 @@ export interface SinglePostAPI {
       featuredImage: {
         node: {
           sourceUrl: string;
+          altText: string;
+          slug: string;
+          caption: string;
         };
       };
       author: {
@@ -51,6 +53,7 @@ export interface SinglePostAPI {
       categories: {
         node: {
           name: string;
+          slug: string
         }[];
       };
     };

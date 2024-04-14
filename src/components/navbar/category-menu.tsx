@@ -31,7 +31,7 @@ const navItems = [
   },
   {
     label: "Petak kod Pajde",
-    path: "/petakkodpajde",
+    path: "/petak-kod-pajde",
   },
 
 

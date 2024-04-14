@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import FeaturedPost from "@/components/posts/post-featured";
 import PostGridItem from "@/components/posts/post-grid-item";
+import PostList from "@/components/posts/post-list";
 
 export default async function Home() {
   const postListRes = await fetch("http://localhost:3000/api/posts/recent/", { cache: "no-store" });
@@ -15,29 +16,19 @@ export default async function Home() {
       <section>
         <FeaturedPost post={postListData.data.posts.nodes[0]} />
       </section>
-      <section className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-0 w-full">
-        {postListData.data.posts.nodes.map((post: PostAPI) => (
-          <PostGridItem post={post} key={post.slug} />
-        ))}
-        {/* <iframe
-          className="w-full h-full rounded-md col-start-2 row-start-1 col-span-2 row-span-2 hidden md:block"
-          src="https://www.youtube.com/embed/Txo0I7TIU8E?si=DXPOdLF4tyrdgtqC"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe> */}
-      </section>
-      <div className="w-full h-fit bg-brand">
+      <PostList posts={postListData.data.posts.nodes} />
+      <div className="w-full h-fit pb-6 mb-4 bg-brand">
         <h2 className="text-accent uppercase w-full text-center font-bold text-2xl px-4">Latest video</h2>
         <iframe
-          className="w-full h-[500px] rounded-md p-4"
-          src="https://www.youtube.com/embed/Txo0I7TIU8E?si=DXPOdLF4tyrdgtqC"
+        className="mx-auto"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?si=j1U_Q2jY5uNupDIl&amp;list=PL2tSx9CeWRlz8_V-x4ymd5jn9Ndd7Ne4U"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>{" "}
       </div>
     </main>
   );

@@ -2,17 +2,11 @@ import { NextResponse } from "next/server";
 
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
+export async function GET(req: Request, context: any) {
+  const { params }: { params: { slug: string } } = context;
 
-
-
-  export async function GET(req: Request, context: any) {
-
-    const { params } = context;
-    console.log(params);
-    
-
-    const query = `query{
-      post(id: "${params.slug}", idType:URI) {
+  const query = `query FetchSinglePost {
+      post(id: "${params.slug}", idType: URI) {
         date
         excerpt
         content
@@ -20,26 +14,37 @@ const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
         title
         featuredImage {
           node {
+            altText
+            caption
+            slug
             sourceUrl
           }
         }
-
+        categories {
+          nodes {
+            name
+            slug
+          }
+        }
+        author {
+          node {
+            name
+          }
+        }
       }
-    }`
-      
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: query,
-      }),
-    });
-    const data = await res.json()
-    console.log(data);
-    
-  
-    return NextResponse.json(data);
-  }
-  
+    }`;
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: query,
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+
+  return NextResponse.json(data);
+}

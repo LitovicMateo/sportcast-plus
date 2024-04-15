@@ -1,6 +1,6 @@
 import { PostAPI } from "@/lib/api-types";
 import React from "react";
-import PostGridItem from "./post-grid-item";
+import PostGridItem from "./post-list-item";
 
 type PostListProps = {
   posts: PostAPI[];

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import FeaturedPost from "@/components/posts/post-featured";
-import PostGridItem from "@/components/posts/post-grid-item";
+import PostGridItem from "@/components/posts/post-list-item";
 import PostList from "@/components/posts/post-list";
 
 export default async function Home() {

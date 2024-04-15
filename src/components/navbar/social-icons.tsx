@@ -1,10 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 const SocialIcons = () => {
@@ -16,17 +14,12 @@ const SocialIcons = () => {
         </a>
       </div>
       <div className="h-[24px] aspect-square rounded-full bg-brand text-accent">
-        <a href="http://www.youtube.com/@sportcastplus" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/Sportcastplus/" target="_blank" rel="noopener noreferrer">
           <FacebookRoundedIcon fontSize="small" />
         </a>
       </div>
       <div className="h-[24px] aspect-square rounded-full bg-brand text-accent">
-        <a href="http://www.youtube.com/@sportcastplus" target="_blank" rel="noopener noreferrer">
-          <XIcon fontSize="small" />
-        </a>
-      </div>
-      <div className="h-[24px] aspect-square rounded-full bg-brand text-accent">
-        <a href="http://www.youtube.com/@sportcastplus" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/sportcastplus/?hl=en" target="_blank" rel="noopener noreferrer">
           <InstagramIcon fontSize="small" />
         </a>
       </div>
@@ -36,7 +29,3 @@ const SocialIcons = () => {
 
 export default SocialIcons;
 
-// youtube
-// facebook
-// twitter
-// instagram?

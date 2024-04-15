@@ -1,6 +1,5 @@
 {
   "/page": "app/page.js",
   "/api/posts/recent/route": "app/api/posts/recent/route.js",
-  "/[categoryId]/page": "app/[categoryId]/page.js",
-  "/[categoryId]/[slug]/page": "app/[categoryId]/[slug]/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

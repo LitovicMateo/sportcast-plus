@@ -4,17 +4,13 @@ import React from "react";
 
 type MetadataProps = {
     params: { slug: string }
-    searchParams: { [key: string]: string | string[] | undefined }
   }
 
-export async function generateMetadata({params, searchParams}: MetadataProps): Promise<Metadata> {
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
 
     const postListRes = await fetch(`http://localhost:3000/api/posts/${params.slug}/`, { cache: "no-store" });
     const postListData: SinglePostAPI = await postListRes.json();
-
-    const keywordArr = postListData.data.post.seo.focuskw.split(" ")
-    console.log(keywordArr);
-    
+    const keywordArr = postListData.data.post.seo.focuskw.split(" ")    
 
     return {
         title: `${postListData.data.post.title} | ${process.env.title as string}`,

@@ -31,6 +31,15 @@ export async function GET(req: Request, context: any) {
             name
           }
         }
+        seo 
+        {
+          focuskw
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
       }
     }`;
 

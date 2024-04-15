@@ -21,13 +21,13 @@ const navItems = [
 
 export default function NavBar() {
   return (
-    <Navbar className="bg-brand text-accent" position="static">
-      <NavbarBrand>
+    <Navbar className="bg-brand text-accent w-full" position="static">
+      <NavbarBrand className="justify-center lg:justify-start">
         <Link href="/">
           <Image src={"/sportcast_logo.jpg"} height={50} width={50} alt="sportcast" quality={100} />
         </Link>
       </NavbarBrand>
-      <NavbarContent justify="end">
+      <NavbarContent className="hidden lg:flex" justify="end">
         <SocialIcons />
       </NavbarContent>
     </Navbar>

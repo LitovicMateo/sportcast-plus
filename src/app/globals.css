@@ -8,3 +8,23 @@ h2 {
     padding-top: 1em;
     padding-bottom: 0.5em;
 }
+
+img {
+    width: 100%;
+    margin-inline: auto;
+    aspect-ratio: 16/9;
+}
+
+figure {
+    width: 100% !important;
+}
+
+figcaption {
+    font-weight: 200;
+    font-size: 12px;
+    
+}
+
+figcaption::before {
+    content: "Izvor: ";
+}

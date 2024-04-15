@@ -16,12 +16,20 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        brand: '#0a0305',
+        brand: '#0F0E0E',
         secondary: '#1fb6ff',
-        accent: '#d6b443', 
+        accent: '#FBD85D', 
       }
     },
   },
   plugins: [nextui()],
 };
 export default config;
+
+
+// Possible fonts:
+// - Kanit
+// - Anton
+// - Khand
+// - Rubik
+// - Fira Sans-Medium

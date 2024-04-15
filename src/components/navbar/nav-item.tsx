@@ -4,14 +4,14 @@ import React from "react";
 
 type NavItemProps = {
   isActive: boolean;
-  label: string;
+  label: string | React.ReactNode;
   path: string
 }
 
 const NavItem: React.FC<NavItemProps> = ({isActive, label, path}) => {
   return (
     <NavbarItem>
-      <Link href={path}>
+      <Link href={path} className="text-sm lg:text-base">
         {label}
       </Link>
     </NavbarItem>

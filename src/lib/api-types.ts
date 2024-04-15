@@ -50,6 +50,14 @@ export interface SinglePostAPI {
           name: string;
         };
       };
+      tags: {
+        nodes: {
+          name: string
+        }[]
+      }
+      seo: {
+        focuskw: string
+      }
       categories: {
         node: {
           name: string;

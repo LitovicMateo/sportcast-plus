@@ -24,7 +24,7 @@ export default function NavBar() {
     <Navbar className="bg-brand text-accent w-full" position="static">
       <NavbarBrand className="justify-center lg:justify-start">
         <Link href="/">
-          <Image src={"/sportcast_logo.jpg"} height={50} width={50} alt="sportcast" quality={100} />
+          <Image className="aspect-square" src={"/sportcast_logo.jpg"} height={50} width={50} alt="sportcast" quality={100} />
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden lg:flex" justify="end">

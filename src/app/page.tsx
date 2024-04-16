@@ -10,7 +10,7 @@ const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUB
 export default async function Home() {
   const postListRes = await fetch(`${apiEndpoint}/api/posts/recent/`, { cache: "no-store" });
   const postListData: FetchPostsAPI = await postListRes.json();
-  console.log(postListData);
+  // console.log(postListData);
 
   const fetchError = isFetchError(postListData);
   console.log(fetchError.message);

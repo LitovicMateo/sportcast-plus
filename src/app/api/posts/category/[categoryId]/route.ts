@@ -5,6 +5,8 @@ const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 export async function GET(req: Request, context: any) {
   const { params }: {params: {categoryId: string}} = context;
   console.log(params);
+  console.log(req);
+  
 
   const query = `{
     posts(where: {categoryName: "${params.categoryId}"}) 

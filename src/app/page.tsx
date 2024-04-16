@@ -11,7 +11,6 @@ export default async function Home() {
 
   const fetchError = isFetchError(postListData);
   console.log(fetchError.message);
-  
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-12 ">
@@ -19,8 +18,8 @@ export default async function Home() {
         <p>{fetchError.message}</p>
       ) : (
         <>
-        <FeaturedPost post={postListData.data.posts.nodes[0]} />
-      <PostList posts={postListData.data.posts.nodes} />
+          <FeaturedPost post={postListData.data.posts.nodes[0]} />
+          <PostList posts={postListData.data.posts.nodes} />
         </>
       )}
       <FeaturedVideo />

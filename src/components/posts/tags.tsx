@@ -9,7 +9,7 @@ type TagsProps = {
 
 const Tags: React.FC<TagsProps> = ({tags}) => {
   return (
-    <div className="flex gap-2 justify-start items-center">
+    <div className="flex gap-2 justify-start items-center overflow-x-scroll">
     {tags.map((tag) => (
       <Tag tag={tag.name} key={tag.name} />
     ))}

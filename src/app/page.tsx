@@ -4,7 +4,7 @@ import PostList from "@/components/posts/post-list";
 import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
 
-const apiEndpoint = process.env.NODE_ENV === 'production' ? "https://sportcast-plus.vercel.app" : "http://localhost:3000";
+const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 
 export default async function Home() {

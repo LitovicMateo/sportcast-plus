@@ -5,9 +5,11 @@ import Tag from "@/components/UI/tag";
 import { SinglePostAPI } from "@/lib/api-types";
 import React from "react";
 
+const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
 
 const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
-  const postListRes = await fetch(`http://localhost:3000/api/posts/${params.slug}/`, { cache: "no-store" });
+  const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
   const postListData: SinglePostAPI = await postListRes.json();
   console.log(postListData);
 

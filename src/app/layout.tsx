@@ -10,10 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    // default: process.env.title as string,
-    default: "SportCast+",
-    // template: `%s | ${process.env.title as string}`,
-    template: `%s | SportCast+`,
+    default: process.env.title as string,
+    template: `%s | ${process.env.title as string}`,
   },
   description: "Dobrodošli na Sportcast Plus, mjesto na kojem sport prestravlja puno više od onoga što se događa na terenu! ",
   keywords: ["sportcast", "sportcast plus"],

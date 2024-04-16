@@ -44,6 +44,9 @@ export async function GET(req: Request, context: any) {
     }`;
 
   const res = await fetch(API_URL, {
+    next: {
+      revalidate: 60
+    },
     method: "POST",
     headers: {
       "Content-Type": "application/json",

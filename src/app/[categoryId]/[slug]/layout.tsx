@@ -6,9 +6,12 @@ type MetadataProps = {
     params: { slug: string }
   }
 
+const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
 
-    const postListRes = await fetch(`http://localhost:3000/api/posts/${params.slug}/`, { cache: "no-store" });
+    const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
     const postListData: SinglePostAPI = await postListRes.json();
     const keywordArr = postListData.data.post.seo.focuskw.split(" ")    
 

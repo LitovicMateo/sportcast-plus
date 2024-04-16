@@ -28,7 +28,7 @@ export async function GET() {
   let data;
 
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch("https://lime-panther-317414.hostingersite.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

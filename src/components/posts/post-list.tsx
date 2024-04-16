@@ -7,9 +7,6 @@ type PostListProps = {
 };
 
 const PostList: React.FC<PostListProps> = ({ posts }) => {
-    if (posts.length === 0) {
-        return <p>No posts available.</p>
-    }
   return (
     <section className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-0 w-full">
       {posts.map((post: PostAPI) => (

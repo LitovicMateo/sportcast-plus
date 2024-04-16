@@ -15,17 +15,27 @@ export default async function Home() {
   const fetchError = isFetchError(postListData);
   console.log(fetchError.message);
 
+  // posts 2-7
+  const firstSectionPosts = postListData.data.posts.nodes.slice(1,6);
+  console.log(firstSectionPosts);
+  
+
+  // posts 8-13
+  const secondSectionPosts = postListData.data.posts.nodes.slice(6,6)
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-12 ">
       {fetchError.isError ? (
-        <p>{fetchError.message}</p>
+        <p></p>
       ) : (
         <>
           <FeaturedPost post={postListData.data.posts.nodes[0]} />
-          <PostList posts={postListData.data.posts.nodes} />
+          <PostList posts={firstSectionPosts} />
         </>
       )}
       <FeaturedVideo />
+      <PostList posts={secondSectionPosts} />
+
     </main>
   );
 }

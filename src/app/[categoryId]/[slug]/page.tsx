@@ -34,7 +34,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
         </div>
         <BreakLine />
         <article
-          className="leading-8 text-[#6b6565]"
+          className="leading-8 text-[#6b6565] text-justify md:text-left"
           dangerouslySetInnerHTML={{ __html: postListData.data.post.content }}
         ></article>
         <BreakLine />

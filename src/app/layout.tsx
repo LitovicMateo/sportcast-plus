@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   keywords: ["sportcast", "sportcast plus"],
   applicationName: "Sportcast Plus",
   creator: "Mateo Litović",
+  
 };
 
 export const viewport: Viewport = {

@@ -4,8 +4,11 @@ import PostList from "@/components/posts/post-list";
 import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
 
+const apiEndpoint = process.env.NODE_ENV === 'production' ? "https://sportcast-plus.vercel.app" : "http://localhost:3000";
+
+
 export default async function Home() {
-  const postListRes = await fetch("https://sportcast-plus.vercel.app/api/posts/recent/", { cache: "no-store" });
+  const postListRes = await fetch(`${apiEndpoint}/api/posts/recent/`, { cache: "no-store" });
   const postListData: FetchPostsAPI = await postListRes.json();
   console.log(postListData);
 

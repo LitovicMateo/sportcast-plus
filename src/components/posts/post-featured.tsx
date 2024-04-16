@@ -21,7 +21,7 @@ const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
           quality={100}
           alt={post.slug}
         />
-        <h2>{post.title}</h2>
+        <h2 className="px-4">{post.title}</h2>
       </Link>
     </section>
   );

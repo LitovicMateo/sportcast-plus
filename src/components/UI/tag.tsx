@@ -14,7 +14,8 @@ const kanit = Kanit({
   
 
 const Tag: React.FC<TagProps> = ({ tag }) => {
-  return <Chip><Link href={"/"} className={`px-2 py-1 font-bold text-sm ${kanit.className}`}>{tag.toUpperCase()}</Link></Chip>;
+  const tagSlug = tag.replace(" ", "-").toLowerCase()
+  return <Chip><Link href={`/tag/${tagSlug}`} className={`px-2 py-1 font-bold text-sm ${kanit.className}`}>{tag.toUpperCase()}</Link></Chip>;
 };
 
 export default Tag;

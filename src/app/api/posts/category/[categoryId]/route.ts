@@ -39,7 +39,8 @@ export async function GET(req: Request, context: any) {
 
 	try {
 		const res = await fetch(API_URL, {
-			method: "POST",
+      cache: "no-cache",
+      method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},

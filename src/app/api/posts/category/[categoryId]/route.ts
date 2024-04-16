@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
@@ -50,5 +51,6 @@ export async function GET(req: Request, context: any) {
 	} catch (error) {}
 	console.log(data);
 
+  revalidatePath(req.url)
 	return NextResponse.json(data);
 }

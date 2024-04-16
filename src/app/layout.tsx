@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`${inter.className} `}>
         <NavBar />
         <CategoryMenu />
-        <main className="w-full md:w-[80%] lg:w-[900px]  mx-auto min-h-svh overflow-hidden">{children}</main>
+        <main className="w-full md:w-[80%] lg:w-[800px]  mx-auto min-h-svh overflow-hidden">{children}</main>
         <Footer />
       </body>
     </html>

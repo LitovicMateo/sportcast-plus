@@ -11,7 +11,7 @@ const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
     <div className="w-full h-full relative bg-white rounded-b-sm border-b-2 border-solid border-gray-50">
       <div className="relative">
         <Image
-          className=" aspect-video rounded-md"
+          className="aspect-[16/10] rounded-md"
           src={post.featuredImage?.node.sourceUrl || ""}
           height={300}
           width={500}

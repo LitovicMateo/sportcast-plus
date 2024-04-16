@@ -6,7 +6,7 @@ const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUB
 
 
 const SinglePostPage = async ({ params }: { params: { categoryId: string } }) => {
-  const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, { cache: "no-cache"});
+  const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, { cache: "no-store"});
   const postListData: FetchPostsAPI = await postListRes.json();
   console.log(postListData);
 

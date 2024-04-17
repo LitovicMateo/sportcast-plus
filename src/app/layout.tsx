@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${process.env.title as string}`,
     images: {
-      url: "/favicon.ico",
+      url: "/sportcast_logo.jpg",
       width: 800,
       height: 600,
     },

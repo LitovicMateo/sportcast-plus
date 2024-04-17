@@ -8,7 +8,6 @@ type FeaturedPostProps = {
 };
 
 const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
-  console.log(post);
 
   return (
     <section>

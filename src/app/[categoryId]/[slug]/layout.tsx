@@ -21,7 +21,6 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 
   return {
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
-    description: postListData.data.post.excerpt,
     authors: [{ name: postListData.data.post.author.node.name }],
     keywords: keywordArr,
     openGraph: {

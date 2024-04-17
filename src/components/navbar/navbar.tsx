@@ -11,7 +11,7 @@ export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-brand text-accent w-full" position="static">
-       <NavbarContent className="justify-start">
+       <NavbarContent className="justify-start md:hidden">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"

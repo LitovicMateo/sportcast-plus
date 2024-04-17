@@ -9,19 +9,20 @@ type PostGridItemProps = {
 };
 
 const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
-
-  const date = transformDate(post.date)
+  const date = transformDate(post.date);
   return (
     <div className="w-full h-full relative bg-white rounded-b-sm border-b-2 border-solid border-gray-50">
       <Link href={`/${post.categories.nodes[0].slug}/${post.slug}`}>
         <div className="relative">
-          <Image
-            className="aspect-[16/10] rounded-md"
-            src={post.featuredImage?.node.sourceUrl || ""}
-            height={300}
-            width={500}
-            alt={post.title}
-          />
+          <div className="aspect-[16/9] overflow-hidden flex justify-center items-center rounded-md">
+            <Image
+              className=" rounded-md"
+              src={post.featuredImage?.node.sourceUrl || ""}
+              height={300}
+              width={500}
+              alt={post.title}
+            />
+          </div>
           <span className="absolute bottom-0 text-[8px] md:text-xs bg-brand text-accent font-semibold uppercase py-1 px-2 rounded-bl-md rounded-tr-md">
             {post.categories.nodes[0].name}
           </span>

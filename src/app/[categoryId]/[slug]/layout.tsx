@@ -30,6 +30,8 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
         alt: postListData.data.post.slug,
         type: "image/jpeg"
       },
+      type: "article",
+      url: `https://sportcast-plus.vercel.app/${postListData.data.post.categories.node[0].slug}/${postListData.data.post.title}`
     },
   };
 }

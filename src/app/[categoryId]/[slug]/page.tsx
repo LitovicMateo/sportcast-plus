@@ -13,21 +13,21 @@ const apiEndpoint =
 const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
   const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
   const postListData: SinglePostAPI = await postListRes.json();
-  const date = transformDate(postListData.data.post.date)
+  const date = transformDate(postListData.data.post.date);
 
   return (
     <>
-      <FeaturedImage
-        imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
-        slug={postListData.data.post.slug}
-      />
+      <div className="w-full h-full max-h-[450px] overflow-hidden flex justify-center items-center ">
+        <FeaturedImage
+          imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
+          slug={postListData.data.post.slug}
+        />
+      </div>
       <section className="px-4 max-w-[580px] md:max-w-[720px] mx-auto">
         <h1 className="text-2xl font-semibold pt-4 pb-2">{postListData.data.post.title}</h1>
         <div className="flex justify-between items-center">
           <h3 className="text-base font-semibold pb-1">Autor: {postListData.data.post.author.node.name}</h3>
-          <span className="text-[14px] font-[300]">
-            {date}
-          </span>
+          <span className="text-[14px] font-[300]">{date}</span>
         </div>
         <BreakLine />
         <article

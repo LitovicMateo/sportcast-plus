@@ -22,6 +22,7 @@ export async function GET(req: Request, context: any) {
           }
         }
         id
+        date
         slug
         title
         categories 

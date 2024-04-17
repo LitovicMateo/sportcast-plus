@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
         width: 800,
         height: 600,
         alt: postListData.data.post.slug,
+        type: "image/jpeg"
       },
     },
   };

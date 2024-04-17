@@ -15,9 +15,9 @@ const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
       <Link className="w-full h-[500px] relative" href={`/${post.categories.nodes[0].slug}/${post.slug}`}>
         <Image
           className="aspect-auto"
-          src={post.featuredImage.node.sourceUrl}
-          height={600}
-          width={1000}
+          src={post.featuredImage?.node.sourceUrl || "/logo.png"}
+          height={post.featuredImage ? 600 : 100}
+          width={post.featuredImage ? 600 : 100}
           quality={100}
           alt={post.slug}
         />

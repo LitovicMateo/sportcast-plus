@@ -16,6 +16,9 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   const postListData: SinglePostAPI = await postListRes.json();
   const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
+  console.log(postListData);
+  
+
   return {
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
     description: postListData.data.post.excerpt,

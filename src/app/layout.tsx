@@ -23,6 +23,7 @@ export const metadata: Metadata = {
       url: "/sportcast_logo.jpg",
       width: 800,
       height: 600,
+      type: "image/jpeg"
     },
   },
 };

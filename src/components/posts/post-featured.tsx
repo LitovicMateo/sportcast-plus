@@ -14,10 +14,10 @@ const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
     <section>
       <Link className="w-full h-[500px] relative" href={`/${post.categories.nodes[0].slug}/${post.slug}`}>
         <Image
-          className="aspect-auto"
+          className="aspect-auto w-full"
           src={post.featuredImage?.node.sourceUrl || "/fallback_cover.jpg"}
           height={post.featuredImage ? 600 : 100}
-          width={post.featuredImage ? 600 : 100}
+          width={post.featuredImage ? 1000 : 100}
           quality={100}
           alt={post.slug}
         />

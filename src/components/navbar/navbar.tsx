@@ -25,7 +25,7 @@ export default function NavBar() {
       <NavbarContent className="hidden lg:flex" justify="end">
         <SocialIcons />
       </NavbarContent>
-      <NavbarContent></NavbarContent>
+      <NavbarContent className="md:hidden"></NavbarContent>
       <NavbarMenu className="bg-brand ">
         {navItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>

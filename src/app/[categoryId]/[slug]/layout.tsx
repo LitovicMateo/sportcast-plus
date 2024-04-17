@@ -23,14 +23,12 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     keywords: keywordArr,
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
-      images: [
-        {
-          url: postListData.data.post.featuredImage.node.sourceUrl,
-          width: 800,
-          height: 600,
-          alt: postListData.data.post.slug,
-        },
-      ],
+      images: {
+        url: postListData.data.post.featuredImage.node.sourceUrl,
+        width: 800,
+        height: 600,
+        alt: postListData.data.post.slug,
+      },
     },
   };
 }

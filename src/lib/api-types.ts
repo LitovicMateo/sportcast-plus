@@ -59,7 +59,7 @@ export interface SinglePostAPI {
         focuskw: string
       }
       categories: {
-        node: {
+        nodes: {
           name: string;
           slug: string
         }[];

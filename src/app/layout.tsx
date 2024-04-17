@@ -17,7 +17,14 @@ export const metadata: Metadata = {
   keywords: ["sportcast", "sportcast plus"],
   applicationName: "Sportcast Plus",
   creator: "Mateo Litović",
-  
+  openGraph: {
+    title: `${process.env.title as string}`,
+    images: {
+      url: "/favicon.ico",
+      width: 800,
+      height: 600,
+    },
+  },
 };
 
 export const viewport: Viewport = {

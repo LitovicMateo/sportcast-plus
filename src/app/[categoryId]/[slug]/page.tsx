@@ -2,6 +2,7 @@ import FeaturedImage from "@/components/posts/featured-image";
 import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";
 import { SinglePostAPI } from "@/lib/api-types";
+import { transformDate } from "@/lib/transformDate";
 import React from "react";
 
 const apiEndpoint =
@@ -12,11 +13,7 @@ const apiEndpoint =
 const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
   const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
   const postListData: SinglePostAPI = await postListRes.json();
-
-  const date = new Date(postListData.data.post.date);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+  const date = transformDate(postListData.data.post.date)
 
   return (
     <>
@@ -29,7 +26,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
         <div className="flex justify-between items-center">
           <h3 className="text-base font-semibold pb-1">Autor: {postListData.data.post.author.node.name}</h3>
           <span className="text-[14px] font-[300]">
-            {day}/{month}/{year}
+            {date}
           </span>
         </div>
         <BreakLine />

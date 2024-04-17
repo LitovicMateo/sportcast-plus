@@ -15,6 +15,7 @@ export async function GET(req: Request) {
           }
         }
         id
+        date
         slug
         title
         categories {

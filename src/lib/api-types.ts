@@ -14,6 +14,7 @@ export type PostAPI = {
       sourceUrl: string;
     };
   };
+  date: string;
   slug: string;
   title: string;
   author: {

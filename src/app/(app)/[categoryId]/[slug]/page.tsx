@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
   
 
   return {
-    metadataBase: new URL("https://lime-panther-317414.hostingersite.com/"),
+    metadataBase: new URL("https://www.sportcast.plus"),
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
     authors: [{ name: postListData.data.post.author.node.name }],
     keywords: keywordArr,

@@ -3,7 +3,7 @@ import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";
 import { SinglePostAPI } from "@/lib/api-types";
 import { transformDate } from "@/lib/transformDate";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
 const apiEndpoint =
@@ -15,7 +15,7 @@ type MetadataProps = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+export async function generateMetadata({ params }: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
   const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
   const postListData: SinglePostAPI = await postListRes.json();
   const keywordArr = postListData.data.post.seo.focuskw.split(" ");
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
       images: {
+        secureUrl: postListData.data.post.featuredImage.node.sourceUrl,
         url: postListData.data.post.featuredImage.node.sourceUrl,
         width: 800,
         height: 600,

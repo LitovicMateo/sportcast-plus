@@ -10,5 +10,5 @@ export const contentType = 'image/jpeg'
 export default async function OGImage() {
 
 
-    return new ImageResponse(<div className="h-[630px] w-[1200px] flex justify-center items-center"><Image src={"https://lime-panther-317414.hostingersite.com/wp-content/uploads/2024/04/ll.jpg"} height={size.height} width={size.width} alt="test img" /></div>)
+    return new ImageResponse(<div className="h-[630px] w-[1200px] flex justify-center items-center"><img src={"https://lime-panther-317414.hostingersite.com/wp-content/uploads/2024/04/ll.jpg"} alt="test img" /></div>)
 }

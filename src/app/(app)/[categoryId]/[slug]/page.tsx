@@ -20,6 +20,9 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
   const postListData: SinglePostAPI = await postListRes.json();
   const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
+  console.log(postListData.data.post.featuredImage.node.sourceUrl);
+  
+
   return {
     metadataBase: new URL("https://lime-panther-317414.hostingersite.com/"),
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
@@ -39,7 +42,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
         type: "image/jpeg",
       },
       type: "website",
-      url: `https://sportcast-plus.vercel.app/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.title}`, 
+      url: `https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
     },
   };
 }

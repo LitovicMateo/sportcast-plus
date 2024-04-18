@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
     authors: [{ name: postListData.data.post.author.node.name }],
     keywords: keywordArr,
+    other: {
+      ["fb:app_id"]: "6147615245363305"
+    },
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
       images: {
@@ -36,7 +39,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
         type: "image/jpeg",
       },
       type: "website",
-      url: `https://sportcast-plus.vercel.app/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.title}`,
+      url: `https://sportcast-plus.vercel.app/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.title}`, 
     },
   };
 }

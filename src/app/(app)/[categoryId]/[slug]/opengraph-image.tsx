@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import Image from "next/image";
+import { SinglePostAPI } from "@/lib/api-types";
 
 export const size = {
     width: 1200,
@@ -7,8 +8,23 @@ export const size = {
   }
 export const contentType = 'image/jpeg'
 
-export default async function OGImage() {
+const apiEndpoint =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
+    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
+type MetadataProps = {
+  params: { slug: string };
+};
+
+
+export default async function OGImage({params}: MetadataProps) {
+
+    const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
+    const postListData: SinglePostAPI = await postListRes.json();
+  
+    console.log(postListData.data.post.featuredImage.node.sourceUrl);
+  
 
     return new ImageResponse(<div style={{
         height: "630px",
@@ -23,6 +39,6 @@ export default async function OGImage() {
                 width: "100%",
                 aspectRatio: "auto"
             }}
-            src="https://lime-panther-317414.hostingersite.com/wp-content/uploads/2024/04/ll.jpg" />
+            src={postListData.data.post.featuredImage.node.sourceUrl} />
     </div>)
 }

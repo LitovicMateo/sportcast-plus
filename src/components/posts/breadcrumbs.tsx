@@ -11,7 +11,7 @@ type BreadCrumbsMenuProps = {
 
 const BreadcrumbsMenu: React.FC<BreadCrumbsMenuProps> = ({ post }) => {
   return (
-    <Breadcrumbs radius="full" variant="solid" className="py-2">
+    <Breadcrumbs radius="full" variant="solid" className="p-2">
       <BreadcrumbItem>
         <Link href={"/"}>Naslovnica</Link>
       </BreadcrumbItem>

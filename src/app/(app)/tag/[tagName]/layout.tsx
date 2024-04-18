@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const CategoryLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>{children}</div>;
+  return <main className="w-full md:w-[80%] lg:w-[800px] mt-4 mx-auto min-h-svh overflow-hidden">{children}</main>;
 };
 
 export default CategoryLayout;

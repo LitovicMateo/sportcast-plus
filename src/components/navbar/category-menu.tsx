@@ -27,7 +27,7 @@ export default function CategoryMenu() {
     >
       <NavbarContent className="w-full max-w-[1000px] uppercase font-semibold gap-8 lg:gap-12" justify="center">
         {categories.map((item) => (
-          <NavItem isActive={false} label={item.label} path={"/"+item.path} />
+          <NavItem isActive={false} label={item.label} path={"/"+item.path} key={item.path} />
         ))}
       </NavbarContent>
     </Navbar>

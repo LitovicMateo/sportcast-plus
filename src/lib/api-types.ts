@@ -25,10 +25,21 @@ export type PostAPI = {
   categories: {
     nodes: {
       name: string;
-      slug: string
+      slug: string;
     }[];
   };
 };
+
+export interface FetchPostByTagAPI {
+  data: {
+    tag: {
+      posts: {
+        nodes: PostAPI[];
+      };
+    };
+  };
+  extensions: {};
+}
 
 export interface SinglePostAPI {
   data: {
@@ -53,16 +64,16 @@ export interface SinglePostAPI {
       };
       tags: {
         nodes: {
-          name: string
-        }[]
-      }
+          name: string;
+        }[];
+      };
       seo: {
-        focuskw: string
-      }
+        focuskw: string;
+      };
       categories: {
         nodes: {
           name: string;
-          slug: string
+          slug: string;
         }[];
       };
     };

@@ -3,49 +3,68 @@ import { NextResponse } from "next/server";
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export async function GET(req: Request, context: any) {
-  const { params }: {params: {tagName: string}} = context;
-  console.log(params);
+  const { params }: { params: { tagName: string } } = context;
+  const tag = params.tagName.replace("-", " ");
 
-  const query = `{
-    posts(where: {categoryName: "${params.tagName}"}) 
+  let data;
+  const query = `
     {
-      nodes {
-        excerpt
-        featuredImage 
-        {
-          node 
-          {
-            sourceUrl
-          }
-        }
-        id
-        slug
-        title
-        categories 
+      tag(id: "${tag}", idType: NAME) 
+      {
+        posts 
         {
           nodes 
           {
-            name
+            title
+            date
+            excerpt
             slug
+            featuredImage 
+            {
+              node 
+              {
+                sourceUrl
+              }
+            }
+            categories 
+            {
+              nodes 
+              {
+                name
+                slug
+              }
+            }
+            author 
+            {
+              node 
+              {
+                name
+              }
+            }
           }
-        }
-      }
+        }    
+      } 
     }
-  }
-  `;
+ `;
 
-  const res = await fetch(API_URL, {
-    cache: "no-cache",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: query,
-    }),
-  });
-  const data = await res.json();
+  try {
+    const res = await fetch(API_URL, {
+      cache: "no-cache",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: query,
+      }),
+    });
+    data = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+
   console.log(data);
+  
 
   return NextResponse.json(data);
 }

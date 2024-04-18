@@ -5,10 +5,9 @@ import React from "react";
 const apiEndpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 
-const TagNamePage = async ({ params }: { params: { tagName: string } }) => {
-  const postListRes = await fetch(`${apiEndpoint}/api/posts/tag/${params.tagName}`, { cache: "no-store" });
+const SinglePostPage = async ({ params }: { params: { categoryId: string } }) => {
+  const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, {cache: "no-cache"});
   const postListData: FetchPostsAPI = await postListRes.json();
-  console.log(postListData);
 
   return (
     <div>
@@ -17,4 +16,4 @@ const TagNamePage = async ({ params }: { params: { tagName: string } }) => {
   );
 };
 
-export default TagNamePage;
+export default SinglePostPage;

@@ -17,5 +17,12 @@ export default async function OGImage() {
         justifyContent: "center",
         alignItems: "center",
         fontSize: "48px"
-    }}>Hello world</div>)
+    }}>
+        <img 
+            style={{
+                height: "100%",
+                width: "100%"
+            }}
+            src="https://lime-panther-317414.hostingersite.com/wp-content/uploads/2024/04/ll.jpg" />
+    </div>)
 }

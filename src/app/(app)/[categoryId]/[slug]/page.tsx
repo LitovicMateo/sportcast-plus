@@ -31,19 +31,19 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     // other: {
     //   ["fb:app_id"]: "966242223397117"
     // },
-    openGraph: {
-      title: `${postListData.data.post.title} | ${process.env.title as string}`,
-      images: [{
-        secureUrl: postListData.data.post.featuredImage.node.sourceUrl,
-        url: postListData.data.post.featuredImage.node.sourceUrl,
-        width: "800px",
-        height: "600px",
-        alt: postListData.data.post.slug,
-        type: "image/jpeg",
-      }],
-      type: "article",
-      url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
-    },
+    // openGraph: {
+    //   title: `${postListData.data.post.title} | ${process.env.title as string}`,
+    //   images: [{
+    //     secureUrl: postListData.data.post.featuredImage.node.sourceUrl,
+    //     url: postListData.data.post.featuredImage.node.sourceUrl,
+    //     width: "800px",
+    //     height: "600px",
+    //     alt: postListData.data.post.slug,
+    //     type: "image/jpeg",
+    //   }],
+    //   type: "article",
+    //   url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
+    // },
   };
 }
 

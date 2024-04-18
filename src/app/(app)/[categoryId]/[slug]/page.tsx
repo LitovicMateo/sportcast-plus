@@ -3,12 +3,42 @@ import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";
 import { SinglePostAPI } from "@/lib/api-types";
 import { transformDate } from "@/lib/transformDate";
+import { Metadata } from "next";
 import React from "react";
 
 const apiEndpoint =
   process.env.NODE_ENV === "production"
     ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
     : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+type MetadataProps = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
+  const postListData: SinglePostAPI = await postListRes.json();
+  const keywordArr = postListData.data.post.seo.focuskw.split(" ");
+
+  return {
+    metadataBase: new URL("https://lime-panther-317414.hostingersite.com/"),
+    title: `${postListData.data.post.title} | ${process.env.title as string}`,
+    authors: [{ name: postListData.data.post.author.node.name }],
+    keywords: keywordArr,
+    openGraph: {
+      title: `${postListData.data.post.title} | ${process.env.title as string}`,
+      images: {
+        url: postListData.data.post.featuredImage.node.sourceUrl,
+        width: 800,
+        height: 600,
+        alt: postListData.data.post.slug,
+        type: "image/jpeg",
+      },
+      type: "website",
+      url: `https://sportcast-plus.vercel.app/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.title}`,
+    },
+  };
+}
 
 const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
   const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });

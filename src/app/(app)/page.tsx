@@ -16,11 +16,10 @@ export default async function Home() {
   const fetchError = isFetchError(postListData);
 
   // posts 2-7
-  const firstSectionPosts = postListData.data.posts.nodes.slice(1, 6);
-  console.log(firstSectionPosts);
+  const firstSectionPosts = postListData.data.posts.nodes.slice(1, 7);
 
   // posts 8-13
-  const secondSectionPosts = postListData.data.posts.nodes.slice(6, 6);
+  const secondSectionPosts = postListData.data.posts.nodes.slice(7, 13);
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-12 ">

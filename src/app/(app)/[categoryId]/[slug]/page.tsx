@@ -1,6 +1,6 @@
 import ArticleContent from "@/components/posts/article-content";
 import ArticleMetadata from "@/components/posts/article-metadata";
-import Breadcrumbs from "@/components/posts/breadcrumbs";
+import BreadcrumbsMenu from "@/components/posts/breadcrumbs";
 import FeaturedImage from "@/components/posts/featured-image";
 import ShareArticle from "@/components/posts/share-article";
 import Tags from "@/components/posts/tags";
@@ -46,7 +46,7 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      {/* <Breadcrumbs /> */}
+      <BreadcrumbsMenu post={postListData} />
       <FeaturedImage
         imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
         slug={postListData.data.post.slug}

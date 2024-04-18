@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
         alt: postListData.data.post.slug,
         type: "image/jpeg",
       }],
-      type: "website",
+      type: "article",
       url: `https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
     },
   };

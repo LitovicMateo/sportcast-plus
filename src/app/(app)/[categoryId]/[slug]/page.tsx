@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     // },
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
-      images: {
+      images: [{
         secureUrl: postListData.data.post.featuredImage.node.sourceUrl,
         url: postListData.data.post.featuredImage.node.sourceUrl,
         width: 800,
         height: 600,
         alt: postListData.data.post.slug,
         type: "image/jpeg",
-      },
+      }],
       type: "website",
       url: `https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
     },

@@ -1,4 +1,8 @@
+import ArticleContent from "@/components/posts/article-content";
+import ArticleMetadata from "@/components/posts/article-metadata";
+import Breadcrumbs from "@/components/posts/breadcrumbs";
 import FeaturedImage from "@/components/posts/featured-image";
+import ShareArticle from "@/components/posts/share-article";
 import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";
 import { SinglePostAPI } from "@/lib/api-types";
@@ -21,7 +25,6 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
   const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
   console.log(postListData.data.post.featuredImage.node.sourceUrl);
-  
 
   return {
     metadataBase: new URL("https://www.sportcast.plus"),
@@ -31,7 +34,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
       type: "article",
-      url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
+      url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`,
     },
   };
 }
@@ -43,26 +46,21 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <div className="w-full h-full max-h-[450px] overflow-hidden flex justify-center items-center ">
-        <FeaturedImage
-          imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
-          slug={postListData.data.post.slug}
-        />
-      </div>
+      {/* <Breadcrumbs /> */}
+      <FeaturedImage
+        imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
+        slug={postListData.data.post.slug}
+      />
       <section className="px-4 max-w-[580px] md:max-w-[720px] mx-auto">
-        <h1 className="text-2xl font-semibold pt-4 pb-2">{postListData.data.post.title}</h1>
-        <div className="flex justify-between items-center">
-          <h3 className="text-base font-semibold pb-1">Autor: {postListData.data.post.author.node.name}</h3>
-          <span className="text-[14px] font-[300]">{date}</span>
-        </div>
+        <ArticleMetadata post={postListData} date={date} />
         <BreakLine />
-        <article
-          className="leading-8 text-[#6b6565] text-justify md:text-left"
-          dangerouslySetInnerHTML={{ __html: postListData.data.post.content }}
-        ></article>
+        <ArticleContent post={postListData} />
+        <BreakLine />
+        <ShareArticle url={`https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.slug}`} />
         <BreakLine />
         <Tags tags={postListData.data.post.tags.nodes} />
       </section>
+
     </>
   );
 };

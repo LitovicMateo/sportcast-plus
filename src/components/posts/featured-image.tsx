@@ -7,7 +7,11 @@ type FeaturedImageProps = {
 };
 
 const FeaturedImage: React.FC<FeaturedImageProps> = ({ imageUrl, slug }) => {
-  return <Image className="aspect-auto w-full" src={imageUrl} width={1000} height={300} alt={slug} />;
+  return (
+    <div className="w-full h-full max-h-[450px] overflow-hidden flex justify-center items-center ">
+      <Image className="aspect-auto w-full" src={imageUrl} width={1000} height={300} alt={slug} />
+    </div>
+  );
 };
 
 export default FeaturedImage;

@@ -10,5 +10,12 @@ export const contentType = 'image/jpeg'
 export default async function OGImage() {
 
 
-    return new ImageResponse(<div className="h-[630px] w-[1200px] flex justify-center items-center">Hello world</div>)
+    return new ImageResponse(<div style={{
+        height: "630px",
+        width: "1200px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "48px"
+    }}>Hello world</div>)
 }

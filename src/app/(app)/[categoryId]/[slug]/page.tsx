@@ -28,9 +28,9 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     title: `${postListData.data.post.title} | ${process.env.title as string}`,
     authors: [{ name: postListData.data.post.author.node.name }],
     keywords: keywordArr,
-    other: {
-      ["fb:app_id"]: "966242223397117"
-    },
+    // other: {
+    //   ["fb:app_id"]: "966242223397117"
+    // },
     openGraph: {
       title: `${postListData.data.post.title} | ${process.env.title as string}`,
       images: {

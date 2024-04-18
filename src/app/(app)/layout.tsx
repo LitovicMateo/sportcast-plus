@@ -42,6 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta property="fb:app_id" content="966242223397117" />
+      </head>
       <body className={`${inter.className} `}>
         <NavBar />
         <CategoryMenu />

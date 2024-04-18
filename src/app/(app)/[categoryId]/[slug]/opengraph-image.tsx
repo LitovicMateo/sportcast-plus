@@ -20,7 +20,6 @@ export default async function OGImage() {
     }}>
         <img 
             style={{
-                height: "100%",
                 width: "100%",
                 aspectRatio: "auto"
             }}

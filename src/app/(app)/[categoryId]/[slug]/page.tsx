@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
     //   images: [{
     //     secureUrl: postListData.data.post.featuredImage.node.sourceUrl,
     //     url: postListData.data.post.featuredImage.node.sourceUrl,
-    //     width: "800px",
-    //     height: "600px",
+    //     width: 800,
+    //     height: 600,
     //     alt: postListData.data.post.slug,
     //     type: "image/jpeg",
     //   }],

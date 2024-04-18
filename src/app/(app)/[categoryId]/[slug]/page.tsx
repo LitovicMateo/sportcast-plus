@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
         type: "image/jpeg",
       }],
       type: "article",
-      url: `https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
+      url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`, 
     },
   };
 }

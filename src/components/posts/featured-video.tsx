@@ -2,16 +2,15 @@ import React from "react";
 
 const FeaturedVideo = () => {
   return (
+    <div className="relative w-full h-fit py-6 border-t-2 border-b-2 border-solid border-brand  flex flex-col justify-center items-center">
       <iframe
-        className="mx-auto w-full max-w-[500px]"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/videoseries?si=j1U_Q2jY5uNupDIl&amp;list=PL2tSx9CeWRlz8_V-x4ymd5jn9Ndd7Ne4U"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
+        src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUon5iIws-cixVGo9QPjJI3w"
+        width="600"
+        height="340"
         allowFullScreen
       ></iframe>
+      <div className="absolute top-50 w-full bg-brand h-[2px] opacity-10 -z-10"></div>
+    </div>
   );
 };
 

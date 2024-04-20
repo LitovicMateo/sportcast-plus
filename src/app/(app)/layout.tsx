@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import CategoryMenu from "@/components/navbar/category-menu";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +20,6 @@ export const metadata: Metadata = {
   creator: "Mateo Litović",
   openGraph: {
     title: `${process.env.title as string}`,
-    images: {
-      url: "/sportcast_logo.jpg",
-      width: 800,
-      height: 600,
-      type: "image/jpeg"
-    },
   },
 };
 
@@ -50,6 +45,8 @@ export default function RootLayout({
         <CategoryMenu />
         <main className="w-full md:w-[80%] lg:w-[800px]  mx-auto min-h-svh overflow-hidden">{children}</main>
         <Footer />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

@@ -16,7 +16,7 @@ const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
         <div className="relative">
           <div className="aspect-[16/9] overflow-hidden flex justify-center items-center rounded-md">
             <Image
-              className=" rounded-md"
+              className=" min-h-full min-w-full rounded-md"
               src={post.featuredImage?.node.sourceUrl || ""}
               height={300}
               width={500}

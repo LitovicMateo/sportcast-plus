@@ -10,11 +10,11 @@ import { navItems } from "../../lib/categories"
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-brand text-accent w-full" position="static">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-brand text-accent w-full sticky md:static">
        <NavbarContent className="justify-start md:hidden">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+
         />
       </NavbarContent>
       <NavbarBrand className="justify-center lg:justify-start">
@@ -31,7 +31,7 @@ export default function NavBar() {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
 
-              className="w-full text-accent"
+              className="w-full text-accent uppercase font-[600]"
               href={`/${item.path}`}
               size="lg"
             >

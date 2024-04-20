@@ -43,3 +43,11 @@ figcaption::before {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+article li {
+    padding-left: 1em;
+    padding-block: 0.8em;
+    text-align: left;
+    list-style: decimal;
+    margin-inline: 1em;
+}

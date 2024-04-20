@@ -1,13 +1,16 @@
 import { ImageResponse } from "next/og";
 
+const apiEndpoint =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
+    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+
 export const size = {
     width: 1200,
     height: 630,
   }
 export const contentType = 'image/jpeg'
-
-
-
 
 export default function OGImage() {
 
@@ -27,6 +30,6 @@ export default function OGImage() {
                 width: "100%",
                 aspectRatio: "auto"
             }}
-            src="/fallback_cover.jpg" />
+            src={`${apiEndpoint}/fallback_cover.jpg`} />
     </div>)
 }

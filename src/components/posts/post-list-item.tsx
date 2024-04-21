@@ -28,9 +28,9 @@ const PostGridItem: React.FC<PostGridItemProps> = ({ post }) => {
           </span>
         </div>
         <div className="flex items-center justify-between text-[8px] md:text-xs text-gray-400 ">
-          <span className=" text-brand uppercase py-1 px-2 rounded-bl-sm text-[14px] font-[300]">{date}</span>
+          <span className=" text-brand uppercase pt-1 md:py-1 rounded-bl-sm text-[10px] font-[300]">{date}</span>
         </div>
-        <h2 className="py-1 px-2 text-sm md:text-base text-brand">{post.title}</h2>
+        <h2 className="py-1 text-[12px] md:text-base text-brand">{post.title}</h2>
       </Link>
     </div>
   );

@@ -3,9 +3,8 @@ import { NextResponse } from "next/server";
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export async function GET(req: Request) {
-  console.log(req);
   
-  const query = `query FetchPosts($first: Int = 10) {
+  const query = `query FetchPosts($first: Int = 19) {
     posts(first: $first) {
       nodes {
         excerpt

@@ -22,7 +22,7 @@ export default async function Home() {
   const secondSectionPosts = postListData.data.posts.nodes.slice(7, 13);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 pt-12 ">
+    <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 ">
       {!fetchError.isError && 
         <>
           <FeaturedPost post={postListData.data.posts.nodes[0]} />

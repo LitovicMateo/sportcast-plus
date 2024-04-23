@@ -8,6 +8,7 @@ const FeaturedVideo = () => {
         width="600"
         height="340"
         allowFullScreen
+        className="max-w-full aspect-auto"
       ></iframe>
       <div className="absolute top-50 w-full bg-brand h-[2px] opacity-10 -z-10"></div>
     </div>

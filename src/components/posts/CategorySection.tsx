@@ -15,7 +15,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ label, posts }) => {
                         .slice(0,6);
 
   return (
-    <section className='w-full my-2'>
+    <section className={`${filteredPosts.length === 0 && "hidden"} w-full my-2`}>
       <h2 className='mb-0 pb-0 px-4 md:px-0'>{label.toUpperCase()}</h2>
       <BreakLine />
       <PostList posts={filteredPosts} showCategory={false} />

@@ -1,11 +1,10 @@
-import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
+import { FetchPostsAPI } from "@/lib/api-types";
 import FeaturedPost from "@/components/posts/post-featured";
 import PostList from "@/components/posts/post-list";
 import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
 import CategorySection from "@/components/posts/CategorySection";
 import { navItems } from "@/lib/categories";
-import { Suspense } from "react";
 
 const apiEndpoint =
 	process.env.NODE_ENV === "production"
@@ -30,7 +29,6 @@ export default async function Home() {
 				</>
 			)}
 			<FeaturedVideo />
-			<Suspense>
 				{navItems.map((item) => {
 					return (
 						<CategorySection
@@ -41,7 +39,6 @@ export default async function Home() {
 						/>
 					);
 				})}
-			</Suspense>
 		</main>
 	);
 }

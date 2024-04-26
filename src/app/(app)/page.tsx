@@ -3,6 +3,7 @@ import FeaturedPost from "@/components/posts/post-featured";
 import PostList from "@/components/posts/post-list";
 import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
+import CategorySection from "@/components/posts/CategorySection";
 
 const apiEndpoint =
   process.env.NODE_ENV === "production"
@@ -17,20 +18,24 @@ export default async function Home() {
 
   // posts 2-7
   const firstSectionPosts = postListData.data.posts.nodes.slice(1, 7);
+  const posts = postListData.data.posts.nodes
 
-  // posts 8-13
-  const secondSectionPosts = postListData.data.posts.nodes.slice(7, 13);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 ">
+    <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6 ">
       {!fetchError.isError && 
         <>
           <FeaturedPost post={postListData.data.posts.nodes[0]} />
-          <PostList posts={firstSectionPosts} />
+          <PostList posts={firstSectionPosts} showCategory />
         </>
       }
       <FeaturedVideo />
-      <PostList posts={secondSectionPosts} />
+      <CategorySection label="nogomet" posts={posts} />
+      <CategorySection label="košarka" posts={posts} />
+      <CategorySection label="mma" posts={posts} />
+      <CategorySection label="rukomet" posts={posts} />
+      <CategorySection label="odbojka" posts={posts} />
+      <CategorySection label="tenis" posts={posts} />
     </main>
   );
 }

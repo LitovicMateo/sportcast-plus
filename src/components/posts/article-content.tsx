@@ -8,7 +8,7 @@ type ArticleContentProps = {
 const ArticleContent: React.FC<ArticleContentProps> = ({post}) => {
   return (
     <article
-    className="leading-8 text-[#413d3d] text-justify md:text-left"
+    className="leading-8 text-[#413d3d] text-left"
     dangerouslySetInnerHTML={{ __html: post.data.post.content }}
   ></article>
 )

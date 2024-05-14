@@ -27,5 +27,13 @@ export const navItems = [
       label: "Petak kod Pajde",
       path: "petak-kod-pajde",
     },
+    {
+      label: "Sportcastov Manifest",
+      path: "sportcastov-manifest"
+    },
+    {
+      label: "Kolumne",
+      path: "kolumne"
+    }
   ];
   

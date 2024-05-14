@@ -11,7 +11,7 @@ type NavItemProps = {
 const NavItem: React.FC<NavItemProps> = ({isActive, label, path}) => {
   return (
     <NavbarItem>
-      <Link href={path} className="text-sm lg:text-base">
+      <Link href={path} className="text-[12px] lg:text-[12px]">
         {label}
       </Link>
     </NavbarItem>

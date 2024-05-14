@@ -25,7 +25,7 @@ export default function CategoryMenu() {
       className={`${kanit.className} bg-brand justify-center items-center text-accent w-full h-[48px] border-b-2 border-solid border-brand border-opacity-10 hidden md:flex `}
       position="sticky"
     >
-      <NavbarContent className="w-full max-w-[1000px] uppercase font-semibold gap-8 lg:gap-12" justify="center">
+      <NavbarContent className="w-full max-w-[1000px] uppercase font-semibold gap-8 lg:gap-8" justify="center">
         {categories.map((item) => (
           <NavItem isActive={false} label={item.label} path={"/"+item.path} key={item.path} />
         ))}

@@ -7,11 +7,25 @@ const apiEndpoint =
     ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
     : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
-const SinglePostPage = async ({ params }: { params: { categoryId: string } }) => {
-  const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, { cache: "no-cache" });
-  const postListData: FetchPostsAPI = await postListRes.json();
+interface SinglePostPageProps {
+  params: {
+    categoryId: string;
+  };
+}
 
-  return <PostList posts={postListData.data.posts.nodes} />;
+const SinglePostPage: React.FC<SinglePostPageProps> = async ({ params }) => {
+  try {
+    const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, { cache: "no-cache" });
+    if (!postListRes.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    const postListData: FetchPostsAPI = await postListRes.json();
+    return <PostList posts={postListData.data.posts.nodes} />;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    // Optionally, you can render an error message component here
+    return <div>Error fetching posts. Please try again later.</div>;
+  }
 };
 
 export default SinglePostPage;

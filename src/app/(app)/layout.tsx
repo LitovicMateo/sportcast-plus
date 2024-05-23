@@ -47,9 +47,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={inter.className}>
         <NavBar />
         <CategoryMenu />
-        <main className="w-full md:w-[80%] lg:w-[800px] mx-auto min-h-screen overflow-hidden">
-          {children}
-        </main>
+        <main className="w-full md:w-[80%] lg:w-[800px]  mx-auto min-h-svh overflow-hidden">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

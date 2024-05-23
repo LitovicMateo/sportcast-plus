@@ -5,6 +5,7 @@ import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
 import CategorySection from "@/components/posts/CategorySection";
 import { navItems } from "@/lib/categories";
+import Hero from "@/components/Hero";
 
 const apiEndpoint =
   process.env.NODE_ENV === "production"
@@ -13,7 +14,7 @@ const apiEndpoint =
 
 export default async function Home() {
   let postListData: FetchPostsAPI | null = null;
-  let fetchError = { isError: false, message: '' };
+  let fetchError = { isError: false, message: "" };
 
   try {
     const postListRes = await fetch(`${apiEndpoint}/api/posts/recent/`, { cache: "no-store" });
@@ -37,6 +38,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
+      {postListData && <Hero posts={firstSectionPosts} />}
       {postListData && (
         <>
           <FeaturedPost post={postListData.data.posts.nodes[0]} />

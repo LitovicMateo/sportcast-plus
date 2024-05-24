@@ -12,6 +12,8 @@ import HighlightedArticles from "@/components/HighlightedArticles";
 
 const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
+export const revalidate = 0
+
 export default async function Home() {
   let postListData: FetchPostsAPI | null = null;
   let articles: PostAPI[] = [];

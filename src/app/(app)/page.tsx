@@ -51,7 +51,7 @@ export default async function Home() {
         <>
           <Hero posts={articles} />
           <ArticleList posts={articles} />
-          <HighlightedArticles posts={articles} />
+          {/* <HighlightedArticles posts={articles} /> */}
         </>
       )}
     </main>

@@ -18,6 +18,9 @@ type ArticleListItemProps = {
 const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
   const date = transformDate(post.date);
 
+  console.log(post.author.node);
+  
+
   return (
     <div className="w-full flex flex-col md:flex-row px-4 md:px-0 gap-[6px] md:gap-6 h-fit md:h-[280px]">
       <div className="w-[500px] max-w-full h-[238px] md:h-full relative">

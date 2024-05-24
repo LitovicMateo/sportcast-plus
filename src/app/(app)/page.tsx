@@ -38,7 +38,7 @@ export default async function Home() {
     );
   }
 
-  const heroArticles = postListData?.data.posts.nodes.slice(0, 4) || [];
+  const heroArticles = postListData?.data.posts.nodes.filter((el, i) => i < 4) || [];
   const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
 
   return (
@@ -47,9 +47,9 @@ export default async function Home() {
         <div>Loading...</div>
       : (
         <>
-          <Hero posts={postListData.data.posts.nodes} />
-          {/* <ArticleList posts={heroArticles} /> */}
-          {/* <HighlightedArticles posts={heroArticles} /> */}
+          <Hero posts={heroArticles} />
+          <ArticleList posts={heroArticles} />
+          <HighlightedArticles posts={heroArticles} />
         </>
       )}
     </main>

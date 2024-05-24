@@ -45,6 +45,9 @@ export default async function Home() {
   // const heroArticles = postListData?.data.posts.nodes.filter((el, i) => i < 4) || [];
   // const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
 
+  console.log(postListData!.data.posts.nodes);
+  
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
       {postListData!.data.posts.nodes.length === 0 ?
@@ -52,7 +55,7 @@ export default async function Home() {
       : (
         <>
           <Hero posts={postListData!.data.posts.nodes} />
-          <ArticleList posts={postListData!.data.posts.nodes} />
+          {/* <ArticleList posts={postListData!.data.posts.nodes} /> */}
           {/* <HighlightedArticles posts={articles} /> */}
         </>
       )}

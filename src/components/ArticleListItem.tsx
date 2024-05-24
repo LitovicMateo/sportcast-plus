@@ -24,7 +24,7 @@ const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
   return (
     <div className="w-full flex flex-col md:flex-row px-4 md:px-0 gap-[6px] md:gap-6 h-fit md:h-[280px]">
       <div className="w-[500px] max-w-full h-[238px] md:h-full relative">
-        {/* <Image src={post.featuredImage.node.sourceUrl} fill alt={post.slug} objectFit="cover" /> */}
+        <Image src={post.featuredImage.node.sourceUrl} fill alt={post.slug} objectFit="cover" />
       </div>
       <div className="w-[676px] max-w-full overflow-clip ">
         <h3 className={`uppercase text-[#FF0000] text-[12px] ${mplus.className}`}>{post.categories.nodes[0].name}</h3>

@@ -10,8 +10,12 @@ import { Analytics } from "@vercel/analytics/react";
 // Load Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
 
+const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+
 // Define metadata for the site
 export const metadata: Metadata = {
+  metadataBase: new URL(apiEndpoint!),
   title: {
     default: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus"}`,

@@ -32,9 +32,9 @@ const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
           <h2 className={`text-wrap  p-0 text-[18px] md:text-[24px] ${merriweather.className}`}>{post.title}</h2>
           <BreakLine />
         </div>
-        {/* <span className={`text-[12px] md:text-[16px] text-[#B9B9B9] uppercase ${mplus.className}`}>
+        <span className={`text-[12px] md:text-[16px] text-[#B9B9B9] uppercase ${mplus.className}`}>
           AUTOR: {post.author.node.name} | {date}
-        </span> */}
+        </span>
         <div
           className={`text-wrap text-[18px] hidden md:block leading-7 line-clamp-5 ${amiri.className}`}
           dangerouslySetInnerHTML={{ __html: post.excerpt }}

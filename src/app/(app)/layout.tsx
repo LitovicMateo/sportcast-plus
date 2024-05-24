@@ -15,7 +15,7 @@ const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUB
 
 // Define metadata for the site
 export const metadata: Metadata = {
-  metadataBase: new URL(apiEndpoint!),
+  metadataBase: new URL("https://sportcast.plus"),
   title: {
     default: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus"}`,

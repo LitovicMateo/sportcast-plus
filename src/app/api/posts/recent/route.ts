@@ -47,6 +47,9 @@ export async function GET(req: Request) {
       }),
     });
     data = await res.json();
+
+    console.log(data);
+    
   } catch (error) {
     console.log(error);
   }

@@ -33,7 +33,7 @@ const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
           <BreakLine />
         </div>
         <span className={`text-[12px] md:text-[16px] text-[#B9B9B9] uppercase ${mplus.className}`}>
-          {post.author.node.name} | {date}
+          {post.author.node.name}
         </span>
         <div
           className={`text-wrap text-[18px] hidden md:block leading-7 line-clamp-5 ${amiri.className}`}

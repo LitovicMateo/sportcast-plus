@@ -6,6 +6,8 @@ import { isFetchError } from "@/lib/isFetchErrors";
 import CategorySection from "@/components/posts/CategorySection";
 import { navItems } from "@/lib/categories";
 import Hero from "@/components/Hero";
+import ArticleList from "@/components/ArticleList";
+import HighlightedArticles from "@/components/HighlightedArticles";
 
 const apiEndpoint =
   process.env.NODE_ENV === "production"
@@ -34,12 +36,19 @@ export default async function Home() {
   }
 
   // posts 2-7
-  const firstSectionPosts = postListData?.data.posts.nodes.slice(1, 7) || [];
+  const heroArticles = postListData?.data.posts.nodes.slice(0, 4) || [];
+  const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
-      {postListData && <Hero posts={firstSectionPosts} />}
       {postListData && (
+        <>
+          <Hero posts={heroArticles} />
+          <ArticleList posts={firstSectionPosts} />
+          <HighlightedArticles posts={firstSectionPosts} />
+        </>
+      )}
+      {/* /* {postListData && (
         <>
           <FeaturedPost post={postListData.data.posts.nodes[0]} />
           <PostList posts={firstSectionPosts} showCategory />
@@ -53,7 +62,7 @@ export default async function Home() {
           path={item.path}
           posts={postListData?.data.posts.nodes || []}
         />
-      ))}
+      ))} */}
     </main>
   );
 }

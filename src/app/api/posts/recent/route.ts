@@ -23,6 +23,12 @@ export async function GET(req: Request) {
             slug
           }
         }
+        author {
+          node {
+            name
+          }
+        }
+        content
       }
     }
   }`;

@@ -1,4 +1,4 @@
-import { FetchPostsAPI } from "@/lib/api-types";
+import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
 import FeaturedPost from "@/components/posts/post-featured";
 import PostList from "@/components/posts/post-list";
 import FeaturedVideo from "@/components/posts/featured-video";
@@ -14,6 +14,7 @@ const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUB
 
 export default async function Home() {
   let postListData: FetchPostsAPI | null = null;
+  let articles: PostAPI[] = [];
   let fetchError = { isError: false, message: "" };
 
   try {
@@ -24,6 +25,7 @@ export default async function Home() {
     }
 
     postListData = await postListRes.json();
+    articles = postListData!.data.posts.nodes.filter((el, i) => i < 4)
 
     fetchError = isFetchError(postListData);
   } catch (error: any) {
@@ -38,8 +40,8 @@ export default async function Home() {
     );
   }
 
-  const heroArticles = postListData?.data.posts.nodes.filter((el, i) => i < 4) || [];
-  const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
+  // const heroArticles = postListData?.data.posts.nodes.filter((el, i) => i < 4) || [];
+  // const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
@@ -47,9 +49,9 @@ export default async function Home() {
         <div>Loading...</div>
       : (
         <>
-          <Hero posts={heroArticles} />
-          <ArticleList posts={heroArticles} />
-          <HighlightedArticles posts={heroArticles} />
+          <Hero posts={articles} />
+          <ArticleList posts={articles} />
+          <HighlightedArticles posts={articles} />
         </>
       )}
     </main>

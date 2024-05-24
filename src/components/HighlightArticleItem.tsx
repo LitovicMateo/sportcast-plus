@@ -36,11 +36,11 @@ const HighlightArticleItem: React.FC<ArticleListItemProps> = ({ post }) => {
             {post.title}
           </h2>
         </div>
-        <span
+        {/* <span
           className={`text-[12px] md:text-[16px] py-[10px] text-[#B9B9B9] uppercase ${mplus.className}`}
         >
           AUTOR: {post.author.node.name} | {date}
-        </span>
+        </span> */}
         <div
           className={`text-wrap text-[14px] text-[#d1d1d1] leading-7 line-clamp-4 ${amiri.className}`}
           dangerouslySetInnerHTML={{ __html: post.excerpt }}

@@ -45,7 +45,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
-      {!postListData || postListData.data.posts.nodes.length === 0 ?
+      {postListData!.data.posts.nodes.length === 0 ?
         <div>Loading...</div>
       : (
         <>

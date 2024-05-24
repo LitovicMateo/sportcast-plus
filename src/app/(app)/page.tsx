@@ -50,7 +50,7 @@ export default async function Home() {
       : (
         <>
           <Hero posts={postListData!.data.posts.nodes} />
-          <ArticleList posts={postListData!.data.posts.nodes} />
+          <ArticleList posts={postListData!} />
           {/* <HighlightedArticles posts={articles} /> */}
         </>
       )}

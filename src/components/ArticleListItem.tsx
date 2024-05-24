@@ -32,7 +32,7 @@ const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
           <h2 className={`text-wrap  p-0 text-[18px] md:text-[24px] ${merriweather.className}`}>{post.title}</h2>
           <BreakLine />
         </div>
-        <span className={`text-[12px] md:text-[16px] text-[#B9B9B9] uppercase `}>
+        <span className={`text-[12px] md:text-[16px] text-[#B9B9B9] uppercase ${mplus.className}`}>
           {post.author.node.name}
         </span>
         <div

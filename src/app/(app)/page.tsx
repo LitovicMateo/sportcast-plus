@@ -49,8 +49,8 @@ export default async function Home() {
         <div>Loading...</div>
       : (
         <>
-          <Hero posts={articles} />
-          <ArticleList posts={articles} />
+          <Hero posts={postListData!.data.posts.nodes} />
+          <ArticleList posts={postListData!.data.posts.nodes} />
           {/* <HighlightedArticles posts={articles} /> */}
         </>
       )}

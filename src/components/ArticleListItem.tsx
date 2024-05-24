@@ -18,7 +18,7 @@ type ArticleListItemProps = {
 const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
   const date = transformDate(post.date);
 
-  console.log(post.author.node);
+  console.log(post.author.node.name);
   
 
   return (

@@ -49,7 +49,7 @@ export default async function Home() {
         <>
           <Hero posts={heroArticles} />
           {/* <ArticleList posts={heroArticles} /> */}
-          <HighlightedArticles posts={postListData?.data.posts.nodes.slice(4, 8)} />
+          <HighlightedArticles posts={heroArticles} />
         </>
       )}
     </main>

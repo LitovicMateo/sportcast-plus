@@ -8,7 +8,8 @@ type MetadataProps = {
 
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
 	const title = navItems.filter((nav) => nav.path === params.categoryId);
-
+	console.log(title, params);
+	
 	return {
 		title: title[0].label,
 		description: "Dobrodošli na Sportcast Plus, mjesto na kojem sport prestravlja puno više od onoga što se događa na terenu!",

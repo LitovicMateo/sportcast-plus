@@ -43,11 +43,13 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
-      {postListData && (
+      {!postListData || postListData.data.posts.nodes.length === 0 ?
+        <div>Loading...</div>
+      : (
         <>
           <Hero posts={heroArticles} />
-          <ArticleList posts={firstSectionPosts} />
-          <HighlightedArticles posts={firstSectionPosts} />
+          {/* <ArticleList posts={heroArticles} /> */}
+          <HighlightedArticles posts={postListData?.data.posts.nodes.slice(4, 8)} />
         </>
       )}
     </main>

@@ -9,10 +9,8 @@ import Hero from "@/components/Hero";
 import ArticleList from "@/components/ArticleList";
 import HighlightedArticles from "@/components/HighlightedArticles";
 
-const apiEndpoint =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
-    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 export default async function Home() {
   let postListData: FetchPostsAPI | null = null;
@@ -20,6 +18,11 @@ export default async function Home() {
 
   try {
     const postListRes = await fetch(`${apiEndpoint}/api/posts/recent/`, { cache: "no-store" });
+
+    if (!postListRes.ok) {
+      throw new Error(`Error: ${postListRes.statusText}`);
+    }
+
     postListData = await postListRes.json();
 
     fetchError = isFetchError(postListData);
@@ -35,7 +38,6 @@ export default async function Home() {
     );
   }
 
-  // posts 2-7
   const heroArticles = postListData?.data.posts.nodes.slice(0, 4) || [];
   const firstSectionPosts = postListData?.data.posts.nodes.slice(4, 8) || [];
 
@@ -48,21 +50,6 @@ export default async function Home() {
           <HighlightedArticles posts={firstSectionPosts} />
         </>
       )}
-      {/* /* {postListData && (
-        <>
-          <FeaturedPost post={postListData.data.posts.nodes[0]} />
-          <PostList posts={firstSectionPosts} showCategory />
-        </>
-      )}
-      <FeaturedVideo />
-      {navItems.map((item) => (
-        <CategorySection
-          key={item.path}
-          label={item.label}
-          path={item.path}
-          posts={postListData?.data.posts.nodes || []}
-        />
-      ))} */}
     </main>
   );
 }

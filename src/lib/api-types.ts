@@ -1,10 +1,9 @@
 export interface FetchPostsAPI {
-  data: {
     posts: {
       nodes: PostAPI[];
     };
     extensions: {};
-  };
+ 
 }
 
 export type PostAPI = {

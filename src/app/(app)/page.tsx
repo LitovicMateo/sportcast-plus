@@ -8,10 +8,9 @@ import { navItems } from "@/lib/categories";
 import Hero from "@/components/Hero";
 import ArticleList from "@/components/ArticleList";
 import HighlightedArticles from "@/components/HighlightedArticles";
+import { getRecentPosts } from "../actions";
 
 // Update the API endpoint to fetch data from the desired API route
-const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
-const apiRoute = '/api/posts/recent/';
 
 export const revalidate = 0;
 
@@ -20,7 +19,7 @@ export default async function Home() {
   let fetchError = { isError: false, message: "" };
 
   try {
-    const postListRes = await fetch(`${apiEndpoint}${apiRoute}`, { cache: "no-store" });
+    const postListRes = await getRecentPosts();
 
     if (!postListRes.ok) {
       throw new Error(`Error: ${postListRes.statusText}`);
@@ -41,15 +40,18 @@ export default async function Home() {
     );
   }
 
+  console.log(postListData!.posts.nodes);
+  
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
-      {!postListData ?
+      {!postListData?.posts.nodes ?
         <div>Loading...</div>
       : (
         <>
           <Hero posts={postListData!.posts.nodes} />
-          <ArticleList posts={postListData!.posts.nodes} />
-          {/* <HighlightedArticles posts={articles} /> */}
+          <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
+          <HighlightedArticles posts={postListData!.posts.nodes.slice(8, 12)} />
         </>
       )}
     </main>

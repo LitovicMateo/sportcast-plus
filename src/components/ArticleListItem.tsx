@@ -16,6 +16,8 @@ type ArticleListItemProps = {
 };
 
 const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
+  console.log(post.author.node.name);
+  
   const date = transformDate(post.date);
   const authorName = post.author?.node?.name ?? "Unknown Author";
   const categoryName = post.categories?.nodes[0]?.name ?? "Uncategorized";

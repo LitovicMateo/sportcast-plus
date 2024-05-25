@@ -20,7 +20,7 @@ const SinglePostPage: React.FC<SinglePostPageProps> = async ({ params }) => {
       throw new Error("Failed to fetch posts");
     }
     const postListData: FetchPostsAPI = await postListRes.json();
-    return <PostList posts={postListData.data.posts.nodes} />;
+    return <PostList posts={postListData.posts.nodes} />;
   } catch (error) {
     console.error("Error fetching posts:", error);
     // Optionally, you can render an error message component here

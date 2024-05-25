@@ -20,6 +20,18 @@ type HeroDataProps = {
   categoryClass: string;
 };
 
+const ArticleImage = ({ url }: { url: string }) => {
+  return (
+    <Image
+      src={url}
+      alt="cover"
+      layout="fill"
+      objectFit="cover"
+      className="transition-all hover:scale-105 ease-linear"
+    />
+  );
+};
+
 const HeroData: React.FC<HeroDataProps> = ({ containerClass, category, title, titleClass, categoryClass }) => {
   return (
     <div
@@ -44,10 +56,10 @@ const HeroData: React.FC<HeroDataProps> = ({ containerClass, category, title, ti
 
 const Hero: React.FC<HeroProps> = ({ posts }) => {
   return (
-    <section className="w-full flex flex-col sm:flex-row h-[700px] sm:h-[500px] lg:h-[800px] bg-yellow-400">
-      <div className="relative w-full h-[300px] sm:h-full bg-blue-500">
+    <section className="w-full flex flex-col sm:flex-row h-[700px] sm:h-[500px] lg:h-[800px] bg-yellow-400 overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-full bg-blue-500 overflow-hidden">
         <Link href={`/${posts[0].categories.nodes[0].slug}/${posts[0].slug}`}>
-          <Image src={posts[0].featuredImage.node.sourceUrl} alt="cover" layout="fill" objectFit="cover" className="" />
+          <ArticleImage url={posts[0].featuredImage.node.sourceUrl} />
           <HeroData
             containerClass="h-200px lg:h-[300px]"
             titleClass="text-[16px] lg:text-[32px]"
@@ -57,39 +69,43 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
           />
         </Link>
       </div>
-      <div className="w-full h-[400px] sm:h-full flex flex-col bg-red-200">
+      <div className="w-full h-[400px] sm:h-full flex flex-col bg-red-200 overflow-hidden">
         <div className="relative h-full w-full bg-green-300">
-        <Link href={`/${posts[1].categories.nodes[0].slug}/${posts[1].slug}`}>
-          <Image src={posts[1].featuredImage.node.sourceUrl} alt="cover" layout="fill" objectFit="cover" />
-          <HeroData
-            containerClass="h-160px lg:h-[300px]"
-            titleClass="text-[12px] lg:text-[24px]"
-            categoryClass="text-[10px] lg:text-[18px]"
-            title={posts[1].title}
-            category={posts[1].categories.nodes[0].name}
+          <Link href={`/${posts[1].categories.nodes[0].slug}/${posts[1].slug}`}>
+            <ArticleImage url={posts[1].featuredImage.node.sourceUrl} />
+            <HeroData
+              containerClass="h-160px lg:h-[300px]"
+              titleClass="text-[12px] lg:text-[24px]"
+              categoryClass="text-[10px] lg:text-[18px]"
+              title={posts[1].title}
+              category={posts[1].categories.nodes[0].name}
             />
-            </Link>
+          </Link>
         </div>
-        <div className="h-full w-full flex flex-row">
-          <div className="relative w-full h-full bg-white">
-            <Image src={posts[2].featuredImage.node.sourceUrl} alt="cover" layout="fill" objectFit="cover" />
-            <HeroData
-              containerClass="h-120px lg:h-[300px]"
-              titleClass="text-[10px] lg:text-[18px]"
-              categoryClass="text-[8px] lg:text-[14px]"
-              title={posts[2].title}
-              category={posts[2].categories.nodes[0].name}
-            />
+        <div className="h-full w-full flex flex-row overflow-hidden">
+          <div className="relative w-full h-full bg-white overflow-hidden">
+            <Link href={`/${posts[2].categories.nodes[0].slug}/${posts[2].slug}`}>
+              <ArticleImage url={posts[2].featuredImage.node.sourceUrl} />
+              <HeroData
+                containerClass="h-120px lg:h-[300px]"
+                titleClass="text-[10px] lg:text-[18px]"
+                categoryClass="text-[8px] lg:text-[14px]"
+                title={posts[2].title}
+                category={posts[2].categories.nodes[0].name}
+              />
+            </Link>
           </div>
-          <div className="relative w-full h-full">
-            <Image src={posts[3].featuredImage.node.sourceUrl} alt="cover" layout="fill" objectFit="cover" />
-            <HeroData
-              containerClass="h-120px lg:h-[300px]"
-              titleClass="text-[10px] lg:text-[18px]"
-              categoryClass="text-[8px] lg:text-[14px]"
-              title={posts[3].title}
-              category={posts[3].categories.nodes[0].name}
-            />
+          <div className="relative w-full h-full overflow-hidden">
+            <Link href={`/${posts[3].categories.nodes[0].slug}/${posts[3].slug}`}>
+              <ArticleImage url={posts[3].featuredImage.node.sourceUrl} />
+              <HeroData
+                containerClass="h-120px lg:h-[300px]"
+                titleClass="text-[10px] lg:text-[18px]"
+                categoryClass="text-[8px] lg:text-[14px]"
+                title={posts[3].title}
+                category={posts[3].categories.nodes[0].name}
+              />
+            </Link>
           </div>
         </div>
       </div>

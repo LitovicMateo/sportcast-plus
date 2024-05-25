@@ -1,18 +1,10 @@
 import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
-import FeaturedPost from "@/components/posts/post-featured";
-import PostList from "@/components/posts/post-list";
-import FeaturedVideo from "@/components/posts/featured-video";
 import { isFetchError } from "@/lib/isFetchErrors";
-import CategorySection from "@/components/posts/CategorySection";
-import { navItems } from "@/lib/categories";
 import Hero from "@/components/Hero";
 import ArticleList from "@/components/ArticleList";
 import HighlightedArticles from "@/components/HighlightedArticles";
 import { getRecentPosts } from "../actions";
 
-// Update the API endpoint to fetch data from the desired API route
-
-export const revalidate = 0;
 
 export default async function Home() {
   let postListData: FetchPostsAPI | null = null;
@@ -40,20 +32,17 @@ export default async function Home() {
     );
   }
 
-  console.log(postListData!.posts.nodes);
   
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
-      {!postListData?.posts.nodes ?
-        <div>Loading...</div>
-      : (
+      {postListData?.posts.nodes &&
         <>
           <Hero posts={postListData!.posts.nodes} />
           <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
-          <HighlightedArticles posts={postListData!.posts.nodes.slice(8, 12)} />
+          <HighlightedArticles posts={postListData!.posts.nodes.slice(0,4)} />
         </>
-      )}
+      }
     </main>
   );
 }

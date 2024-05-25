@@ -18,7 +18,7 @@ const HighlightArticleItem: React.FC<ArticleListItemProps> = ({ post }) => {
   const date = transformDate(post.date);
 
   return (
-    <div className="w-full h-[500px] 2xl:w-[662px] xl:w-[500px] md:w-[400px] flex flex-col px-4 md:px-0 gap-[12px] md:gap-6 lg:h-[680px]">
+    <div className="w-full h-fit 2xl:w-[662px] xl:w-[500px] md:w-[400px] flex flex-col md:px-0 gap-[12px] md:gap-6 lg:h-[680px]">
       <div className="w-full max-w-full h-[260px] lg:h-[378px] relative overflow-clip">
         <Image
           className="hover:scale-110 transition-all ease-linear"
@@ -29,18 +29,16 @@ const HighlightArticleItem: React.FC<ArticleListItemProps> = ({ post }) => {
         />
       </div>
       <div className="w-[676px] max-w-full overflow-clip">
-        <div className="min-h-[60px] flex flex-col justify-end">
+        <div className="flex flex-col justify-end border-b-1 border-solid border-[#67676781]">
           <h2
-            className={`text-wrap text-[#FFFFFF] p-0 pb-[12px] text-[18px] md:text-[24px] border-b-1 border-solid border-[#67676781] ${merriweather.className}`}
+            className={`text-wrap text-[#FFFFFF] p-0 text-[18px] md:text-[24px]  ${merriweather.className}`}
           >
             {post.title}
           </h2>
+          <span className={`text-[12px] md:text-[16px] py-[10px] text-[#B9B9B9] uppercase ${mplus.className}`}>
+            AUTOR: {post.author.node.name} | {date}
+          </span>
         </div>
-        <span
-          className={`text-[12px] md:text-[16px] py-[10px] text-[#B9B9B9] uppercase ${mplus.className}`}
-        >
-          AUTOR: {post.author.node.name} | {date}
-        </span>
         <div
           className={`text-wrap text-[14px] text-[#d1d1d1] leading-7 line-clamp-4 ${amiri.className}`}
           dangerouslySetInnerHTML={{ __html: post.excerpt }}

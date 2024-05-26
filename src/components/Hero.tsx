@@ -36,17 +36,17 @@ const HeroData: React.FC<HeroDataProps> = ({ containerClass, category, title, ti
   return (
     <div
       className={`
-        absolute w-full bottom-0 flex flex-col justify-end
+        absolute w-full bottom-0 flex flex-col justify-end h-[60%]
          px-4 py-2
-        bg-gradient-to-t from-[#000000] via-[#00000085] to-[#00000000] bg-opacity-75
+        bg-gradient-to-t from-[#000000] via-[#0000005e] to-[#00000000] bg-opacity-75
         ${containerClass}
     `}
     >
-      <span className={`text-[#C1B756] text-[10px] p-0 m-0 uppercase ${categoryClass} ${aldrich.className}`}>
+      <span className={`text-[#C1B756] p-0 m-0 uppercase ${categoryClass} ${aldrich.className}`}>
         {category}
       </span>
       <h2
-        className={`p-0 m-0 min-h-[20%] font-bold text-white text-[16px] uppercase ${titleClass} ${anybody.className}`}
+        className={`p-0 m-0 min-h-[20%] font-bold text-white uppercase ${titleClass} ${anybody.className}`}
       >
         {title}
       </h2>
@@ -88,7 +88,7 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
               <ArticleImage url={posts[2].featuredImage.node.sourceUrl} />
               <HeroData
                 containerClass="h-120px lg:h-[300px]"
-                titleClass="text-[10px] lg:text-[18px]"
+                titleClass="text-[12px] lg:text-[18px]"
                 categoryClass="text-[8px] lg:text-[14px]"
                 title={posts[2].title}
                 category={posts[2].categories.nodes[0].name}
@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
               <ArticleImage url={posts[3].featuredImage.node.sourceUrl} />
               <HeroData
                 containerClass="h-120px lg:h-[300px]"
-                titleClass="text-[10px] lg:text-[18px]"
+                titleClass="text-[12px] lg:text-[18px]"
                 categoryClass="text-[8px] lg:text-[14px]"
                 title={posts[3].title}
                 category={posts[3].categories.nodes[0].name}

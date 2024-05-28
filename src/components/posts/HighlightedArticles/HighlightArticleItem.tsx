@@ -18,12 +18,10 @@ const HighlightArticleItem: React.FC<ArticleListItemProps> = ({ post }) => {
   const clampedParagraph = post.excerpt.replace("<p>", "<p id='excerpt'>");
 
   return (
-    <Link href={`${post.categories.nodes[0].slug}/${post.slug}`}>
+    <Link href={`${post.categories.nodes[0].slug}/${post.slug}`} className=" w-full">
       <div
         className="      
-          w-full 
-          flex flex-col md:flex-row md:px-0 gap-2 md:gap-4 
-          h-fit xs:max-h-[500px] md:h-[260px] 
+        flex flex-col gap-4
         "
       >
         <HighlightedArticleImage slug={post.slug} url={post.featuredImage.node.sourceUrl} />

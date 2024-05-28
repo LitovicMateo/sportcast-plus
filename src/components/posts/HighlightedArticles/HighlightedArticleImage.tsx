@@ -8,9 +8,9 @@ type HighlightedArticleImageProps = {
 
 const HighlightedArticleImage: React.FC<HighlightedArticleImageProps> = ({ url, slug }) => {
   return (
-    <div className="relative max-w-full h-[240px]">
+    <div className="relative max-w-full aspect-[16/10] overflow-hidden">
       <Image
-        className="hover:scale-110 transition-all ease-linear"
+        className="hover:scale-110 hover:rotate-1 transition-all ease-linear"
         src={url}
         layout="fill"
         alt={slug}

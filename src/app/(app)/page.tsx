@@ -4,6 +4,8 @@ import Hero from "@/components/Hero";
 import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import HighlightedArticles from "@/components/posts/HighlightedArticles/HighlightedArticles";
 import { getRecentPosts } from "../actions";
+import YouTubeCTA from "@/components/YouTubeCTA";
+import InstagramCTA from "@/components/InstagramCTA";
 
 
 export default async function Home() {
@@ -26,7 +28,7 @@ export default async function Home() {
 
   if (fetchError.isError) {
     return (
-      <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
+      <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 md:pb-6">
         <div className="text-red-500">Failed to load posts: {fetchError.message}</div>
       </main>
     );
@@ -35,12 +37,15 @@ export default async function Home() {
   
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 pb-6">
+    <main className="flex min-h-screen flex-col items-center pt-0 md:pt-12">
       {postListData?.posts.nodes &&
         <>
           <Hero posts={postListData!.posts.nodes} />
           <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
           <HighlightedArticles posts={postListData!.posts.nodes.slice(0,4)} />
+          <YouTubeCTA />
+          <HighlightedArticles posts={postListData!.posts.nodes.slice(0,4)} />
+          <InstagramCTA />
         </>
       }
     </main>

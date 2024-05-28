@@ -1,8 +1,8 @@
 import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
 import { isFetchError } from "@/lib/isFetchErrors";
 import Hero from "@/components/Hero";
-import ArticleList from "@/components/ArticleList";
-import HighlightedArticles from "@/components/HighlightedArticles";
+import ArticleList from "@/components/posts/ArticleList/ArticleList";
+import HighlightedArticles from "@/components/posts/HighlightedArticles/HighlightedArticles";
 import { getRecentPosts } from "../actions";
 
 

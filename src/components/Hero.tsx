@@ -75,7 +75,7 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
             <ArticleImage url={posts[1].featuredImage.node.sourceUrl} />
             <HeroData
               containerClass="h-160px lg:h-[300px]"
-              titleClass="text-[12px] lg:text-[24px]"
+              titleClass="text-[16px] lg:text-[24px]"
               categoryClass="text-[10px] lg:text-[18px]"
               title={posts[1].title}
               category={posts[1].categories.nodes[0].name}
@@ -88,7 +88,7 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
               <ArticleImage url={posts[2].featuredImage.node.sourceUrl} />
               <HeroData
                 containerClass="h-120px lg:h-[300px]"
-                titleClass="text-[12px] lg:text-[18px]"
+                titleClass="text-[14px] lg:text-[18px]"
                 categoryClass="text-[8px] lg:text-[14px]"
                 title={posts[2].title}
                 category={posts[2].categories.nodes[0].name}
@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ posts }) => {
               <ArticleImage url={posts[3].featuredImage.node.sourceUrl} />
               <HeroData
                 containerClass="h-120px lg:h-[300px]"
-                titleClass="text-[12px] lg:text-[18px]"
+                titleClass="text-[14px] lg:text-[18px]"
                 categoryClass="text-[8px] lg:text-[14px]"
                 title={posts[3].title}
                 category={posts[3].categories.nodes[0].name}

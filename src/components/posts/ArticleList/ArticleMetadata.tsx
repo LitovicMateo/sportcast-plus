@@ -37,7 +37,7 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
         <Link href={`${categoryUrl}/${slug}`}>
           <h2 className={`text-wrap p-0 text-[18px] md:text-[24px] ${merriweather.className}`}>{title}</h2>
         </Link>
-        <h4 className={`text-[12px] pt-2 md:text-[16px] text-[#B9B9B9] uppercase ${mplus.className}`}>
+        <h4 className={`text-[12px] pt-2 md:text-[12px] text-[#B9B9B9] uppercase ${mplus.className}`}>
           AUTOR: {author} | {date}
         </h4>
         <BreakLine />

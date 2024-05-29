@@ -21,7 +21,7 @@ const HighlightMetadata: React.FC<HighlightMetadataProps> = ({author, date, exce
       <h2 className={`text-wrap text-[#FFFFFF] p-0 text-[18px] md:text-[24px]  ${merriweather.className}`}>
         {title}
       </h2>
-      <span className={`text-[12px] md:text-[16px] py-[10px] text-[#B9B9B9] uppercase ${mplus.className}`}>
+      <span className={`text-[12px] md:text-[14px] py-[10px] text-[#B9B9B9] uppercase ${mplus.className}`}>
         AUTOR: {author} | {date}
       </span>
     </div>

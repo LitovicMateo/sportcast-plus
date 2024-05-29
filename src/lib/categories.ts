@@ -1,4 +1,5 @@
 export const navItems = [
+
   {
     label: "Nogomet",
     path: "nogomet",
@@ -36,3 +37,4 @@ export const navItems = [
     path: "kolumne"
   }
 ];
+

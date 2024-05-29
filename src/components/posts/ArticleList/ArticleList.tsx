@@ -18,7 +18,10 @@ const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination }) => {
   const pages = new Array(numOfPages).fill(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
   }, [page])
 
   const pageHandler = (action: "increment" | "decrement") => {

@@ -1,3 +1,4 @@
+import { getArticlesInCategory } from "@/app/actions";
 import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import { FetchPostsAPI } from "@/lib/api-types";
 import React from "react";
@@ -15,7 +16,7 @@ interface SinglePostPageProps {
 
 const SinglePostPage: React.FC<SinglePostPageProps> = async ({ params }) => {
   try {
-    const postListRes = await fetch(`${apiEndpoint}/api/posts/category/${params.categoryId}`, { cache: "no-cache" });
+    const postListRes = await getArticlesInCategory(params.categoryId);
     if (!postListRes.ok) {
       throw new Error("Failed to fetch posts");
     }

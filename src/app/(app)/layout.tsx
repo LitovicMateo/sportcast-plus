@@ -49,10 +49,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <meta property="fb:app_id" content="6147615245363305" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col justify-start`}>
         <NavBar />
         <CategoryMenu />
-        <main className="">{children}</main>
+        <main className="h-[100svh]">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

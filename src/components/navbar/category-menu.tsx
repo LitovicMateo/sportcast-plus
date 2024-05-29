@@ -25,7 +25,9 @@ export default function CategoryMenu() {
       className={`${akshar.className} bg-[#1d1d1d] justify-center items-center text-white w-full h-[48px]  hidden md:flex `}
       position="sticky"
     >
+
       <NavbarContent className="w-full max-w-full lg:max-w-[1200px] text-[32px] uppercase gap-6 lg:gap-12" justify="center" >
+
         {categories.map((item) => (
           <NavItem isActive={false} label={item.label} path={"/"+item.path} key={item.path} />
         ))}

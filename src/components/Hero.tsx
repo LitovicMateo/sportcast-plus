@@ -56,7 +56,7 @@ const HeroData: React.FC<HeroDataProps> = ({ containerClass, category, title, ti
 
 const Hero: React.FC<HeroProps> = ({ posts }) => {
   return (
-    <section className="w-full flex flex-col sm:flex-row h-[700px] sm:h-[500px] lg:h-[800px] bg-yellow-400 overflow-hidden">
+    <section className="w-full flex flex-col sm:flex-row h-[700px] sm:h-[500px] lg:h-[600px] max-w-[1200px] bg-yellow-400 overflow-hidden">
       <div className="relative w-full h-[300px] sm:h-full bg-blue-500 overflow-hidden">
         <Link href={`/${posts[0].categories.nodes[0].slug}/${posts[0].slug}`}>
           <ArticleImage url={posts[0].featuredImage.node.sourceUrl} />

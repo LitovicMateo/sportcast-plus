@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 
 const CategoryLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<main className="w-full md:w-[80%] lg:w-[800px] mt-4 mx-auto min-h-svh overflow-hidden">
+		<main className="">
 			{children}
 		</main>
 	);

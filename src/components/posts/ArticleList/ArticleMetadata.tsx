@@ -16,14 +16,24 @@ type ArticleMetadataProps = {
   slug: string;
 };
 
-const ArticleMetadata: React.FC<ArticleMetadataProps> = ({ author, content, date, category, categoryUrl, title, slug }) => {
+const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
+  author,
+  content,
+  date,
+  category,
+  categoryUrl,
+  title,
+  slug,
+}) => {
   // add an ID to the <p> element and style it in global.css
   const clampedParagraph = content.replace("<p>", "<p id='excerpt'>");
 
   return (
     <div className="flex flex-col justify-between h-fit md:w-[60%]">
       <div>
-        <h3 className={`uppercase text-[#FF0000] text-[12px] ${mplus.className}`}>{category}</h3>
+        <Link href={`/${categoryUrl}`}>
+          <h3 className={`uppercase text-[#FF0000] text-[12px] ${mplus.className}`}>{category}</h3>
+        </Link>
         <Link href={`${categoryUrl}/${slug}`}>
           <h2 className={`text-wrap p-0 text-[18px] md:text-[24px] ${merriweather.className}`}>{title}</h2>
         </Link>

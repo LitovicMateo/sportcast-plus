@@ -34,6 +34,9 @@ export default async function Home() {
     );
   }
 
+  const manifestPosts = postListData!.posts.nodes.filter(p => p.categories.nodes[0].slug === "sportcastov-manifest").slice(0,4)
+  const kolumnePosts = postListData!.posts.nodes.filter(p => p.categories.nodes[0].slug === "kolumne").slice(0,4)
+
   
 
   return (
@@ -42,10 +45,14 @@ export default async function Home() {
         <>
           <Hero posts={postListData!.posts.nodes} />
           <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
-          <HighlightedArticles posts={postListData!.posts.nodes.slice(0,4)} />
+          <HighlightedArticles posts={manifestPosts} />
+          <ArticleList posts={postListData!.posts.nodes.slice(9,12)} />
           <YouTubeCTA />
-          <HighlightedArticles posts={postListData!.posts.nodes.slice(0,4)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(13,16)} />
+          <HighlightedArticles posts={kolumnePosts} />
+          <ArticleList posts={postListData!.posts.nodes.slice(17,20)} />
           <InstagramCTA />
+          <ArticleList posts={postListData!.posts.nodes.slice(21,24)} />
         </>
       }
     </main>

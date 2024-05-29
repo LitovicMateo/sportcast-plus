@@ -1,4 +1,4 @@
-import PostList from "@/components/posts/post-list";
+import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import { FetchPostsAPI } from "@/lib/api-types";
 import React from "react";
 
@@ -19,8 +19,9 @@ const SinglePostPage: React.FC<SinglePostPageProps> = async ({ params }) => {
     if (!postListRes.ok) {
       throw new Error("Failed to fetch posts");
     }
+
     const postListData: FetchPostsAPI = await postListRes.json();
-    return <PostList posts={postListData.posts.nodes} />;
+    return <ArticleList pagination posts={postListData.posts.nodes} />;
   } catch (error) {
     console.error("Error fetching posts:", error);
     // Optionally, you can render an error message component here

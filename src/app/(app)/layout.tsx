@@ -52,7 +52,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${inter.className} flex flex-col justify-start`}>
         <NavBar />
         <CategoryMenu />
-        <main className="h-[100svh]">{children}</main>
+        <main className="min-h-[100svh] h-fit">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

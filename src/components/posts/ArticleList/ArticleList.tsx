@@ -6,16 +6,16 @@ import ArticleListItem from "./ArticleListItem";
 
 type ArticleListProps = {
   pagination?: boolean;
+  articleOffset?: number;
   posts: PostAPI[];
 };
 
-const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination }) => {
+const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination, articleOffset }) => {
   const [page, setPage] = useState(1);
   const length = posts.length;
-  const numOfPages = Math.floor(length / 3) + 1;
+  const numOfPages = Math.floor(length / articleOffset!) + 1;
   console.log(numOfPages);
 
-  const pages = new Array(numOfPages).fill(null);
 
   useEffect(() => {
     window.scrollTo({
@@ -28,7 +28,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination }) => {
     let newPage = page;
 
     if (action === "increment") {
-      if (page * 3 > length) return;
+      if (page * articleOffset! > length) return;
       else {
         newPage++;
         setPage((page) => page + 1);
@@ -43,19 +43,24 @@ const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination }) => {
   };
 
   if (pagination) {
-    let paginatedPosts = posts.slice(page * 3 - 3, page * 3);
+    if (!articleOffset) {
+      throw new Error("Article offset property is missing!")
+    }
+    const pages = new Array(numOfPages).fill(null);
+
+    let paginatedPosts = posts.slice(page * articleOffset - articleOffset, page * articleOffset);
     return (
       <>
         <section className="flex flex-col w-full gap-6 md:gap-16 md:px-8 py-4 md:py-16 xl:w-[1200px] max-w-full mx-auto">
           {paginatedPosts.map((post) => (
             <ArticleListItem post={post} key={post.slug} />
           ))}
-          <div className="flex justify-center items-center mx-auto text-2xl w-[300px] gap-6">
+          <div className="flex justify-center items-center mx-auto text-2xl w-[300px] gap-6 font-thin text-[16px]">
             <button onClick={() => pageHandler("decrement")}>{"<"}</button>
             {pages.map((_, index) => {
               const p = index + 1;
               return (
-                <span onClick={() => setPage(p)} className={`${p === page && "font-bold"} cursor-pointer`}>
+                <span onClick={() => setPage(p)} className={`${p === page && "font-semibold"} cursor-pointer`}>
                   {p}
                 </span>
               );

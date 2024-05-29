@@ -1,10 +1,9 @@
 export interface FetchPostsAPI {
-  data: {
     posts: {
       nodes: PostAPI[];
     };
     extensions: {};
-  };
+ 
 }
 
 export type PostAPI = {
@@ -14,12 +13,13 @@ export type PostAPI = {
       sourceUrl: string;
     };
   };
+  content: string;
   date: string;
   slug: string;
   title: string;
   author: {
     node: {
-      firstName: "string";
+      name: "string";
     };
   };
   categories: {

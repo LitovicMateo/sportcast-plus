@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./wordpress.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import CategoryMenu from "@/components/navbar/category-menu";
@@ -10,8 +11,12 @@ import { Analytics } from "@vercel/analytics/react";
 // Load Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
 
+const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+
+
 // Define metadata for the site
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sportcast.plus"),
   title: {
     default: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus"}`,
@@ -44,12 +49,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <meta property="fb:app_id" content="6147615245363305" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col justify-start`}>
         <NavBar />
         <CategoryMenu />
-        <main className="w-full md:w-[80%] lg:w-[800px] mx-auto min-h-screen overflow-hidden">
-          {children}
-        </main>
+        <main className="min-h-[100svh] h-fit">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

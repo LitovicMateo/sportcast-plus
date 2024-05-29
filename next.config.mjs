@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    compiler:{
+        removeConsole: false,
+    },
     env: {
         title: "SportCastPlus",
         NEXT_PUBLIC_WORDPRESS_API_ENDPOINT: "https://lime-panther-317414.hostingersite.com/graphql",
@@ -15,6 +18,7 @@ const nextConfig = {
             }
         ]
     }
+    
         
 };
 

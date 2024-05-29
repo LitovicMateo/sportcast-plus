@@ -3,51 +3,54 @@
 @tailwind utilities;
 
 h2 {
-    font-size: 24px;
-    font-weight: 600;
-    padding-top: 1em;
-    padding-bottom: 0.5em;
+  font-size: 24px;
+  font-weight: 600;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
 }
 
-img {
+/* img {
     width: 100%;
     margin-inline: auto;
     aspect-ratio: auto;
-}
+} */
 
 article p {
-    padding-block: 0.5em;
+  padding-block: 0.5em;
 }
 
 figure {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 figcaption {
-    font-weight: 200;
-    font-size: 12px;
-    
+  font-weight: 200;
+  font-size: 12px;
 }
 
 figcaption::before {
-    content: "Izvor: ";
+  content: "Izvor: ";
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 article li {
-    padding-left: 1em;
-    padding-block: 0.8em;
-    text-align: left;
-    list-style: decimal;
-    margin-inline: 1em;
+  padding-left: 1em;
+  padding-block: 0.8em;
+  text-align: left;
+  list-style: decimal;
+  margin-inline: 1em;
+}
+
+.video-bg {
+  box-shadow: 0px 12px 12.1px -5px #630808;
 }

@@ -10,7 +10,7 @@ import { navItems } from "../../lib/categories"
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-black text-accent w-full sticky md:static">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-black text-accent w-full sticky md:hidden">
        <NavbarContent className="justify-start md:hidden">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}

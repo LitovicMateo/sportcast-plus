@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { WordPressTemplate } from "@faustwp/core";
 import { getAuthClient, getClient } from "@faustwp/experimental-app-router";
+import { redirect } from "next/dist/server/api-utils";
 
 function hasPreviewProps(props: any) {
   return props?.searchParams?.preview === "true" && !!props?.searchParams?.p;
@@ -20,35 +21,34 @@ const Preview: React.FC<PreviewProps> = async (props) => {
 
   let client = isPreview ? await getAuthClient() : await getClient();
 
+  if (!client) {
+    
+  }
+
   const { data } = await client!.query({
     query: gql`
-      query GetContentNode {
-        contentNode(id: "583", idType: URI) {
-          ... on NodeWithTitle {
-            title
+    query GetPostPreview {
+      post(id: "583", idType: DATABASE_ID) {
+        title
+        excerpt
+        date
+        featuredImage {
+          node {
+            sourceUrl
+            altText
           }
-          ... on NodeWithContentEditor {
-            content
-          }
-          date
-          slug
         }
       }
-    `,
-    variables: {
-      id,
-      idType: isPreview ? "DATABASE_ID" : "URI",
-      asPreview: isPreview,
-    },
-  });
+    }
+    ` });
 
   console.log(data);
 
   return (
     <div>
       Preview page for {props.params.slug}
-      <h2>{data.contentNode.title}</h2>
-      {data && <div dangerouslySetInnerHTML={{ __html: data.contentNode.content }}></div>}
+      <h2>{data.post.title}</h2>
+      {/* {data && <div dangerouslySetInnerHTML={{ __html: data.contentNode.content }}></div>} */}
     </div>
   );
 };

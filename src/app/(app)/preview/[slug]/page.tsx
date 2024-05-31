@@ -14,7 +14,7 @@ type Props = {
   };
 };
 
-export default async function Preview({ props }: Props) {
+export const Preview = async({ props }: Props) => {
   console.log(props.params.slug);
 
   const isPreview = hasPreviewProps(props);
@@ -54,3 +54,5 @@ export default async function Preview({ props }: Props) {
     </div>
   );
 }
+
+export default Preview

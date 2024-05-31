@@ -7,14 +7,11 @@ function hasPreviewProps(props: any) {
 }
 
 type PreviewProps = {
-  props: {
-    params: {
-      slug: string;
-    };
-  };
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-const Preview: React.FC<PreviewProps> = async({ props }) => {
+const Preview: React.FC<PreviewProps> = async (props) => {
   console.log(props.params.slug);
 
   const isPreview = hasPreviewProps(props);
@@ -25,18 +22,19 @@ const Preview: React.FC<PreviewProps> = async({ props }) => {
 
   const { data } = await client!.query({
     query: gql`
-    query GetContentNode {
-      contentNode(id: "583", idType: URI) {
-        ... on NodeWithTitle {
-          title
+      query GetContentNode {
+        contentNode(id: "583", idType: URI) {
+          ... on NodeWithTitle {
+            title
+          }
+          ... on NodeWithContentEditor {
+            content
+          }
+          date
+          slug
         }
-        ... on NodeWithContentEditor {
-          content
-        }
-        date
-        slug
       }
-    }    `,
+    `,
     variables: {
       id,
       idType: isPreview ? "DATABASE_ID" : "URI",
@@ -50,9 +48,9 @@ const Preview: React.FC<PreviewProps> = async({ props }) => {
     <div>
       Preview page for {props.params.slug}
       <h2>{data.contentNode.title}</h2>
-      {data && <div dangerouslySetInnerHTML={{__html: data.contentNode.content}}></div>}
+      {data && <div dangerouslySetInnerHTML={{ __html: data.contentNode.content }}></div>}
     </div>
   );
-}
+};
 
-export default Preview
+export default Preview;

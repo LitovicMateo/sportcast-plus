@@ -6,7 +6,7 @@ function hasPreviewProps(props: any) {
   return props?.searchParams?.preview === "true" && !!props?.searchParams?.p;
 }
 
-type Props = {
+type PreviewProps = {
   props: {
     params: {
       slug: string;
@@ -14,7 +14,7 @@ type Props = {
   };
 };
 
-const Preview = async({ props }: Props) => {
+const Preview: React.FC<PreviewProps> = async({ props }) => {
   console.log(props.params.slug);
 
   const isPreview = hasPreviewProps(props);

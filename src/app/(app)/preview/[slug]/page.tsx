@@ -1,7 +1,7 @@
 import { WordPressTemplate } from '@faustwp/core';
 
-export default function Preview({props, params}: {props: any, params: {slug: string}}) {
+export default function Preview({ params}: { params: {slug: string}}) {
   console.log(params.slug);
   
-  return <WordPressTemplate {...props} />;
+  return <div>Preview page for {params.slug}</div>;
 }

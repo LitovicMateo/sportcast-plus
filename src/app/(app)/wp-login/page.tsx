@@ -13,7 +13,7 @@ function SubmitButton() {
 }
 
 export default function Page() {
-  const [state, formAction] = useFormState(loginAction, {message: "", error: ""});
+  const [state, formAction] = useFormState(loginAction, {error: undefined});
 
   return (
     <>

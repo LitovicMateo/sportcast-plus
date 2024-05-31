@@ -25,18 +25,18 @@ export default async function Preview({ props }: Props) {
 
   const { data } = await client!.query({
     query: gql`
-      query GetContentNode($id: ID!, $idType: ContentNodeIdTypeEnum!, $asPreview: Boolean!) {
-        contentNode(id: $id, idType: $idType, asPreview: $asPreview) {
-          ... on NodeWithTitle {
-            title
-          }
-          ... on NodeWithContentEditor {
-            content
-          }
-          date
+    query GetContentNode {
+      contentNode(id: "583", idType: URI) {
+        ... on NodeWithTitle {
+          title
         }
+        ... on NodeWithContentEditor {
+          content
+        }
+        date
+        slug
       }
-    `,
+    }    `,
     variables: {
       id,
       idType: isPreview ? "DATABASE_ID" : "URI",
@@ -49,7 +49,8 @@ export default async function Preview({ props }: Props) {
   return (
     <div>
       Preview page for {props.params.slug}
-      {data && <div>{data.title}</div>}
+      <h2>{data.contentNode.title}</h2>
+      {data && <div dangerouslySetInnerHTML={{__html: data.contentNode.content}}></div>}
     </div>
   );
 }

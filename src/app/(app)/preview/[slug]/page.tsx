@@ -14,7 +14,7 @@ type Props = {
   };
 };
 
-export const Preview = async({ props }: Props) => {
+const Preview = async({ props }: Props) => {
   console.log(props.params.slug);
 
   const isPreview = hasPreviewProps(props);

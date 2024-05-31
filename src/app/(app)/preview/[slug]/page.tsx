@@ -1,24 +1,23 @@
-import { gql } from '@apollo/client';
-import { WordPressTemplate } from '@faustwp/core';
-import { getAuthClient, getClient } from '@faustwp/experimental-app-router';
+import { gql } from "@apollo/client";
+import { WordPressTemplate } from "@faustwp/core";
+import { getAuthClient, getClient } from "@faustwp/experimental-app-router";
 
 function hasPreviewProps(props: any) {
-  return props?.searchParams?.preview === 'true' && !!props?.searchParams?.p;
+  return props?.searchParams?.preview === "true" && !!props?.searchParams?.p;
 }
 
 type Props = {
   props: {
     params: {
-      slug: string
-    }
-  }
-}
-
+      slug: string;
+    };
+  };
+};
 
 export default async function Preview({ props }: Props) {
   console.log(props.params.slug);
 
-  const isPreview = hasPreviewProps(props)
+  const isPreview = hasPreviewProps(props);
 
   const id = props.params.slug;
 
@@ -26,11 +25,7 @@ export default async function Preview({ props }: Props) {
 
   const { data } = await client!.query({
     query: gql`
-      query GetContentNode(
-        $id: ID!
-        $idType: ContentNodeIdTypeEnum!
-        $asPreview: Boolean!
-      ) {
+      query GetContentNode($id: ID!, $idType: ContentNodeIdTypeEnum!, $asPreview: Boolean!) {
         contentNode(id: $id, idType: $idType, asPreview: $asPreview) {
           ... on NodeWithTitle {
             title
@@ -44,13 +39,17 @@ export default async function Preview({ props }: Props) {
     `,
     variables: {
       id,
-      idType: isPreview ? 'DATABASE_ID' : 'URI',
+      idType: isPreview ? "DATABASE_ID" : "URI",
       asPreview: isPreview,
     },
   });
 
   console.log(data);
-  
-  
-  return <div>Preview page for {props.params.slug}</div>;
+
+  return (
+    <div>
+      Preview page for {props.params.slug}
+      {data && <div>{data.title}</div>}
+    </div>
+  );
 }

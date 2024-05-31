@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import { WordPressTemplate } from "@faustwp/core";
 import { getAuthClient, getClient } from "@faustwp/experimental-app-router";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 function hasPreviewProps(props: any) {
   return props?.searchParams?.preview === "true" && !!props?.searchParams?.p;
@@ -22,7 +22,7 @@ const Preview: React.FC<PreviewProps> = async (props) => {
   let client = isPreview ? await getAuthClient() : await getClient();
 
   if (!client) {
-    
+    redirect("/wp-login")
   }
 
   const { data } = await client!.query({

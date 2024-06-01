@@ -19,7 +19,7 @@ export type PostAPI = {
   title: string;
   author: {
     node: {
-      name: "string";
+      name: string;
     };
   };
   categories: {

@@ -1,3 +1,5 @@
+import { fetchHeroPosts } from "@/app/actions/fetchHeroPosts";
+import { fetchSinglePost } from "@/app/actions/fetchSinglePost";
 import ArticleContent from "@/components/posts/article-content";
 import ArticleMetadata from "@/components/posts/article-metadata";
 import BreadcrumbsMenu from "@/components/posts/breadcrumbs";
@@ -21,7 +23,7 @@ type MetadataProps = {
 
 export async function generateMetadata({ params }: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
   try {
-    const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
+    const postListRes = await fetchHeroPosts();
     const postListData: SinglePostAPI = await postListRes.json();
     const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
@@ -45,9 +47,11 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
 
 const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({ params }) => {
   try {
-    const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
+    const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
-    const date = transformDate(postListData.data.post.date);
+    // const date = transformDate(postListData.data.post.date);
+    // console.log(date);
+    
 
     return (
       <>
@@ -57,7 +61,7 @@ const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({ params }
           slug={postListData.data.post.slug}
         />
         <section className="px-4 max-w-[580px] md:max-w-[720px] mx-auto">
-          <ArticleMetadata post={postListData} date={date} />
+          {/* <ArticleMetadata post={postListData} date={date} /> */}
           <BreakLine />
           <ArticleContent post={postListData} />
           <BreakLine />

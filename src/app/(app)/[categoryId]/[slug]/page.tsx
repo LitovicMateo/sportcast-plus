@@ -1,4 +1,4 @@
-import { fetchHeroPosts } from "@/app/actions/fetchHeroPosts";
+import { fetchHeroPosts } from "@/app/actions/fetchRecentPosts";
 import { fetchSinglePost } from "@/app/actions/fetchSinglePost";
 import ArticleContent from "@/components/posts/article-content";
 import ArticleMetadata from "@/components/posts/article-metadata";
@@ -12,16 +12,15 @@ import { transformDate } from "@/lib/transformDate";
 import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
-const apiEndpoint =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
-    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 type MetadataProps = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: MetadataProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   try {
     const postListRes = await fetchHeroPosts();
     const postListData: SinglePostAPI = await postListRes.json();
@@ -45,13 +44,14 @@ export async function generateMetadata({ params }: MetadataProps, parent: Resolv
   }
 }
 
-const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({ params }) => {
+const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({
+  params,
+}) => {
   try {
     const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
-    // const date = transformDate(postListData.data.post.date);
-    // console.log(date);
-    
+    const date = transformDate(postListData.data.post.date);
+    console.log(date);
 
     return (
       <>
@@ -60,8 +60,8 @@ const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({ params }
           imageUrl={postListData.data.post.featuredImage.node.sourceUrl}
           slug={postListData.data.post.slug}
         />
-        <section className="px-4 max-w-[580px] md:max-w-[720px] mx-auto">
-          {/* <ArticleMetadata post={postListData} date={date} /> */}
+        <section className="mx-auto max-w-[580px] px-4 md:max-w-[720px]">
+          <ArticleMetadata post={postListData} date={date} />
           <BreakLine />
           <ArticleContent post={postListData} />
           <BreakLine />

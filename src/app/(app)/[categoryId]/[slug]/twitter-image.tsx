@@ -1,6 +1,5 @@
+import { SinglePostAPI } from "@/app/actions/fetchSinglePost";
 import { ImageResponse } from "next/og";
-import Image from "next/image";
-import { SinglePostAPI } from "@/lib/api-types";
 
 export const size = {
     width: 1200,

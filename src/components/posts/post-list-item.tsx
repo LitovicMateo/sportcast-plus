@@ -1,11 +1,11 @@
-import { PostAPI } from "@/lib/api-types";
+import { PostData } from "@/lib/api-types";
 import { transformDate } from "@/lib/transformDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type PostGridItemProps = {
-	post: PostAPI;
+	post: PostData;
 	showCategory?: boolean;
 };
 

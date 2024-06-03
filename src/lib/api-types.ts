@@ -1,81 +1,24 @@
-export interface FetchPostsAPI {
+export interface PostResponse {
+  data: {
     posts: {
-      nodes: PostAPI[];
+      nodes: PostData[];
     };
-    extensions: {};
- 
+  },
+  error?: Errors
 }
 
-export type PostAPI = {
+export type PostData = {
   excerpt: string;
-  featuredImage: {
-    node: {
-      sourceUrl: string;
-    };
-  };
-  content: string;
+  featuredImage: { node: { sourceUrl: string } };
+  id: string;
   date: string;
   slug: string;
   title: string;
-  author: {
-    node: {
-      name: string;
-    };
-  };
-  categories: {
-    nodes: {
-      name: string;
-      slug: string;
-    }[];
-  };
+  categories: { nodes: Array<{ name: string; slug: string }> };
+  author: { node: { name: string } };
+  content: string;
 };
 
-export interface FetchPostByTagAPI {
-  data: {
-    tag: {
-      posts: {
-        nodes: PostAPI[];
-      };
-    };
-  };
-  extensions: {};
-}
+export type Errors = Array<{ message: string }>;
 
-export interface SinglePostAPI {
-  data: {
-    post: {
-      date: string;
-      excerpt: string;
-      content: any;
-      slug: string;
-      title: string;
-      featuredImage: {
-        node: {
-          sourceUrl: string;
-          altText: string;
-          slug: string;
-          caption: string;
-        };
-      };
-      author: {
-        node: {
-          name: string;
-        };
-      };
-      tags: {
-        nodes: {
-          name: string;
-        }[];
-      };
-      seo: {
-        focuskw: string;
-      };
-      categories: {
-        nodes: {
-          name: string;
-          slug: string;
-        }[];
-      };
-    };
-  };
-}
+

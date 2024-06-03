@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
-import Image from "next/image";
-import { SinglePostAPI } from "@/lib/api-types";
+import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
 
 export const size = {
     width: 1200,
@@ -20,7 +19,7 @@ type MetadataProps = {
 
 export default async function OGImage({params}: MetadataProps) {
 
-    const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
+    const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
   
     console.log(postListData.data.post.featuredImage.node.sourceUrl);

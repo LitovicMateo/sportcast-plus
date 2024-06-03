@@ -1,7 +1,9 @@
-"use server"
+"use server";
 
+import { PostData } from "@/lib/api-types";
 import { NextResponse } from "next/server";
-const FETCH_POSTS_QUERY = `
+const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
+const query = `
   query FetchPosts($first: Int = 50) {
     posts(first: $first) {
       nodes {
@@ -32,62 +34,54 @@ const FETCH_POSTS_QUERY = `
   }
 `;
 
-
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
-
 if (!API_URL) {
-    throw new Error("The API URL is not defined in the environment variables.");
+  throw new Error("The API URL is not defined in the environment variables.");
 }
 
-
-type FetchPostsResponse = {
-    data?: {
-        posts: {
-            nodes: Array<{
-                excerpt: string;
-                featuredImage: { node: { sourceUrl: string } };
-                id: string;
-                date: string;
-                slug: string;
-                title: string;
-                categories: { nodes: Array<{ name: string; slug: string }> };
-                author: { node: { name: string } };
-                content: string;
-            }>;
-        };
+export type RecentPostsData = {
+  data?: {
+    posts: {
+      nodes: Array<PostData>;
     };
-    errors?: Array<{ message: string }>;
+  };
+  errors?: Array<{ message: string }>;
 };
 
-export const fetchHeroPosts = async() => {
-
-  let data: FetchPostsResponse | null = null;
+export const fetchRecentPosts = async () => {
+  let data: RecentPostsData | null = null;
+  const reqOptions: RequestInit = {
+    cache: "no-cache",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: query,
+    }),
+  };
 
   try {
-    const res = await fetch(API_URL, {
-      cache: "no-cache",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: FETCH_POSTS_QUERY,
-      }),
-    });
+    const res = await fetch(API_URL, reqOptions);
 
     if (!res.ok) {
       console.error(`Fetch error: ${res.statusText}`);
-      return NextResponse.json({ error: "Failed to fetch data" }, { status: res.status });
+      return NextResponse.json(
+        { error: "Failed to fetch data" },
+        { status: res.status },
+      );
     }
 
     data = await res.json();
-    // console.log("FetchPostsResponse data:", data);
+    console.log(data);
+    
 
     if (data?.errors) {
       console.error("GraphQL errors:", data.errors);
-      return NextResponse.json({ error: "GraphQL error", details: data.errors }, { status: 500 });
+      return NextResponse.json(
+        { error: "GraphQL error", details: data.errors },
+        { status: 500 },
+      );
     }
-
   } catch (error: any) {
     console.error("Request error:", error);
     return NextResponse.json({ error: "Request error" }, { status: 500 });
@@ -98,5 +92,4 @@ export const fetchHeroPosts = async() => {
   }
 
   return NextResponse.json(data.data);
-}
-
+};

@@ -1,17 +1,12 @@
-import { PostAPI } from "@/lib/api-types";
-import Image from "next/image";
 import React from "react";
-import BreakLine from "../../UI/breakline";
-
-import { Aldrich, M_PLUS_1_Code, Merriweather, Amiri } from "next/font/google";
 import { transformDate } from "@/lib/transformDate";
 import ArticleImage from "./ArticleImage";
 import ArticleMetadata from "./ArticleMetadata";
+import { PostData } from "@/lib/api-types";
 
-const aldrich = Aldrich({ subsets: ["latin"], weight: ["400"] });
 
 type ArticleListItemProps = {
-  post: PostAPI;
+  post: PostData;
 };
 
 

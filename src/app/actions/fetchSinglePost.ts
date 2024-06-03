@@ -1,6 +1,47 @@
+"use server"
+
 import { NextResponse } from "next/server";
 
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
+
+export interface SinglePostAPI {
+  data: {
+    post: {
+      date: string;
+      excerpt: string;
+      content: any;
+      slug: string;
+      title: string;
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+          altText: string;
+          slug: string;
+          caption: string;
+        };
+      };
+      author: {
+        node: {
+          name: string;
+        };
+      };
+      tags: {
+        nodes: {
+          name: string;
+        }[];
+      };
+      seo: {
+        focuskw: string;
+      };
+      categories: {
+        nodes: {
+          name: string;
+          slug: string;
+        }[];
+      };
+    };
+  };
+}
 
 export async function fetchSinglePost(slug: string) {
   const query = `query FetchSinglePost {
@@ -42,6 +83,7 @@ export async function fetchSinglePost(slug: string) {
     }`;
 
   const res = await fetch(API_URL, {
+    cache: "no-cache",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,9 +93,7 @@ export async function fetchSinglePost(slug: string) {
     }),
   });
 
-  const data = await res.json();
-  
-  console.log(data);
+  const data: SinglePostAPI = await res.json();
 
   return NextResponse.json(data);
 }

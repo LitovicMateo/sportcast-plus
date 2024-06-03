@@ -1,20 +1,19 @@
 "use client";
 
-import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
 import React, { useEffect, useState } from "react";
 import ArticleListItem from "./ArticleListItem";
+import { PostData, PostResponse } from "@/lib/api-types";
 
 type ArticleListProps = {
   pagination?: boolean;
   articleOffset?: number;
-  posts: PostAPI[];
+  posts: PostData[];
 };
 
 const ArticleList: React.FC<ArticleListProps> = ({ posts, pagination, articleOffset }) => {
   const [page, setPage] = useState(1);
   const length = posts.length;
   const numOfPages = Math.floor(length / articleOffset!) + 1;
-  console.log(numOfPages);
 
 
   useEffect(() => {

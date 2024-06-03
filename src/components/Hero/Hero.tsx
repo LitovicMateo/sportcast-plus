@@ -1,15 +1,15 @@
-import { PostAPI } from "@/lib/api-types";
 import Image from "next/image";
 import React from "react";
 
 import { Anybody, Aldrich } from "next/font/google";
 import Link from "next/link";
+import { PostData } from "@/lib/api-types";
 
 const aldrich = Aldrich({ subsets: ["latin"], weight: ["400"] });
 const anybody = Anybody({ subsets: ["latin"], weight: ["600"] });
 
 type HeroProps = {
-  posts: PostAPI[];
+  posts: PostData[];
 };
 
 type HeroDataProps = {

@@ -1,19 +1,19 @@
-import { FetchPostsAPI, PostAPI } from "@/lib/api-types";
 import { isFetchError } from "@/lib/isFetchErrors";
-import Hero from "@/components/Hero";
+import Hero from "@/components/Hero/Hero";
 import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import HighlightedArticles from "@/components/posts/HighlightedArticles/HighlightedArticles";
-import { getRecentPosts } from "../actions";
-import YouTubeCTA from "@/components/YouTubeCTA";
-import InstagramCTA from "@/components/InstagramCTA";
+import YouTubeCTA from "@/components/SocialCTA/YouTubeCTA";
+import InstagramCTA from "@/components/SocialCTA/InstagramCTA";
+import { fetchRecentPosts, RecentPostsData } from "../actions/fetchRecentPosts";
+import { PostResponse } from "@/lib/api-types";
 
 
 export default async function Home() {
-  let postListData: FetchPostsAPI | null = null;
+  let postListData: RecentPostsData["data"] | null = null;
   let fetchError = { isError: false, message: "" };
 
   try {
-    const postListRes = await getRecentPosts();
+    const postListRes = await fetchRecentPosts();
 
     if (!postListRes.ok) {
       throw new Error(`Error: ${postListRes.statusText}`);

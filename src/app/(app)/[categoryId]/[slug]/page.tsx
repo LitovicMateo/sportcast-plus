@@ -1,23 +1,21 @@
-import { fetchSinglePost } from "@/app/actions/fetchSinglePost";
-import ArticleContent from "@/components/posts/article-content";
+import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
+import ArticleContent from "@/components/posts/SinglePost/ArticleContent";
 import ArticleMetadata from "@/components/posts/article-metadata";
 import BreadcrumbsMenu from "@/components/posts/breadcrumbs";
-import FeaturedImage from "@/components/posts/featured-image";
+import FeaturedImage from "@/components/posts/SinglePost/FeaturedImage";
 import ShareArticle from "@/components/posts/share-article";
 import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";
-import { SinglePostAPI } from "@/lib/api-types";
 import { transformDate } from "@/lib/transformDate";
 import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
-
-type MetadataProps = {
+type PageProps = {
   params: { slug: string };
 };
 
 export async function generateMetadata(
-  { params }: MetadataProps,
+  { params }: PageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   try {
@@ -43,14 +41,13 @@ export async function generateMetadata(
   }
 }
 
-const SinglePostPage: React.FC<{ params: { slug: string } }> = async ({
+const SinglePostPage: React.FC<PageProps> = async ({
   params,
 }) => {
   try {
     const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
     const date = transformDate(postListData.data.post.date);
-    console.log(date);
 
     return (
       <>

@@ -9,9 +9,6 @@ type ArticleContentProps = {
 const ArticleContent: React.FC<ArticleContentProps> = ({ post }) => {
   const article = transformParagraph(post.data.post.content, "article");
 
-  console.log(article);
-  
-
   return (
     <article
       className="text-left leading-8"

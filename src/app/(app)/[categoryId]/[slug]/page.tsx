@@ -1,4 +1,3 @@
-import { fetchHeroPosts } from "@/app/actions/fetchRecentPosts";
 import { fetchSinglePost } from "@/app/actions/fetchSinglePost";
 import ArticleContent from "@/components/posts/article-content";
 import ArticleMetadata from "@/components/posts/article-metadata";
@@ -22,7 +21,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   try {
-    const postListRes = await fetchHeroPosts();
+    const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
     const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 

@@ -1,28 +1,28 @@
-import { getArticlesInCategory } from "@/app/actions";
+import { fetchPostsByCategory } from "@/app/actions/fetchPostsByCategory";
 import ArticleList from "@/components/posts/ArticleList/ArticleList";
-import { FetchPostsAPI } from "@/lib/api-types";
+import { PostResponse } from "@/lib/api-types";
 import React from "react";
 
-const apiEndpoint =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
-    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
-
-interface SinglePostPageProps {
+interface PageProps {
   params: {
     categoryId: string;
   };
 }
 
-const SinglePostPage: React.FC<SinglePostPageProps> = async ({ params }) => {
+const SinglePostPage: React.FC<PageProps> = async ({ params }) => {
+
   try {
-    const postListRes = await getArticlesInCategory(params.categoryId);
+
+    const postListRes = await fetchPostsByCategory(params.categoryId);
+
     if (!postListRes.ok) {
       throw new Error("Failed to fetch posts");
     }
 
-    const postListData: FetchPostsAPI = await postListRes.json();
+    const postListData: PostResponse["data"] = await postListRes.json();
+
     return <ArticleList pagination articleOffset={4} posts={postListData.posts.nodes} />;
+
   } catch (error) {
     console.error("Error fetching posts:", error);
     // Optionally, you can render an error message component here

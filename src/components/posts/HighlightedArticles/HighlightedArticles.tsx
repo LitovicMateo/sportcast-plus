@@ -1,9 +1,9 @@
-import { PostAPI } from "@/lib/api-types";
 import React from "react";
 import HighlightArticleItem from "./HighlightArticleItem";
+import { PostData } from "@/lib/api-types";
 
 type HighlightedArticlesProps = {
-  posts: PostAPI[];
+  posts: PostData[];
 };
 
 const HighlightedArticles: React.FC<HighlightedArticlesProps> = ({ posts }) => {

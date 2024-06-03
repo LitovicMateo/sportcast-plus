@@ -2,26 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-h2 {
-  font-size: 24px;
-  font-weight: 600;
-  padding-top: 1em;
-  padding-bottom: 0.5em;
-}
-
-/* img {
-    width: 100%;
-    margin-inline: auto;
-    aspect-ratio: auto;
-} */
-
-article p {
-  padding-block: 0.5em;
-}
-
-figure {
-  width: 100% !important;
-}
 
 figcaption {
   font-weight: 200;

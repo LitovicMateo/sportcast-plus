@@ -1,4 +1,4 @@
-import { PostAPI } from "@/lib/api-types";
+import { PostData } from "@/lib/api-types";
 import React from "react";
 import BreakLine from "../UI/breakline";
 import PostList from "./post-list";
@@ -7,7 +7,7 @@ import Link from "next/link";
 type CategorySectionProps = {
 	label: string;
 	path: string;
-	posts: PostAPI[];
+	posts: PostData[];
 };
 
 const CategorySection: React.FC<CategorySectionProps> = ({ label, posts, path }) => {

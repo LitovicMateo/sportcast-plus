@@ -1,4 +1,5 @@
 import BreakLine from "@/components/UI/breakline";
+import { transformParagraph } from "@/lib/transformParagraph";
 import { Amiri, M_PLUS_1_Code, Merriweather } from "next/font/google";
 import Link from "next/link";
 
@@ -26,24 +27,34 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
   slug,
 }) => {
   // add an ID to the <p> element and style it in global.css
-  const clampedParagraph = content.replace("<p>", "<p id='excerpt'>");
+  const clampedParagraph = transformParagraph(content, "excerpt");
 
   return (
-    <div className="flex flex-col justify-between h-fit md:w-[60%]">
+    <div className="flex h-fit flex-col justify-between md:w-[60%]">
       <div>
         <Link href={`/${categoryUrl}`}>
-          <h3 className={`uppercase text-[#FF0000] text-[12px] ${mplus.className}`}>{category}</h3>
+          <h3
+            className={`text-[12px] uppercase text-[#FF0000] ${mplus.className}`}
+          >
+            {category}
+          </h3>
         </Link>
         <Link href={`${categoryUrl}/${slug}`}>
-          <h2 className={`text-wrap p-0 text-[18px] md:text-[24px] ${merriweather.className}`}>{title}</h2>
+          <h2
+            className={`text-wrap p-0 text-[18px] md:text-[24px] ${merriweather.className}`}
+          >
+            {title}
+          </h2>
         </Link>
-        <h4 className={`text-[12px] pt-2 md:text-[12px] text-[#B9B9B9] uppercase ${mplus.className}`}>
+        <h4
+          className={`pt-2 text-[12px] uppercase text-[#B9B9B9] md:text-[12px] ${mplus.className}`}
+        >
           AUTOR: {author} | {date}
         </h4>
         <BreakLine />
       </div>
       <div
-        className={`text-wrap text-[18px] md:text-[16px] hidden sm:block leading-7 line-clamp-2 overflow-hidden ${amiri.className}`}
+        className={`hidden overflow-hidden text-wrap text-[18px] leading-7 sm:block md:text-[16px] ${amiri.className}`}
         dangerouslySetInnerHTML={{ __html: clampedParagraph }}
       ></div>
     </div>

@@ -1,17 +1,28 @@
-import PostList from "@/components/posts/post-list";
-import { FetchPostByTagAPI, FetchPostsAPI } from "@/lib/api-types";
+import { fetchPostsByTag, TagResponse } from "@/app/actions/fetchPostsByTag";
+import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import React from "react";
 
-const apiEndpoint =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
-    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
+type PageProps = {
+  params: { tagName: string };
+};
 
-const TagNamePage = async ({ params }: { params: { tagName: string } }) => {
-  const postListRes = await fetch(`${apiEndpoint}/api/posts/tag/${params.tagName}`, { cache: "no-store" });
-  const postListData: FetchPostByTagAPI = await postListRes.json();
+const TagNamePage: React.FC<PageProps> = async ({ params }) => {
+  try {
+    const postListRes = await fetchPostsByTag(params.tagName);
+    const postListData: TagResponse = await postListRes.json();
 
-  return <PostList posts={postListData.data.tag.posts.nodes} />;
+    return (
+      <ArticleList
+        pagination
+        articleOffset={4}
+        posts={postListData.data.tag.posts.nodes}
+      />
+    );
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    // Optionally, you can render an error message component here
+    return <div>Error fetching posts. Please try again later.</div>;
+  }
 };
 
 export default TagNamePage;

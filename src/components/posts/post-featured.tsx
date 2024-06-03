@@ -1,10 +1,10 @@
-import { PostAPI } from "@/lib/api-types";
+import { PostData } from "@/lib/api-types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type FeaturedPostProps = {
-  post: PostAPI;
+  post: PostData;
 };
 
 const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {

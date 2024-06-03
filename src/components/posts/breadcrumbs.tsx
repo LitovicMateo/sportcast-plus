@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
-import { SinglePostAPI } from "@/lib/api-types";
 import Link from "next/link";
+import { SinglePostAPI } from "@/app/actions/fetchSinglePost";
 
 type BreadCrumbsMenuProps = {
   post: SinglePostAPI;

@@ -1,4 +1,3 @@
-import { PostAPI } from "@/lib/api-types";
 import { gql } from "@apollo/client";
 import { getAuthClient, onLogout } from "@faustwp/experimental-app-router";
 import Link from "next/link";

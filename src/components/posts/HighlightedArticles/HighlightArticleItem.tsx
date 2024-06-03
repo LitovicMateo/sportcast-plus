@@ -1,15 +1,13 @@
-import { PostAPI } from "@/lib/api-types";
-import Image from "next/image";
 import React from "react";
 
-import { Aldrich, M_PLUS_1_Code, Merriweather, Amiri } from "next/font/google";
 import { transformDate } from "@/lib/transformDate";
 import Link from "next/link";
 import HighlightedArticleImage from "./HighlightedArticleImage";
 import HighlightMetadata from "./HighlightMetadata";
+import { PostData } from "@/lib/api-types";
 
 type ArticleListItemProps = {
-  post: PostAPI;
+  post: PostData;
 };
 
 const HighlightArticleItem: React.FC<ArticleListItemProps> = ({ post }) => {

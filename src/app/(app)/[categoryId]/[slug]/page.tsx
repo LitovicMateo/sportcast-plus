@@ -1,8 +1,8 @@
 import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
-import ArticleContent from "@/components/posts/article-content";
+import ArticleContent from "@/components/posts/SinglePost/ArticleContent";
 import ArticleMetadata from "@/components/posts/article-metadata";
 import BreadcrumbsMenu from "@/components/posts/breadcrumbs";
-import FeaturedImage from "@/components/posts/FeaturedImage";
+import FeaturedImage from "@/components/posts/SinglePost/FeaturedImage";
 import ShareArticle from "@/components/posts/share-article";
 import Tags from "@/components/posts/tags";
 import BreakLine from "@/components/UI/breakline";

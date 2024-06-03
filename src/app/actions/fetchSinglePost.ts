@@ -1,3 +1,5 @@
+"use server"
+
 import { NextResponse } from "next/server";
 
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;

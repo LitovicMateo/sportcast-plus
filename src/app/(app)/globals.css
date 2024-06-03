@@ -43,14 +43,41 @@ figcaption::before {
   scrollbar-width: none; /* Firefox */
 }
 
-article li {
+.video-bg {
+  box-shadow: 0px 12px 12.1px -5px #630808;
+}
+
+.article {
+  color: #413d3d;
+  padding-block: 0.5em;
+  font-weight: 350;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.list-item {
   padding-left: 1em;
-  padding-block: 0.8em;
+  padding-block: 0.4em;
+  font-size: 1em;
   text-align: left;
+  font-weight: 350;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   list-style: decimal;
   margin-inline: 1em;
 }
 
-.video-bg {
-  box-shadow: 0px 12px 12.1px -5px #630808;
+
+.quote {
+  font-style: italic;
+  text-align: center;
+  color: #413d3d;
+  padding-block: 0.5em;
+  font-weight: 350;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }

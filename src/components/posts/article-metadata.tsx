@@ -1,4 +1,4 @@
-import { SinglePostAPI } from "@/lib/api-types";
+import { SinglePostAPI } from "@/app/actions/fetchSinglePost";
 import React from "react";
 
 type ArticleMetadataProps = {

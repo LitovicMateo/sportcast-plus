@@ -8,6 +8,7 @@ export const transformParagraph = (content: string, type: "article" | "excerpt")
     .replaceAll("<blockquote><p class='article'", '<blockquote class="quote-container"><p class="quote"')
     .replaceAll(',', ', ')
     .replaceAll(/\s+/g, ' ')
+    .replaceAll("<p class='article'>&nbsp;</p>", "")
 
     return paragraph
 }

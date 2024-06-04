@@ -13,13 +13,13 @@ const apiEndpoint =
     : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 type MetadataProps = {
-  params: { slug: string };
+  params: { slug: string, categoryId: string };
 };
 
 
 export default async function OGImage({params}: MetadataProps) {
 
-    const postListRes = await fetchSinglePost(params.slug);
+    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
   
     // console.log(postListData.data.post.featuredImage.node.sourceUrl);

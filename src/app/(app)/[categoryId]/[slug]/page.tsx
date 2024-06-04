@@ -11,7 +11,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
 type PageProps = {
-  params: { slug: string };
+  params: { slug: string, categoryId: string };
 };
 
 export async function generateMetadata(
@@ -19,7 +19,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   try {
-    const postListRes = await fetchSinglePost(params.slug);
+    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
     const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
@@ -43,7 +43,7 @@ export async function generateMetadata(
 
 const SinglePostPage: React.FC<PageProps> = async ({ params }) => {
   try {
-    const postListRes = await fetchSinglePost(params.slug);
+    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
     const date = transformDate(postListData.data.post.date);
 

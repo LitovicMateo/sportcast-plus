@@ -43,9 +43,9 @@ export interface SinglePostAPI {
   };
 }
 
-export async function fetchSinglePost(slug: string) {
+export async function fetchSinglePost(category:string, slug: string) {
   const query = `query FetchSinglePost {
-      post(id: "${slug}", idType: URI) {
+      post(id: "${category}/${slug}", idType: URI) {
         date
         excerpt
         content

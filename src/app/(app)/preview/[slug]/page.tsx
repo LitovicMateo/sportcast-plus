@@ -17,7 +17,11 @@ const Preview: React.FC<PreviewProps> = async (props) => {
 
   const isPreview = hasPreviewProps(props);
 
-  const id = props.params.slug;
+  const id = props.searchParams.id;
+
+  if (!id) {
+    return redirect("/my-account")
+  }
 
   let client = isPreview ? await getAuthClient() : await getClient();
 
@@ -28,7 +32,7 @@ const Preview: React.FC<PreviewProps> = async (props) => {
   const { data } = await client!.query({
     query: gql`
     query GetPostPreview {
-      post(id: "583", idType: DATABASE_ID) {
+      post(id: ${id}, idType: DATABASE_ID) {
         title
         excerpt
         date

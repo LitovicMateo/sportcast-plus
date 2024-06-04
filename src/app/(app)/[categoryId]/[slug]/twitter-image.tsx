@@ -22,7 +22,7 @@ export default async function OGImage({params}: MetadataProps) {
     const postListRes = await fetch(`${apiEndpoint}/api/posts/${params.slug}/`, { cache: "no-store" });
     const postListData: SinglePostAPI = await postListRes.json();
   
-    console.log(postListData.data.post.featuredImage.node.sourceUrl);
+    // console.log(postListData.data.post.featuredImage.node.sourceUrl);
   
 
     return new ImageResponse(<div style={{

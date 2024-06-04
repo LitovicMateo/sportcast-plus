@@ -8,7 +8,7 @@ type MetadataProps = {
 
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
 	const title = navItems.filter((nav) => nav.path === params.categoryId);
-	console.log(title, params);
+	// console.log(title, params);
 	
 	return {
 		title: title[0].label,

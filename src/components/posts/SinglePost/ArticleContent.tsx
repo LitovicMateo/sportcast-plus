@@ -3,11 +3,11 @@ import { SinglePostAPI } from "@/app/actions/fetchSinglePost";
 import { transformParagraph } from "@/lib/transformParagraph";
 
 type ArticleContentProps = {
-  post: SinglePostAPI;
+  content: string;
 };
 
-const ArticleContent: React.FC<ArticleContentProps> = ({ post }) => {
-  const article = transformParagraph(post.data.post.content, "article");
+const ArticleContent: React.FC<ArticleContentProps> = ({ content }) => {
+  const article = transformParagraph(content, "article");
 
   return (
     <article

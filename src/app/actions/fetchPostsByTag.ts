@@ -74,7 +74,7 @@ export const fetchPostsByTag = async (tag: string) => {
 
     const data: TagResponse = await response.json();
 
-    console.log(data.data.tag.posts.nodes);
+    // console.log(data.data.tag.posts.nodes);
     
 
     if (data.errors) {

@@ -34,6 +34,12 @@ figcaption::before {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.article iframe {
+  width: 100%;
+  aspect-ratio: 16/10;
+  height: fit-content;
+}
+
 .subtitle {
   font-size: 1.5em;
   font-weight: 600;

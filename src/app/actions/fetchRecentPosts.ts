@@ -72,7 +72,7 @@ export const fetchRecentPosts = async () => {
     }
 
     data = await res.json();
-    console.log(data);
+    // console.log(data);
     
 
     if (data?.errors) {

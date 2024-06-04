@@ -41,9 +41,7 @@ export async function generateMetadata(
   }
 }
 
-const SinglePostPage: React.FC<PageProps> = async ({
-  params,
-}) => {
+const SinglePostPage: React.FC<PageProps> = async ({ params }) => {
   try {
     const postListRes = await fetchSinglePost(params.slug);
     const postListData: SinglePostAPI = await postListRes.json();
@@ -57,9 +55,13 @@ const SinglePostPage: React.FC<PageProps> = async ({
           slug={postListData.data.post.slug}
         />
         <section className="mx-auto max-w-[580px] px-4 md:max-w-[720px]">
-          <ArticleMetadata post={postListData} date={date} />
+          <ArticleMetadata
+            author={postListData.data.post.author.node.name}
+            title={postListData.data.post.title}
+            date={date}
+          />
           <BreakLine />
-          <ArticleContent post={postListData} />
+          <ArticleContent content={postListData.data.post.content} />
           <BreakLine />
           <ShareArticle
             url={`https://sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${postListData.data.post.slug}`}

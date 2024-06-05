@@ -15,6 +15,7 @@ type ArticleMetadataProps = {
   title: string;
   categoryUrl: string;
   slug: string;
+  id: string
 };
 
 const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
@@ -25,6 +26,7 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
   categoryUrl,
   title,
   slug,
+  id
 }) => {
   // add an ID to the <p> element and style it in global.css
   const clampedParagraph = transformParagraph(content, "excerpt");
@@ -39,7 +41,7 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
             {category}
           </h3>
         </Link>
-        <Link href={`${categoryUrl}/${slug}`}>
+        <Link href={`${categoryUrl}/${slug}?id=${id}`}>
           <h2
             className={`text-wrap p-0 text-[18px] md:text-[24px] ${merriweather.className}`}
           >

@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
 	// console.log(title, params);
 	
 	return {
-		title: title[0].label,
+		title: title[0]?.label ?? "Preview",
 		description: "Dobrodošli na Sportcast Plus, mjesto na kojem sport prestravlja puno više od onoga što se događa na terenu!",
 	};
 }

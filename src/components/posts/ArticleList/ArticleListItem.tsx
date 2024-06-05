@@ -26,7 +26,7 @@ const ArticleListItem: React.FC<ArticleListItemProps> = ({ post }) => {
       h-fit max-h-[400px] xs:max-h-[500px] md:h-[260px] 
       `}>
       <ArticleImage slug={post.slug} category={post.categories.nodes[0].slug} url={post.featuredImage.node.sourceUrl} />
-      <ArticleMetadata slug={post.slug} author={authorName} date={date} category={categoryName} categoryUrl={post.categories.nodes[0].slug} content={post.excerpt} title={post.title} />
+      <ArticleMetadata id={post.id} slug={post.slug} author={authorName} date={date} category={categoryName} categoryUrl={post.categories.nodes[0].slug} content={post.excerpt} title={post.title} />
     </div>
   );
 };

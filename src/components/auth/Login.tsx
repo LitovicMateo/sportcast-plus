@@ -32,7 +32,7 @@ export default function Login({id}: {id: string}) {
             <input type="password" name="password" />
           </fieldset>
 
-          <fieldset className="grid grid-col-2">
+          <fieldset className="hidden">
             <label htmlFor="ID">ID</label>
             <input type="ID" name="ID"defaultValue={id} />
           </fieldset>

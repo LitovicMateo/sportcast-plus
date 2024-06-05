@@ -12,7 +12,7 @@ function SubmitButton() {
   );
 }
 
-export default function Login() {
+export default function Login({id}: {id: string}) {
   const [state, formAction] = useFormState(loginAction, { error: undefined });
 
   return (
@@ -30,6 +30,11 @@ export default function Login() {
           <fieldset className="grid grid-col-2">
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
+          </fieldset>
+
+          <fieldset className="grid grid-col-2">
+            <label htmlFor="ID">ID</label>
+            <input type="ID" name="ID"defaultValue={id} />
           </fieldset>
         </div>
 

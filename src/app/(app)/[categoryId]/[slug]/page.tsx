@@ -61,7 +61,7 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
   const client = isPreview ? await getAuthClient() : await getClient();
 
   if (!client) {
-    return <Login />;
+    return <Login id={id as string} />;
   }
 
   if (isPreview) {

@@ -13,5 +13,5 @@ export async function loginAction(prevData: any, formData: FormData) {
     return res;
   }
 
-  redirect(`/category/preview?p=${id}`);
+  redirect(`/category/preview?p=${id}&preview=true`);
 }

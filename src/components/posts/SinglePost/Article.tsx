@@ -4,6 +4,7 @@ import ArticleMetadata from "../article-metadata";
 import BreakLine from "@/components/UI/breakline";
 import ArticleContent from "./ArticleContent";
 import ShareArticle from "../share-article";
+import Tags from "../tags";
 
 type ArticleProps = {
   isPreview: boolean;
@@ -14,6 +15,7 @@ type ArticleProps = {
   slug: string;
   image: string;
   content: string;
+  tags?: Array<{name: string}>
 };
 
 const Article: React.FC<ArticleProps> = ({
@@ -24,7 +26,8 @@ const Article: React.FC<ArticleProps> = ({
   isPreview,
   slug,
   title,
-  categorySlug
+  categorySlug,
+  tags
 }) => {
   return (
     <>
@@ -39,9 +42,15 @@ const Article: React.FC<ArticleProps> = ({
         <BreakLine />
         <ArticleContent content={content} />
         <BreakLine />
-        <ShareArticle
+        {!isPreview && (
+          <>
+          <ShareArticle
           url={`https://sportcast.plus/${categorySlug}/${slug}`}
-        />
+          />
+          <BreakLine />
+          <Tags tags={tags!} />
+          </>
+        )}
       </section>
     </>
   );

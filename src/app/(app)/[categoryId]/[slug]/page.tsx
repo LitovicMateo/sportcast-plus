@@ -125,6 +125,7 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
     const date = transformDate(data.contentNode.date);
     console.log(data);
     return (
+      <>
       <Article
         author={data.contentNode.author.node.name}
         categorySlug={data.contentNode.categories.nodes[0].slug}
@@ -134,7 +135,8 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
         isPreview={isPreview}
         slug={data.contentNode.slug}
         title={data.contentNode.title}
-      />
+        />
+        </>
     );
   } else {
     
@@ -144,6 +146,8 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
       const data: SinglePostAPI = await response.json();
       const date = transformDate(data.data.post.date);
       return (
+        <>
+        <BreadcrumbsMenu post={data} />
         <Article
           author={data.data.post.author.node.name}
           categorySlug={data.data.post.categories.nodes[0].slug}
@@ -153,7 +157,9 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
           isPreview={isPreview}
           slug={data.data.post.slug}
           title={data.data.post.title}
-        />
+          tags={data.data.post.tags.nodes}
+          />
+          </>
       );
     } catch (error) {
       console.error("Error fetching post data:", error);

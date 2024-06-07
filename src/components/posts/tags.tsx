@@ -1,20 +1,20 @@
-import React from 'react'
-import Tag from '../UI/tag'
+import React from "react";
+import Tag from "../UI/tag";
 
 type TagsProps = {
-    tags: {
-        name: string
-    }[]
-}
+  tags: {
+    name: string;
+  }[];
+};
 
-const Tags: React.FC<TagsProps> = ({tags}) => {
+const Tags: React.FC<TagsProps> = ({ tags }) => {
   return (
-    <div className="flex flex-wrap gap-2 justify-start items-center overflow-x-scroll scrollbar-hide">
-    {tags.map((tag) => (
-      <Tag tag={tag.name} key={tag.name} />
-    ))}
-  </div>
-)
-}
+    <div className="flex flex-wrap w-[540px] mx-auto items-center justify-start gap-2 overflow-x-scroll scrollbar-hide">
+      {tags.map((tag) => (
+        <Tag tag={tag.name} key={tag.name} />
+      ))}
+    </div>
+  );
+};
 
-export default Tags
+export default Tags;

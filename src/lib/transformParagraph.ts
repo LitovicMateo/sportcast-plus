@@ -2,6 +2,9 @@ export const transformParagraph = (content: string, type: "article" | "excerpt")
 
     const paragraph = content
     .replaceAll("<p>", `<p class='${type}'>`)
+    .replaceAll("h1", `h2`)
+    .replaceAll("h3", `h2`)
+    .replaceAll("h4", `h2`)
     .replaceAll("<h2>", "<h2 class='subtitle'>")
     .replaceAll("<li>", "<li class='list-item'>")
     .replaceAll("<ul>", "<ul class='list'>")

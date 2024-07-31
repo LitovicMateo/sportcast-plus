@@ -21,39 +21,35 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// export async function generateMetadata(
-//   props: PageProps,
-//   parent: ResolvingMetadata,
-// ): Promise<Metadata> {
-//   const isPreview = hasPreviewProps(props);
+export async function generateMetadata(
+  props: PageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const isPreview = hasPreviewProps(props);
 
-//   const { params, searchParams } = props;
-//   try {
-//     const postListRes = await fetchSinglePost(
-//       params.categoryId,
-//       params.slug,
-//       isPreview,
-//     );
-//     const postListData: SinglePostAPI = await postListRes.json();
-//     const keywordArr = postListData.data.post.seo.focuskw.split(" ");
+  const { params, searchParams } = props;
+  try {
+    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
+    const postListData: SinglePostAPI = await postListRes.json();
+    const keywordArr = postListData.data.post.seo.focuskw.split(" ");
 
-//     return {
-//       metadataBase: new URL("https://www.sportcast.plus"),
-//       title: `${postListData.data.post.title} | ${process.env.title as string}`,
-//       authors: [{ name: postListData.data.post.author.node.name }],
-//       keywords: keywordArr,
-//       openGraph: {
-//         title: `${postListData.data.post.title} | ${process.env.title as string}`,
-//         type: "article",
-//         url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error generating metadata:", error);
-//     // Optionally, return default metadata or an empty object
-//     return {};
-//   }
-// }
+    return {
+      metadataBase: new URL("https://www.sportcast.plus"),
+      title: `${postListData.data.post.title} | ${process.env.title as string}`,
+      authors: [{ name: postListData.data.post.author.node.name }],
+      keywords: keywordArr,
+      openGraph: {
+        title: `${postListData.data.post.title} | ${process.env.title as string}`,
+        type: "article",
+        url: `https://www.sportcast.plus/${postListData.data.post.categories.nodes[0].slug}/${params.slug}`,
+      },
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    // Optionally, return default metadata or an empty object
+    return {};
+  }
+}
 
 const SinglePostPage: React.FC<PageProps> = async (props) => {
   const isPreview = hasPreviewProps(props);
@@ -126,20 +122,19 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
     console.log(data);
     return (
       <>
-      <Article
-        author={data.contentNode.author.node.name}
-        categorySlug={data.contentNode.categories.nodes[0].slug}
-        content={data.contentNode.content}
-        date={date}
-        image={data.contentNode.featuredImage.node.sourceUrl}
-        isPreview={isPreview}
-        slug={data.contentNode.slug}
-        title={data.contentNode.title}
+        <Article
+          author={data.contentNode.author.node.name}
+          categorySlug={data.contentNode.categories.nodes[0].slug}
+          content={data.contentNode.content}
+          date={date}
+          image={data.contentNode.featuredImage.node.sourceUrl}
+          isPreview={isPreview}
+          slug={data.contentNode.slug}
+          title={data.contentNode.title}
         />
-        </>
+      </>
     );
   } else {
-    
     const { params, searchParams } = props;
     try {
       const response = await fetchSinglePost(params.categoryId, params.slug);
@@ -147,19 +142,19 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
       const date = transformDate(data.data.post.date);
       return (
         <>
-        <BreadcrumbsMenu post={data} />
-        <Article
-          author={data.data.post.author.node.name}
-          categorySlug={data.data.post.categories.nodes[0].slug}
-          content={data.data.post.content}
-          date={date}
-          image={data.data.post.featuredImage.node.sourceUrl}
-          isPreview={isPreview}
-          slug={data.data.post.slug}
-          title={data.data.post.title}
-          tags={data.data.post.tags.nodes}
+          <BreadcrumbsMenu post={data} />
+          <Article
+            author={data.data.post.author.node.name}
+            categorySlug={data.data.post.categories.nodes[0].slug}
+            content={data.data.post.content}
+            date={date}
+            image={data.data.post.featuredImage.node.sourceUrl}
+            isPreview={isPreview}
+            slug={data.data.post.slug}
+            title={data.data.post.title}
+            tags={data.data.post.tags.nodes}
           />
-          </>
+        </>
       );
     } catch (error) {
       console.error("Error fetching post data:", error);

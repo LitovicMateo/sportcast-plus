@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import "./wordpress.css";
+// import "./wordpress.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import CategoryMenu from "@/components/navbar/category-menu";

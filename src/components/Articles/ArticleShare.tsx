@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React from "react";
 import {
@@ -14,21 +14,23 @@ import {
   FacebookMessengerIcon,
 } from "react-share";
 
-type ShareArticleProps = {
+import styles from './ArticleShare.module.css'
+
+type ArticleShareProps = {
   url: string;
 };
 
-const ShareArticle: React.FC<ShareArticleProps> = ({ url }) => {
+const ArticleShare: React.FC<ArticleShareProps> = ({ url }) => {
   return (
-    <section className="flex w-full flex-col items-center justify-center gap-2">
-      <h3 className="font-[600] uppercase">Podijeli ovaj članak</h3>
-      <div className="flex items-center justify-center gap-6">
+    <section className={styles.container}>
+      <h3>Podijeli ovaj članak</h3>
+      <div className={styles.iconContainer}>
         <FacebookShareButton
           hashtag="#sportcastplus"
           url={url}
           title="SportCastPlus"
         >
-          <FacebookIcon size={36} round />
+          <FacebookIcon  round />
         </FacebookShareButton>
         <FacebookMessengerShareButton appId={"6147615245363305"} url={url}>
           <FacebookMessengerIcon size={36} round />
@@ -47,4 +49,4 @@ const ShareArticle: React.FC<ShareArticleProps> = ({ url }) => {
   );
 };
 
-export default ShareArticle;
+export default ArticleShare;

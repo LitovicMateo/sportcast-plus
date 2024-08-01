@@ -1,11 +1,5 @@
 import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
-import ArticleContent from "@/components/posts/SinglePost/ArticleContent";
-import ArticleMetadata from "@/components/posts/article-metadata";
 import BreadcrumbsMenu from "@/components/posts/breadcrumbs";
-import FeaturedImage from "@/components/posts/SinglePost/FeaturedImage";
-import ShareArticle from "@/components/posts/share-article";
-import Tags from "@/components/posts/tags";
-import BreakLine from "@/components/UI/breakline";
 import { transformDate } from "@/lib/transformDate";
 import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
@@ -14,7 +8,7 @@ import { getAuthClient, getClient } from "@faustwp/experimental-app-router";
 import Login from "@/components/auth/Login";
 import { gql } from "@apollo/client";
 import { PostData } from "@/lib/api-types";
-import Article from "@/components/posts/SinglePost/Article";
+import Article from "@/components/Articles/Article";
 
 type PageProps = {
   params: { slug: string; categoryId: string; id: string };

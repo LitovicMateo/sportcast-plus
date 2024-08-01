@@ -15,7 +15,7 @@ type ArticleProps = {
   slug: string;
   image: string;
   content: string;
-  tags?: Array<{name: string}>
+  tags?: Array<{ name: string }>;
 };
 
 const Article: React.FC<ArticleProps> = ({
@@ -27,7 +27,7 @@ const Article: React.FC<ArticleProps> = ({
   slug,
   title,
   categorySlug,
-  tags
+  tags,
 }) => {
   return (
     <>
@@ -44,11 +44,11 @@ const Article: React.FC<ArticleProps> = ({
         <BreakLine />
         {!isPreview && (
           <>
-          <ShareArticle
-          url={`https://sportcast.plus/${categorySlug}/${slug}`}
-          />
-          <BreakLine />
-          <Tags tags={tags!} />
+            <ShareArticle
+              url={`https://sportcast.plus/${categorySlug}/${slug}`}
+            />
+            <BreakLine />
+            <Tags tags={tags!} />
           </>
         )}
       </section>

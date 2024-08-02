@@ -43,7 +43,7 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
             {category}
           </h3>
         </Link>
-        <Link href={`${categoryUrl}/${slug}?id=${id}`}>
+        <Link href={`/${categoryUrl}/${slug}?id=${id}`}>
           <h2 className={`${styles.title} ${merriweather.className}`}>
             {title}
           </h2>

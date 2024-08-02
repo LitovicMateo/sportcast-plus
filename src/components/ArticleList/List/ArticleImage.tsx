@@ -12,13 +12,12 @@ type ArticleImageProps = {
 const ArticleImage: React.FC<ArticleImageProps> = ({ slug, url, category }) => {
   return (
     <div className={styles.container}>
-      <Link href={`${category}/${slug}`}>
+      <Link href={`/${category}/${slug}`}>
         <Image
           src={url}
           layout="fill"
           objectFit="cover"
           alt={slug}
-          className=""
         />
       </Link>
     </div>

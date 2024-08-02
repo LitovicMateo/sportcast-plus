@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    overflow: clip;
+}
+
+.metadataContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-bottom: 1px solid #676767;
+}
+
+.title {
+    text-wrap: wrap;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+}
+
+.authorDate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 0.2em;
+}
+
+.innerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px
+}
+
+
+.authorDate * {
+    font-size: 12px;
+    color: #b9b9b9
+}
+
+.icon {
+    color: rgb(99, 99, 99);
+}
+
+.excerpt {
+    padding: 0.5em 0;
+    line-clamp: 4;
+    text-wrap: wrap;
+    font-size: 14px;
+    line-height: 20px;
+    color: #d1d1d1
+}

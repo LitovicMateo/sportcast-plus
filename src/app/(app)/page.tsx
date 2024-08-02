@@ -6,6 +6,7 @@ import YouTubeCTA from "@/components/SocialCTA/YouTubeCTA";
 import InstagramCTA from "@/components/SocialCTA/InstagramCTA";
 import { fetchRecentPosts, RecentPostsData } from "../actions/fetchRecentPosts";
 import { PostResponse } from "@/lib/api-types";
+import ArticleGrid from "@/components/ArticleList/Grid/ArticleGrid";
 
 
 export default async function Home() {
@@ -45,7 +46,7 @@ export default async function Home() {
         <>
           <Hero posts={postListData!.posts.nodes} />
           <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
-          <HighlightedArticles posts={manifestPosts} />
+          <ArticleGrid posts={manifestPosts} />
           <ArticleList posts={postListData!.posts.nodes.slice(9,12)} />
           <YouTubeCTA />
           <ArticleList posts={postListData!.posts.nodes.slice(13,16)} />

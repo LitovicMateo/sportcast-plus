@@ -1,0 +1,64 @@
+.container {
+    background: linear-gradient(45deg, rgba(87, 34, 32, 1) 0%, rgba(116, 0, 0, 1) 100%);
+    width: 100%;
+    padding: 16px 0;
+    
+}
+
+.innerContainer {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-direction: column;
+    padding: 16px;
+    margin: 0 auto
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.text {
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+}
+
+.highlight {
+    font-size: 36px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.videoContainer {
+    flex: 1;
+    overflow: clip;
+    border-radius: 4px;
+    justify-self: center;
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+@media only screen and (min-width: 700px) {
+    .innerContainer {
+        flex-direction: row;
+    }
+
+    .highlight {
+        font-size: 42px;
+    }
+}
+
+/* "rounded-md overflow-clip video-bg flex justify-start items-center" */
+
+/* "w-full md:w-[700px] aspect-[16/10]" */

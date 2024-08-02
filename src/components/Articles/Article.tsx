@@ -1,5 +1,3 @@
-import ShareArticle from "../posts/share-article";
-import Tags from "../posts/tags";
 import styles from "./Article.module.css";
 import ArticleContent from "./ArticleContent";
 import ArticleFeaturedImage from "./ArticleFeaturedImage";

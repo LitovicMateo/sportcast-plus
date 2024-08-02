@@ -1,4 +1,3 @@
-import { SinglePostAPI } from "@/app/actions/fetchSinglePost";
 import React from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";

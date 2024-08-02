@@ -1,7 +1,6 @@
 import { Kanit } from "next/font/google";
 import Link from "next/link";
 import React from "react";
-import { Chip } from "@nextui-org/react";
 import styles from './ArticleTagItem.module.css'
 
 type ArticleTagItemProps = {

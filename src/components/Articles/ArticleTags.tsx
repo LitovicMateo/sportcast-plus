@@ -1,5 +1,4 @@
 import React from "react";
-import Tag from "../UI/tag";
 import ArticleTagItem from "./ArticleTagItem";
 
 import styles from './ArticleTags.module.css'

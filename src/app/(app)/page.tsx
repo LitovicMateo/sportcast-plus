@@ -1,10 +1,8 @@
 import { isFetchError } from "@/lib/isFetchErrors";
 import Hero from "@/components/Hero/Hero";
-import HighlightedArticles from "@/components/posts/HighlightedArticles/HighlightedArticles";
 import YouTubeCTA from "@/components/SocialCTA/YouTubeCTA";
 import InstagramCTA from "@/components/SocialCTA/InstagramCTA";
 import { fetchRecentPosts, RecentPostsData } from "../actions/fetchRecentPosts";
-import { PostResponse } from "@/lib/api-types";
 import ArticleGrid from "@/components/ArticleList/Grid/ArticleGrid";
 import ArticleList from "@/components/ArticleList/List/ArticleList";
 

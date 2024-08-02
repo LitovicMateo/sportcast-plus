@@ -58,18 +58,26 @@
 
     .excerpt {
         display: block;
-        overflow: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
         height: 100%;
         width: 100%;
 
     }
 
-    .excerpt > p {
-        overflow: hidden;
-        height: 100%;
-        max-height: 120px;
+    .excerpt>p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
+        line-clamp: 4;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+
+    .excerpt>p {
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
     }
 }

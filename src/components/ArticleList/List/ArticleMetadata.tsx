@@ -1,5 +1,3 @@
-import BreakLine from "@/components/UI/breakline";
-import { transformParagraph } from "@/lib/transformParagraph";
 import { Amiri, M_PLUS_1_Code, Merriweather } from "next/font/google";
 import Link from "next/link";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -32,9 +30,6 @@ const ArticleMetadata: React.FC<ArticleMetadataProps> = ({
   slug,
   id,
 }) => {
-  // add an ID to the <p> element and style it in global.css
-  // const clampedParagraph = transformParagraph(content, "excerpt");
-
   return (
     <div className={styles.container}>
       <div>

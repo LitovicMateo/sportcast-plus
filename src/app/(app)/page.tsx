@@ -1,12 +1,12 @@
 import { isFetchError } from "@/lib/isFetchErrors";
 import Hero from "@/components/Hero/Hero";
-import ArticleList from "@/components/posts/ArticleList/ArticleList";
 import HighlightedArticles from "@/components/posts/HighlightedArticles/HighlightedArticles";
 import YouTubeCTA from "@/components/SocialCTA/YouTubeCTA";
 import InstagramCTA from "@/components/SocialCTA/InstagramCTA";
 import { fetchRecentPosts, RecentPostsData } from "../actions/fetchRecentPosts";
 import { PostResponse } from "@/lib/api-types";
 import ArticleGrid from "@/components/ArticleList/Grid/ArticleGrid";
+import ArticleList from "@/components/ArticleList/List/ArticleList";
 
 
 export default async function Home() {
@@ -50,7 +50,7 @@ export default async function Home() {
           <ArticleList posts={postListData!.posts.nodes.slice(9,12)} />
           <YouTubeCTA />
           <ArticleList posts={postListData!.posts.nodes.slice(13,16)} />
-          <HighlightedArticles posts={kolumnePosts} />
+          <ArticleGrid posts={kolumnePosts} />
           <ArticleList posts={postListData!.posts.nodes.slice(17,20)} />
           <InstagramCTA />
           <ArticleList posts={postListData!.posts.nodes.slice(21,24)} />

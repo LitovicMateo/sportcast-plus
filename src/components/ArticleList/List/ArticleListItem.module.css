@@ -10,15 +10,7 @@
     .item {
         flex-direction: row;
         max-height: 300px;
-        max-width: 1000px;
-        gap: 12px;
+        max-width: 800px;
+        gap: 16px;
     }
 }
-
-/* 
-`
-w-full 
-flex flex-col md:flex-row px-4 md:px-0 gap-2 md:gap-4 
-h-fit max-h-[400px] xs:max-h-[500px] md:h-[260px]      
-` 
-*/

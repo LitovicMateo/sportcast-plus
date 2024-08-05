@@ -1,26 +1,26 @@
 .container {
     display: flex;
     flex-direction: row;
-    gap: 2px;
+    gap: 8px;
     font-size: 12px;
     justify-content: start;
     align-items: baseline;
-    padding: 16px 0px;
+    padding: 16px 0px 8px;
     width: 100%;
-    max-width: 720px;
+    max-width: 650px;
     margin-inline: auto;
     display: none;
 }
 
 .item {
     text-transform: uppercase;
-    padding: 4px 8px;
+    padding: 4px 0;
     color: rgb(153, 153, 153);
     transition: all 0.3s linear;
 }
 
 .item:hover {
-    color:rgb(103, 103, 103) ;
+    color:rgb(68, 68, 68) ;
 }
 
 .icon {

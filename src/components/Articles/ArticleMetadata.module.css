@@ -15,13 +15,13 @@
 .authorContainer {
     display: flex;
     align-items: center;
+    padding-block: 0 4px;
     gap: 8px
 }
 
 .author {
     font-size: 16px;
     font-weight: 400;
-    padding-block: 4px;
 }
 
 .date {
@@ -36,7 +36,7 @@
 
 @media only screen and (min-width: 600px) {
     .title {
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .container {
@@ -46,6 +46,6 @@
     .author,
     .icon,
     .date {
-        font-size: 18px;
+        font-size: 14px;
     }
 }

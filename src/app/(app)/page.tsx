@@ -39,7 +39,7 @@ export default async function Home() {
   
 
   return (
-    <main className="flex min-h-screen flex-col items-center pt-2">
+    <main className="flex min-h-screen flex-col items-center">
       {postListData?.posts.nodes &&
         <>
           <Hero posts={postListData!.posts.nodes} />

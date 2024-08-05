@@ -1,0 +1,29 @@
+.previewContainer {
+    margin-inline: auto;
+    margin-bottom: 32px;
+    padding: 16px;
+    width: fit-content;
+    max-width: 600px;
+    border-radius: 8px;
+    background-color: #fecaca;
+    text-align: center;
+    font-weight: 400;
+}
+
+.previewTitle {
+    font-weight: 600;
+}
+
+.content {
+    margin-inline: auto;
+    width: 100%;
+    /* max-width: 580px; */
+    padding: 0 16px;
+}
+
+@media only screen and (min-width: 600px) {
+    .content {
+        max-width: 650px;
+        padding: 0;
+    }
+}

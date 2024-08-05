@@ -1,5 +1,5 @@
 import { fetchPostsByTag, TagResponse } from "@/app/actions/fetchPostsByTag";
-import ArticleList from "@/components/posts/ArticleList/ArticleList";
+import ArticleList from "@/components/ArticleList/List/ArticleList";
 import React from "react";
 
 type PageProps = {

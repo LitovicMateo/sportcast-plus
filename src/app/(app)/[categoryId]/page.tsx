@@ -1,5 +1,5 @@
 import { fetchPostsByCategory } from "@/app/actions/fetchPostsByCategory";
-import ArticleList from "@/components/posts/ArticleList/ArticleList";
+import ArticleList from "@/components/ArticleList/List/ArticleList";
 import { PostResponse } from "@/lib/api-types";
 import React from "react";
 

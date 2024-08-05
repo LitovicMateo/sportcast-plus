@@ -12,60 +12,16 @@ figcaption::before {
   content: "Izvor: ";
 }
 
-/* For Webkit-based browsers (Chrome, Safari and Opera) */
-.scrollbar-hide::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+* {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 .video-bg {
   box-shadow: 0px 12px 12.1px -5px #630808;
 }
 
-.article {
-  color: #413d3d;
-  padding-block: 0.5em;
-  font-weight: 350;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.article iframe {
-  width: 100%;
-  aspect-ratio: 16/10;
-  height: fit-content;
-}
-
-.subtitle {
-  font-size: 1.5em;
-  font-weight: 600;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 1em;
-  padding-bottom: 0em;
-}
-
-.list-item {
-  padding-left: 1em;
-  padding-block: 0.4em;
-  font-size: 1em;
-  text-align: left;
-  font-weight: 350;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  list-style: decimal;
-  margin-inline: 1em;
-}
-
-
-.quote {
-  font-style: italic;
-  text-align: center;
-  color: #413d3d;
-  padding-block: 0.5em;
-  font-weight: 350;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-}

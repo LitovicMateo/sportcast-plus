@@ -1,0 +1,56 @@
+.article {
+    line-height: 32px;
+}
+
+.article p {
+    color: #292727;
+    text-align: justify;
+    hyphens: auto;
+    padding-block: 0.5em;
+    font-weight: 350;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.article h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-block: 0.4em 0
+}
+
+.article img {
+    width: 100%
+}
+
+.article li {
+    padding-left: 1em;
+    padding-block: 0.4em;
+    font-size: 1em;
+    text-align: left;
+    font-weight: 350;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    list-style: decimal;
+    margin-inline: 1em;
+}
+
+.article blockquote {
+    font-style: italic;
+    text-align: center;
+    color: #413d3d;
+    padding-block: 0.5em;
+    font-weight: 350;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.article iframe {
+    width: 100%;
+    aspect-ratio: 16/10;
+    height: fit-content;
+}
+
+@media only screen and (min-width: 600px) {
+    .article p {
+        font-size: 18px;
+    }
+}

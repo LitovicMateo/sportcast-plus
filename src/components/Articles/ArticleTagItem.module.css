@@ -1,0 +1,20 @@
+.tag {
+    background-color: rgb(97, 94, 94);
+    color: white;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    font-size: 12px;
+}
+
+@media only screen and (min-width: 600px) {
+    .label {
+        font-size: 14px;
+    }
+}

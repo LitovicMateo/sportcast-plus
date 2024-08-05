@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 12px;
+    justify-content: start;
+    align-items: baseline;
+    padding: 16px 0px 8px;
+    width: 100%;
+    max-width: 650px;
+    margin-inline: auto;
+    display: none;
+}
+
+.item {
+    text-transform: uppercase;
+    padding: 4px 0;
+    color: rgb(153, 153, 153);
+    transition: all 0.3s linear;
+}
+
+.item:hover {
+    color:rgb(68, 68, 68) ;
+}
+
+.icon {
+    font-size: 10px;
+    color: rgb(153, 153, 153);
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 720px) {
+    .container {
+        display: flex;
+    }
+}

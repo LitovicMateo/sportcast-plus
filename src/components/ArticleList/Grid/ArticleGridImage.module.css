@@ -1,0 +1,15 @@
+.imageContainer {
+    position: relative;
+    aspect-ratio: 16/10;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image {
+    transition: all 0.3s ease;
+}
+
+.image:hover {
+    rotate: 1deg;
+    scale: 110%;
+}

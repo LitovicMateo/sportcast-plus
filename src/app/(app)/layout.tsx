@@ -1,18 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import "./wordpress.css";
+// import "./wordpress.css";
 import NavBar from "@/components/navbar/navbar";
-import Footer from "@/components/footer/footer";
 import CategoryMenu from "@/components/navbar/category-menu";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/Layout/Footer/Footer";
 
 // Load Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
 
-const apiEndpoint = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
-
+const apiEndpoint =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
+    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
 // Define metadata for the site
 export const metadata: Metadata = {
@@ -21,7 +23,8 @@ export const metadata: Metadata = {
     default: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
     template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus"}`,
   },
-  description: "Dobrodošli na Sportcast Plus, mjesto na kojem sport predstavlja puno više od onoga što se događa na terenu!",
+  description:
+    "Dobrodošli na Sportcast Plus, mjesto na kojem sport predstavlja puno više od onoga što se događa na terenu!",
   keywords: ["sportcast", "sportcast plus"],
   applicationName: "Sportcast Plus",
   creator: "Mateo Litović",
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
 
 // Define viewport settings
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
@@ -52,7 +55,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${inter.className} flex flex-col justify-start`}>
         <NavBar />
         <CategoryMenu />
-        <main className="min-h-[100svh]  md:pt-6 h-fit">{children}</main>
+        <main className="h-fit min-h-[100svh] md:pt-6">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

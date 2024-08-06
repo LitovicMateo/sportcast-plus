@@ -7,7 +7,7 @@
     display: block;
 
     .imageContainer {
-        height: 250px;
+        aspect-ratio: 16/9;
         position: relative;
     }
 
@@ -72,13 +72,14 @@
 
 /* TABLET */
 
+
 @media only screen and (min-width: 800px) {
     .hero {
         max-width: 800px;
         margin-inline: auto;
 
         .imageContainer {
-            height: 400px;
+            aspect-ratio: 16/9;
         }
 
         .container {
@@ -98,7 +99,7 @@
     .carousel {
         width: 100%;
         margin-bottom: 2em;
-        
+
         .container {
             padding: 4px 0;
         }

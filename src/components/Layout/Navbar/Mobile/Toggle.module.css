@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    left: 10%;
+    height: 56px;
+    padding-inline: 16px;
+}

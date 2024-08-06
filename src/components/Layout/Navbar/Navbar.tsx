@@ -30,7 +30,7 @@ const Navbar = () => {
           <NavItem item={el} key={el.label} />
         ))}
       </nav>
-      <AnimatePresence>{menuIsOpen && <MobileMenu />}</AnimatePresence>
+      <AnimatePresence>{menuIsOpen && <MobileMenu closeMenu={handleMenu} />}</AnimatePresence>
     </header>
   );
 };

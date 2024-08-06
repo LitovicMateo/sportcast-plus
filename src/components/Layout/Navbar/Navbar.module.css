@@ -10,12 +10,14 @@
 
 .navbar {
     width: 100%;
+    height: 56px;
     display: none;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     margin-inline: auto;
     max-width: 800px;
+    font-size: 12px;
 }
 
 .icon {

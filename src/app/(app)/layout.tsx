@@ -7,6 +7,7 @@ import CategoryMenu from "@/components/navbar/category-menu";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/Layout/Footer/Footer";
+import Navbar from "@/components/Layout/Navbar/Navbar";
 
 // Load Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
@@ -53,8 +54,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta property="fb:app_id" content="6147615245363305" />
       </head>
       <body className={`${inter.className} flex flex-col justify-start`}>
-        <NavBar />
-        <CategoryMenu />
+        {/* <NavBar /> */}
+        <Navbar />
+        {/* <CategoryMenu /> */}
         <main className="h-fit min-h-[100svh] md:pt-6">{children}</main>
         <Footer />
         <SpeedInsights />

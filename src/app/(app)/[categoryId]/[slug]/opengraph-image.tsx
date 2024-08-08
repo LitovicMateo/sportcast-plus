@@ -17,8 +17,7 @@ type MetadataProps = {
 };
 
 export default async function OGImage({ params }: MetadataProps) {
-  const postListRes = await fetchSinglePost(params.categoryId, params.slug);
-  const postListData: SinglePostAPI = await postListRes.json();
+  const { post } = await fetchSinglePost(params.categoryId, params.slug);
 
   return new ImageResponse(
     (
@@ -37,7 +36,7 @@ export default async function OGImage({ params }: MetadataProps) {
             width: "100%",
             aspectRatio: "auto",
           }}
-          src={postListData.data.post.featuredImage.node.sourceUrl}
+          src={post.featuredImage.node.sourceUrl}
         />
       </div>
     ),

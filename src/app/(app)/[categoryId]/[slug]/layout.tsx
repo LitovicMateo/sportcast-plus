@@ -2,32 +2,26 @@ import React from "react";
 
 import { pageConfig } from "@/lib/configs/pageConfig";
 import { Metadata, ResolvingMetadata } from "next";
-import { hasPreviewProps } from "@/lib/util/hasPreviewProps";
 import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
 
-const { pageCreator, pageDescription, pageKeywords, pageName, pageUrl } =
-  pageConfig;
+const { pageUrl } = pageConfig;
 
-type PageProps = {
-  params: { slug: string; categoryId: string; id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+type MetadataProps = {
+  params: { categoryId: string, slug: string };
 };
 
 export async function generateMetadata(
-  props: PageProps,
-  parent: ResolvingMetadata,
+  props: MetadataProps,
 ): Promise<Metadata> {
-  const isPreview = hasPreviewProps(props);
 
-  const { params, searchParams } = props;
+  const { params } = props;
   try {
     const { slug } = params;
-    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
-    const postListData: SinglePostAPI = await postListRes.json();
-    const keywordArr = postListData.data.post.seo.focuskw.split(" ");
-    const title = postListData.data.post.title;
-    const author = postListData.data.post.author.node.name;
-    const category = postListData.data.post.categories.nodes[0].slug;
+    const { post } = await fetchSinglePost(params.categoryId, params.slug);
+    const keywordArr = post.seo.focuskw.split(" ");
+    const title = post.title;
+    const author = post.author.node.name;
+    const category = post.categories.nodes[0].slug;
 
     return {
       metadataBase: new URL(pageUrl),

@@ -1,8 +1,8 @@
 "use server"
 
-import { NextResponse } from "next/server";
+import { gql } from "@apollo/client";
+import { getClient } from "@faustwp/experimental-app-router";
 
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export interface SinglePostAPI {
   data: {
@@ -43,57 +43,52 @@ export interface SinglePostAPI {
   };
 }
 
+
 export async function fetchSinglePost(category:string, slug: string) {
-  const query = `query FetchSinglePost {
-      post(id: "${category}/${slug}", idType: URI) {
-        date
-        excerpt
-        content
-        slug
-        title
-        featuredImage {
-          node {
-            altText
-            caption
-            slug
-            sourceUrl
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-          }
-        }
-        author {
-          node {
-            name
-          }
-        }
-        seo 
-        {
-          focuskw
-        }
-        tags {
-          nodes {
-            name
-          }
+  const client = await getClient()
+
+  const postquery = gql`query FetchSinglePost {
+    post(id: "${category}/${slug}", idType: URI) {
+      date
+      excerpt
+      content
+      slug
+      title
+      featuredImage {
+        node {
+          altText
+          caption
+          slug
+          sourceUrl
         }
       }
-    }`;
+      categories {
+        nodes {
+          name
+          slug
+        }
+      }
+      author {
+        node {
+          name
+        }
+      }
+      seo 
+      {
+        focuskw
+      }
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }`;
 
-  const res = await fetch(API_URL, {
-    cache: "no-cache",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: query,
-    }),
-  });
+  
+  const { data }: {data: {post: SinglePostAPI["data"]["post"]}} = await client.query({
+    query: postquery,
+  })
 
-  const data: SinglePostAPI = await res.json();
-
-  return NextResponse.json(data);
+  return data;
 }

@@ -14,9 +14,9 @@ const ArticleGridImage: React.FC<ArticleGridImageProps> = ({ url, slug }) => {
       <Image
         className={styles.image}
         src={url}
-        layout="fill"
+        fill
         alt={slug}
-        objectFit="cover"
+        style={{objectFit: "cover"}}
       />
     </div>
   );

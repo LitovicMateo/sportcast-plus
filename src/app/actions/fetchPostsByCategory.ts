@@ -1,13 +1,12 @@
 "use server";
 
-import { PostResponse } from "@/lib/api-types";
+import { PostData } from "@/lib/api-types";
+import { gql } from "@apollo/client";
+import { getClient } from "@faustwp/experimental-app-router";
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
-
-const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export async function fetchPostsByCategory(categoryId: string) {
-  const query = `{
+  const query = gql`{
       posts(where: {categoryName: "${categoryId}"}) {
         nodes {
           excerpt
@@ -36,27 +35,11 @@ export async function fetchPostsByCategory(categoryId: string) {
       }
     }`;
 
-  try {
-    const res = await fetch(API_URL, {
-      cache: "no-cache",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    });
+    const client = await getClient()
+    const { data }: {data: {posts: {nodes: PostData[]}}} = await client.query({query: query})
 
-    if (!res.ok) {
-      console.error("Failed to fetch data:", res.statusText);
-      return NextResponse.error();
-    }
-
-    const json: PostResponse = await res.json();
+    console.log(data)
 
     revalidatePath(`/${categoryId}`);
-    return NextResponse.json(json.data);
-  } catch (error) {
-    console.error("An error occurred while fetching data:", error);
-    return NextResponse.error();
-  }
+    return data.posts.nodes;
 }

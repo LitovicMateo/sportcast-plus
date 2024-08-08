@@ -1,6 +1,5 @@
 import { fetchPostsByCategory } from "@/app/actions/fetchPostsByCategory";
 import ArticleList from "@/components/ArticleList/List/ArticleList";
-import { PostResponse } from "@/lib/api-types";
 import React from "react";
 
 interface PageProps {
@@ -11,23 +10,13 @@ interface PageProps {
 
 const SinglePostPage: React.FC<PageProps> = async ({ params }) => {
 
-  try {
+  const { categoryId } = params
 
-    const postListRes = await fetchPostsByCategory(params.categoryId);
+  const posts = await fetchPostsByCategory(categoryId);
 
-    if (!postListRes.ok) {
-      throw new Error("Failed to fetch posts");
-    }
+  return <ArticleList pagination articleOffset={4} posts={posts} />;
 
-    const postListData: PostResponse["data"] = await postListRes.json();
 
-    return <ArticleList pagination articleOffset={4} posts={postListData.posts.nodes} />;
-
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-    // Optionally, you can render an error message component here
-    return <div>Error fetching posts. Please try again later.</div>;
-  }
 };
 
 export default SinglePostPage;

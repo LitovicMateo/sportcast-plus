@@ -9,45 +9,12 @@ import { PostData } from "@/lib/api-types";
 import Article from "@/components/Articles/Article";
 import Breadcrumbs from "@/components/Articles/Breadcrumbs";
 import Login from "@/components/Login/Login";
+import { fetchPostPreview } from "@/app/actions/fetchPostPreview";
 
 type PageProps = {
   params: { slug: string; categoryId: string; id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
-
-export async function generateMetadata(
-  props: PageProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const isPreview = hasPreviewProps(props);
-
-  const { params, searchParams } = props;
-  try {
-    const { slug } = params;
-    const postListRes = await fetchSinglePost(params.categoryId, params.slug);
-    const postListData: SinglePostAPI = await postListRes.json();
-    const keywordArr = postListData.data.post.seo.focuskw.split(" ");
-    const title = postListData.data.post.title;
-    const author = postListData.data.post.author.node.name;
-    const category = postListData.data.post.categories.nodes[0].slug;
-
-    return {
-      metadataBase: new URL("https://www.sportcast.plus"),
-      title: `${title} | ${process.env.title as string}`,
-      authors: [{ name: author }],
-      keywords: keywordArr,
-      openGraph: {
-        title: `${title} | ${process.env.title as string}`,
-        type: "article",
-        url: `https://www.sportcast.plus/${category}/${slug}`,
-      },
-    };
-  } catch (error) {
-    console.error("Error generating metadata:", error);
-    // Optionally, return default metadata or an empty object
-    return {};
-  }
-}
 
 const previewQuery = gql`
   query GetContentNode(
@@ -103,7 +70,9 @@ const previewQuery = gql`
 const SinglePostPage: React.FC<PageProps> = async (props) => {
   const isPreview = hasPreviewProps(props);
   const id = props.searchParams.p;
+
   const client = isPreview ? await getAuthClient() : await getClient();
+
 
   // if we are previewing but we are not logged in `getAuthClient` fails and return null
   if (!client) {
@@ -112,14 +81,7 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
 
   if (isPreview) {
     // TODO: add action to fetch preview post
-    const { data }: { data: { contentNode: PostData } } = await client.query({
-      query: previewQuery,
-      variables: {
-        id,
-        idType: isPreview ? "DATABASE_ID" : "URI",
-        asPreview: isPreview,
-      },
-    });
+    const data = await fetchPostPreview(id)
 
     const date = transformDate(data.contentNode.date);
 

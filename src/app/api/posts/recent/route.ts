@@ -73,17 +73,21 @@ export async function GET(req: Request) {
 
     if (!res.ok) {
       console.error(`Fetch error: ${res.statusText}`);
-      return NextResponse.json({ error: "Failed to fetch data" }, { status: res.status });
+      return NextResponse.json(
+        { error: "Failed to fetch data" },
+        { status: res.status },
+      );
     }
 
     data = await res.json();
-    console.log("FetchPostsResponse data:", data);
 
     if (data?.errors) {
       console.error("GraphQL errors:", data.errors);
-      return NextResponse.json({ error: "GraphQL error", details: data.errors }, { status: 500 });
+      return NextResponse.json(
+        { error: "GraphQL error", details: data.errors },
+        { status: 500 },
+      );
     }
-
   } catch (error: any) {
     console.error("Request error:", error);
     return NextResponse.json({ error: "Request error" }, { status: 500 });

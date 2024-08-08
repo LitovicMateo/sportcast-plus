@@ -7,21 +7,19 @@ import { NextResponse } from "next/server";
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT as string;
 
 export type TagResponse = {
-    data: {
-        tag: {
-            posts: {
-                nodes: PostData[]
-            }
-        }
-    },
-    errors?: Errors;
-
-}
+  data: {
+    tag: {
+      posts: {
+        nodes: PostData[];
+      };
+    };
+  };
+  errors?: Errors;
+};
 
 export const fetchPostsByTag = async (tag: string) => {
-  
   const transformedTag = normalizeString(tag.replace("-", " "));
-  
+
   const query = `
     {
       tag(id: "${transformedTag}", idType: NAME) {
@@ -62,20 +60,20 @@ export const fetchPostsByTag = async (tag: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ query }),
-  }
+  };
 
   try {
-    const response = await fetch(API_URL, fetchOptions );
+    const response = await fetch(API_URL, fetchOptions);
 
     if (!response.ok) {
       console.error(`Error fetching data: ${response.statusText}`);
-      return NextResponse.json({ error: 'Failed to fetch data' }, { status: response.status });
+      return NextResponse.json(
+        { error: "Failed to fetch data" },
+        { status: response.status },
+      );
     }
 
     const data: TagResponse = await response.json();
-
-    // console.log(data.data.tag.posts.nodes);
-    
 
     if (data.errors) {
       console.error(`GraphQL errors: ${JSON.stringify(data.errors)}`);
@@ -85,6 +83,6 @@ export const fetchPostsByTag = async (tag: string) => {
     return NextResponse.json(data);
   } catch (error: any) {
     console.error(`Network error: ${error.message}`);
-    return NextResponse.json({ error: 'Network error' }, { status: 500 });
+    return NextResponse.json({ error: "Network error" }, { status: 500 });
   }
 };

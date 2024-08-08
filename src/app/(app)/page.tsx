@@ -6,6 +6,7 @@ import { fetchRecentPosts, RecentPostsData } from "../actions/fetchRecentPosts";
 import ArticleGrid from "@/components/ArticleList/Grid/ArticleGrid";
 import ArticleList from "@/components/ArticleList/List/ArticleList";
 
+import styles from "./Page.module.css";
 
 export default async function Home() {
   let postListData: RecentPostsData["data"] | null = null;
@@ -27,33 +28,35 @@ export default async function Home() {
 
   if (fetchError.isError) {
     return (
-      <main className="flex min-h-screen flex-col items-center gap-8 pt-0 md:pt-12 md:pb-6">
-        <div className="text-red-500">Failed to load posts: {fetchError.message}</div>
+      <main className={styles.error}>
+        <div>Failed to load posts: {fetchError.message}</div>
       </main>
     );
   }
 
-  const manifestPosts = postListData!.posts.nodes.filter(p => p.categories.nodes[0].slug === "sportcastov-manifest").slice(0,4)
-  const kolumnePosts = postListData!.posts.nodes.filter(p => p.categories.nodes[0].slug === "kolumne").slice(0,4)
-
-  
+  const manifestPosts = postListData!.posts.nodes
+    .filter((p) => p.categories.nodes[0].slug === "sportcastov-manifest")
+    .slice(0, 4);
+  const kolumnePosts = postListData!.posts.nodes
+    .filter((p) => p.categories.nodes[0].slug === "kolumne")
+    .slice(0, 4);
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
-      {postListData?.posts.nodes &&
+    <main className={styles.page}>
+      {postListData?.posts.nodes && (
         <>
           <Hero posts={postListData!.posts.nodes} />
-          <ArticleList posts={postListData!.posts.nodes.slice(4,8)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(4, 8)} />
           <ArticleGrid posts={manifestPosts} />
-          <ArticleList posts={postListData!.posts.nodes.slice(9,12)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(9, 12)} />
           <YouTubeCTA />
-          <ArticleList posts={postListData!.posts.nodes.slice(13,16)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(13, 16)} />
           <ArticleGrid posts={kolumnePosts} />
-          <ArticleList posts={postListData!.posts.nodes.slice(17,20)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(17, 20)} />
           <InstagramCTA />
-          <ArticleList posts={postListData!.posts.nodes.slice(21,24)} />
+          <ArticleList posts={postListData!.posts.nodes.slice(21, 24)} />
         </>
-      }
+      )}
     </main>
   );
 }

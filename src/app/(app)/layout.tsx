@@ -1,36 +1,35 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import "./wordpress.css";
-import NavBar from "@/components/navbar/navbar";
-import CategoryMenu from "@/components/navbar/category-menu";
+import styles from "./Layout.module.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/Layout/Footer/Footer";
 import Navbar from "@/components/Layout/Navbar/Navbar";
+import { pageConfig } from "@/lib/configs/pageConfig";
 
 // Load Inter font with Latin subset
 const inter = Inter({ subsets: ["latin"] });
+const {pageCreator,pageDescription, pageKeywords, pageName, pageUrl} = pageConfig
+
 
 const apiEndpoint =
   process.env.NODE_ENV === "production"
     ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
     : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
 
-// Define metadata for the site
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sportcast.plus"),
+  metadataBase: new URL(pageUrl),
   title: {
-    default: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
-    template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus"}`,
+    default: process.env.NEXT_PUBLIC_SITE_TITLE || pageName,
+    template: `%s | ${process.env.NEXT_PUBLIC_SITE_TITLE || pageName}`,
   },
-  description:
-    "Dobrodošli na Sportcast Plus, mjesto na kojem sport predstavlja puno više od onoga što se događa na terenu!",
-  keywords: ["sportcast", "sportcast plus"],
-  applicationName: "Sportcast Plus",
-  creator: "Mateo Litović",
+  description: pageDescription,
+  keywords: pageKeywords,
+  applicationName: pageName,
+  creator: pageCreator,
   openGraph: {
-    title: process.env.NEXT_PUBLIC_SITE_TITLE || "Sportcast Plus",
+    title: process.env.NEXT_PUBLIC_SITE_TITLE || pageName,
   },
 };
 
@@ -53,11 +52,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <meta property="fb:app_id" content="6147615245363305" />
       </head>
-      <body className={`${inter.className} flex flex-col justify-start`}>
-        {/* <NavBar /> */}
+      <body className={`${inter.className} ${styles.body}`}>
         <Navbar />
-        {/* <CategoryMenu /> */}
-        <main className="h-fit min-h-[100svh] md:pt-6">{children}</main>
+        <main className={styles.layout}>{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

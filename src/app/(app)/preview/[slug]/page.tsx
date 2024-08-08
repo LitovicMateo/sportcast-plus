@@ -22,12 +22,9 @@ type Data = {
 };
 
 const Preview: React.FC<PreviewProps> = async (props) => {
-  console.log(props.params.slug);
-
   const isPreview = hasPreviewProps(props);
 
   const id = props.searchParams["preview_id"];
-  console.log(props.searchParams);
 
   if (!id) {
     return redirect("/my-account");
@@ -81,10 +78,8 @@ const Preview: React.FC<PreviewProps> = async (props) => {
     `,
   });
 
-  console.log(data);
 
   const date = transformDate(data.post.date);
-  console.log(date);
 
   return (
     <div>

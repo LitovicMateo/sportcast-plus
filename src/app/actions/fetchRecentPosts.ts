@@ -72,8 +72,6 @@ export const fetchRecentPosts = async () => {
     }
 
     data = await res.json();
-    // console.log(data);
-    
 
     if (data?.errors) {
       console.error("GraphQL errors:", data.errors);

@@ -1,0 +1,16 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.layout {
+    height: fit-content;
+    min-height: 100svh;
+}
+
+@media only screen and (min-width: 800px) {
+    .layot {
+        padding-top: 24px;
+    }
+}

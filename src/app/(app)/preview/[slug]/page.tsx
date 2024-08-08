@@ -22,12 +22,9 @@ type Data = {
 };
 
 const Preview: React.FC<PreviewProps> = async (props) => {
-  console.log(props.params.slug);
-
   const isPreview = hasPreviewProps(props);
 
   const id = props.searchParams["preview_id"];
-  console.log(props.searchParams);
 
   if (!id) {
     return redirect("/my-account");
@@ -81,15 +78,13 @@ const Preview: React.FC<PreviewProps> = async (props) => {
     `,
   });
 
-  console.log(data);
 
   const date = transformDate(data.post.date);
-  console.log(date);
 
   return (
     <div>
       <div className="mx-auto mb-8 w-full max-w-[580px] rounded-md bg-red-200 py-4 text-center font-light">
-        Preview page for {data.post.title}
+        Preview page forrr {data.post.title}
       </div>
       <ArticleFeaturedImage
         imageUrl={data.post.featuredImage.node.sourceUrl}
@@ -103,7 +98,7 @@ const Preview: React.FC<PreviewProps> = async (props) => {
         />
         <ArticleContent content={data.post.content} />
         <ArticleTags tags={data.post.tags.nodes} />
-      </section>{" "}
+      </section>
     </div>
   );
 };

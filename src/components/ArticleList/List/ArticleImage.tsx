@@ -15,9 +15,9 @@ const ArticleImage: React.FC<ArticleImageProps> = ({ slug, url, category }) => {
       <Link href={`/${category}/${slug}`}>
         <Image
           src={url}
-          layout="fill"
-          objectFit="cover"
+          fill
           alt={slug}
+          style={{objectFit: "cover"}}
         />
       </Link>
     </div>

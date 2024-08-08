@@ -40,6 +40,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ closeMenu }) => {
           </motion.div>
           {navItems.map((el, index) => (
             <motion.div
+              key={index}
               onClick={() => closeMenu()}
               initial={{ opacity: 0 }}
               animate={{

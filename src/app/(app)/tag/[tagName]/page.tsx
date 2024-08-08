@@ -1,4 +1,4 @@
-import { fetchPostsByTag, TagResponse } from "@/app/actions/fetchPostsByTag";
+import { fetchPostsByTag } from "@/app/actions/fetchPostsByTag";
 import ArticleList from "@/components/ArticleList/List/ArticleList";
 import React from "react";
 
@@ -7,22 +7,17 @@ type PageProps = {
 };
 
 const TagNamePage: React.FC<PageProps> = async ({ params }) => {
-  try {
-    const postListRes = await fetchPostsByTag(params.tagName);
-    const postListData: TagResponse = await postListRes.json();
+
+  const { tagName } = params
+  const posts = await fetchPostsByTag(tagName);
 
     return (
       <ArticleList
         pagination
         articleOffset={4}
-        posts={postListData.data.tag.posts.nodes}
+        posts={posts}
       />
     );
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-    // Optionally, you can render an error message component here
-    return <div>Error fetching posts. Please try again later.</div>;
-  }
 };
 
 export default TagNamePage;

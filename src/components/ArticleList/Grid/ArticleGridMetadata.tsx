@@ -1,12 +1,10 @@
-import { Aldrich, Amiri, M_PLUS_1_Code, Merriweather } from "next/font/google";
+import {  Amiri,  Merriweather } from "next/font/google";
 import React from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 import styles from "./ArticleGridMetadata.module.css";
 
-const aldrich = Aldrich({ subsets: ["latin"], weight: ["400"] });
-const mplus = M_PLUS_1_Code({ subsets: ["latin"], weight: ["400"] });
 const merriweather = Merriweather({ subsets: ["latin"], weight: ["700"] });
 const amiri = Amiri({ subsets: ["latin"], weight: ["400"] });
 

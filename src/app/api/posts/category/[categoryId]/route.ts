@@ -40,7 +40,6 @@ interface ApiResponse {
 
 export async function GET(req: Request, context: Context) {
   const { params } = context;
-  console.log("Category ID:", params.categoryId);
 
   const query = `{
     posts(where: {categoryName: "${params.categoryId}"}) {
@@ -86,7 +85,6 @@ export async function GET(req: Request, context: Context) {
     }
 
     const json: ApiResponse = await res.json();
-    console.log("Data fetched successfully:", json.data);
 
     revalidatePath(req.url);
     return NextResponse.json(json.data);

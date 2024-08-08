@@ -21,9 +21,8 @@ const HeroItem: React.FC<HeroItemProps> = ({ article, elementClass }) => {
         <Image
           src={imageUrl}
           alt={slug}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="top"
+          fill
+          style={{objectFit: "cover", objectPosition: "top"}}
           className={styles.image}
         />
       </div>

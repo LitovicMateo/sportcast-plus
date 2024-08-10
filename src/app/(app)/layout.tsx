@@ -12,12 +12,6 @@ import { pageConfig } from "@/lib/configs/pageConfig";
 const inter = Inter({ subsets: ["latin"] });
 const {pageCreator,pageDescription, pageKeywords, pageName, pageUrl} = pageConfig
 
-
-const apiEndpoint =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_HOST_API_ENDPOINT
-    : process.env.NEXT_PUBLIC_LOCAL_API_ENDPOINT;
-
 export const metadata: Metadata = {
   metadataBase: new URL(pageUrl),
   title: {

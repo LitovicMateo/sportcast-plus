@@ -3,6 +3,7 @@
 import { PostData } from "@/lib/api-types";
 import { gql } from "@apollo/client";
 import { getClient } from "@faustwp/experimental-app-router";
+import { revalidatePath } from "next/cache";
 const query = gql`
   query FetchPosts($first: Int = 50) {
     posts(first: $first) {
@@ -38,9 +39,8 @@ export const fetchRecentPosts = async() => {
   const client = await getClient()
 
   const { data }: {data: {posts: {nodes: PostData[]}}} = await client.query({
-    query: query
+    query: query,
   })
 
   return data.posts.nodes
-
 }

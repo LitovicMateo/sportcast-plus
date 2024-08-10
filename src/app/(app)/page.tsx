@@ -7,6 +7,8 @@ import ArticleList from "@/components/ArticleList/List/ArticleList";
 
 import styles from "./Page.module.css";
 
+export const revalidate = 0;
+
 export default async function Home() {
   
   const posts = await fetchRecentPosts();

@@ -1,25 +1,18 @@
 import React from "react";
 
 import { pageConfig } from "@/lib/configs/pageConfig";
-import { Metadata, ResolvingMetadata } from "next";
-import { hasPreviewProps } from "@/lib/util/hasPreviewProps";
+import { Metadata } from "next";
 import { fetchSinglePost, SinglePostAPI } from "@/app/actions/fetchSinglePost";
 
-const { pageCreator, pageDescription, pageKeywords, pageName, pageUrl } =
-  pageConfig;
+const { pageUrl } = pageConfig;
 
 type PageProps = {
   params: { slug: string; categoryId: string; id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  props: PageProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const isPreview = hasPreviewProps(props);
-
-  const { params, searchParams } = props;
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { params } = props;
   try {
     const { slug } = params;
     const postListRes = await fetchSinglePost(params.categoryId, params.slug);
@@ -43,7 +36,9 @@ export async function generateMetadata(
   } catch (error) {
     console.error("Error generating metadata:", error);
     // Optionally, return default metadata or an empty object
-    return {};
+    return {
+      title: "NextJS App"
+    };
   }
 }
 

@@ -13,6 +13,8 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+export const revalidate = 0;
+
 const SinglePostPage: React.FC<PageProps> = async (props) => {
   const isPreview = hasPreviewProps(props);
   const id = props.searchParams.p;

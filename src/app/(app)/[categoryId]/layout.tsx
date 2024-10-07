@@ -7,6 +7,8 @@ type MetadataProps = {
   params: { categoryId: string };
 };
 
+export const revalidate = 0;
+
 export async function generateMetadata({
   params,
 }: MetadataProps): Promise<Metadata> {

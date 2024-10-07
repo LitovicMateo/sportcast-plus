@@ -16,63 +16,13 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-const previewQuery = gql`
-  query GetContentNode(
-    $id: ID!
-    $idType: ContentNodeIdTypeEnum!
-    $asPreview: Boolean!
-  ) {
-    contentNode(id: $id, idType: $idType, asPreview: $asPreview) {
-      ... on NodeWithTitle {
-        title
-      }
-      ... on NodeWithContentEditor {
-        content
-      }
-      ... on NodeWithAuthor {
-        author {
-          node {
-            name
-          }
-        }
-      }
-      ... on Post {
-        id
-        author {
-          node {
-            name
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-          }
-        }
-        excerpt
-        seo {
-          focuskw
-        }
-        title
-        date
-        content
-        featuredImage {
-          node {
-            sourceUrl
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
+export const revalidate = 0;
 
 const SinglePostPage: React.FC<PageProps> = async (props) => {
   const isPreview = hasPreviewProps(props);
   const id = props.searchParams.p;
 
   const client = isPreview ? await getAuthClient() : await getClient();
-
 
   // if we are previewing but we are not logged in `getAuthClient` fails and return null
   if (!client) {
@@ -81,7 +31,7 @@ const SinglePostPage: React.FC<PageProps> = async (props) => {
 
   if (isPreview) {
     // TODO: add action to fetch preview post
-    const data = await fetchPostPreview(id)
+    const data = await fetchPostPreview(id);
 
     const date = transformDate(data.contentNode.date);
 

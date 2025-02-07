@@ -14,3 +14,22 @@
     min-height: 100vh;
 
 }
+
+.bannerContainer {
+    width: 100%;
+    border-top: 1px solid #1d1d1d;
+    border-bottom: 1px solid #1d1d1d;
+}
+
+.bannerContainer > * {
+    padding-inline: 1em;
+}
+
+@media (min-width: 500px) {
+    .bannerContainer {
+        width: 100%;
+        background: linear-gradient(135deg, #6fcfdb, #58a5c9) ;
+        padding: 2em 0;
+        border: none;
+    }
+}

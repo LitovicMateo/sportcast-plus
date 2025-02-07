@@ -1,9 +1,12 @@
+import Image from "next/image";
 import styles from "./Article.module.css";
 import ArticleContent from "./ArticleContent";
 import ArticleFeaturedImage from "./ArticleFeaturedImage";
 import ArticleMetadata from "./ArticleMetadata";
 import ArticleShare from "./ArticleShare";
 import ArticleTags from "./ArticleTags";
+import Link from "next/link";
+import ArticleAd from "../Ads/ArticleAd";
 
 type ArticleProps = {
   isPreview: boolean;
@@ -40,6 +43,11 @@ const Article: React.FC<ArticleProps> = ({
         <ArticleMetadata author={author} title={title} date={date} />
         <ArticleContent content={content} />
       </section>
+      <ArticleAd
+        adTargetUrl="https://smash-porec.hr/"
+        alt="Smash banner ad"
+        imageSrc="/ads/smash-ad.png"
+      />
       {!isPreview && (
         <>
           <ArticleTags tags={tags!} />
